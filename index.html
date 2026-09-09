@@ -24,6 +24,7 @@
             justify-content: center;
             padding: 24px;
             margin: 0;
+            transition: background 0.3s ease;
         }
 
         .card {
@@ -35,7 +36,7 @@
             border-radius: 48px;
             box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
             padding: 44px 48px 40px;
-            transition: transform 0.2s ease, box-shadow 0.25s;
+            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
@@ -50,6 +51,51 @@
             background: linear-gradient(90deg, #3a6b8f, #6a9ec4, #3a6b8f);
             border-radius: 20px;
             margin-bottom: 24px;
+            transition: background 0.3s ease;
+        }
+
+        /* ===== КНОПКИ ДОСТУПНОСТИ ===== */
+        .accessibility-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding: 8px 0 12px;
+            border-bottom: 1px dashed rgba(160, 190, 210, 0.3);
+            align-items: center;
+        }
+
+        .accessibility-toolbar .divider {
+            color: #b0c8d8;
+            font-size: 1.5rem;
+            opacity: 0.4;
+            user-select: none;
+        }
+
+        .access-btn {
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 2px solid #3a6b8f;
+            background: transparent;
+            color: #1a3d54;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .access-btn:hover {
+            background: rgba(58, 107, 143, 0.1);
+        }
+
+        .access-btn.active {
+            background: #3a6b8f;
+            color: white;
+        }
+
+        .access-btn.active:hover {
+            background: #2a5a7a;
         }
 
         /* ===== БЫСТРЫЕ КНОПКИ ===== */
@@ -116,6 +162,7 @@
             border-radius: 60px;
             text-transform: uppercase;
             border: 1px solid rgba(255, 215, 160, 0.15);
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .owner-name {
@@ -125,11 +172,13 @@
             color: #1a2c3b;
             line-height: 1.15;
             margin-top: 10px;
+            transition: color 0.3s ease;
         }
 
         .owner-name span {
             font-weight: 300;
             color: #4d6a7e;
+            transition: color 0.3s ease;
         }
 
         .subhead {
@@ -148,6 +197,7 @@
             padding: 4px 24px 5px;
             border-radius: 60px;
             border: 1px solid #cbdce7;
+            transition: all 0.3s ease;
         }
 
         .tagline {
@@ -157,6 +207,7 @@
             padding: 4px 20px;
             border-radius: 40px;
             border: 1px solid #cbdce7;
+            transition: all 0.3s ease;
         }
 
         /* ===== О КОМПАНИИ ===== */
@@ -168,6 +219,7 @@
             border: 1px solid rgba(160, 190, 210, 0.2);
             backdrop-filter: blur(2px);
             scroll-margin-top: 80px;
+            transition: all 0.3s ease;
         }
 
         .about-title {
@@ -180,6 +232,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            transition: color 0.3s ease;
         }
 
         .about-title::after {
@@ -193,6 +246,7 @@
             color: #142f42;
             font-size: 1rem;
             line-height: 1.8;
+            transition: color 0.3s ease;
         }
 
         .about-text p {
@@ -201,6 +255,49 @@
 
         .about-text strong {
             color: #1a4a66;
+            transition: color 0.3s ease;
+        }
+
+        /* ===== ОПЫТ РАБОТЫ ===== */
+        .experience-block {
+            margin: 20px 0 18px;
+            padding: 16px 24px;
+            border-radius: 60px;
+            background: linear-gradient(135deg, rgba(58, 107, 143, 0.08), rgba(58, 107, 143, 0.02));
+            border: 1px solid rgba(58, 107, 143, 0.12);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-block .exp-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .experience-block .exp-text {
+            font-size: 1rem;
+            color: #1a3d54;
+            transition: color 0.3s ease;
+        }
+
+        .experience-block .exp-text strong {
+            color: #1a4a66;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .experience-block .exp-badge {
+            background: #3a6b8f;
+            color: white;
+            font-weight: 600;
+            padding: 6px 22px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            margin-left: auto;
         }
 
         /* ===== УСЛУГИ ===== */
@@ -213,6 +310,7 @@
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.04);
             scroll-margin-top: 80px;
+            transition: all 0.3s ease;
         }
 
         .services-title {
@@ -225,6 +323,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            transition: color 0.3s ease;
         }
 
         .services-title::after {
@@ -281,6 +380,7 @@
             text-align: center;
             color: #2f6180;
             flex-shrink: 0;
+            transition: color 0.3s ease;
         }
 
         .service-btn .btn-text {
@@ -315,11 +415,13 @@
             color: #142f42;
             line-height: 1.7;
             flex: 1;
+            transition: color 0.3s ease;
         }
 
         .detail-text strong {
             color: #1b4a66;
             font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         .detail-empty {
@@ -327,6 +429,144 @@
             font-style: italic;
             opacity: 0.8;
             font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        /* ===== РЕЖИМ РАБОТЫ ===== */
+        .work-schedule-block {
+            margin: 28px 0 18px;
+            padding: 24px 30px;
+            border-radius: 40px;
+            background: rgba(245, 248, 250, 0.7);
+            border: 1px solid rgba(160, 190, 210, 0.2);
+            backdrop-filter: blur(2px);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px 24px;
+            border-left: 6px solid #3a6b8f;
+            transition: all 0.3s ease;
+        }
+
+        .work-schedule-block .schedule-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .work-schedule-block .schedule-title {
+            font-weight: 600;
+            color: #1a3d54;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .work-schedule-block .schedule-text {
+            color: #214b62;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .work-schedule-block .schedule-text strong {
+            color: #1a3d54;
+            transition: color 0.3s ease;
+        }
+
+        .work-schedule-block .schedule-weekend {
+            color: #6b8ba2;
+            transition: color 0.3s ease;
+        }
+
+        .work-schedule-block .emergency-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: rgba(58, 107, 143, 0.06);
+            padding: 10px 20px;
+            border-radius: 60px;
+            border: 1px solid rgba(58, 107, 143, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .work-schedule-block .emergency-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .work-schedule-block .emergency-title {
+            font-weight: 600;
+            color: #b33a3a;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+
+        .work-schedule-block .emergency-24h {
+            color: #1a3d54;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        /* ===== ГАРАНТИЯ ===== */
+        .guarantee-block {
+            margin: 28px 0 18px;
+            padding: 24px 30px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, rgba(58, 107, 143, 0.06), rgba(245, 200, 60, 0.04));
+            border: 1px solid rgba(58, 107, 143, 0.12);
+            backdrop-filter: blur(2px);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px 24px;
+            border-left: 6px solid #f5b342;
+            transition: all 0.3s ease;
+        }
+
+        .guarantee-block .guarantee-icon {
+            font-size: 2.4rem;
+            line-height: 1;
+        }
+
+        .guarantee-block .guarantee-title {
+            font-weight: 700;
+            color: #1a3d54;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .guarantee-block .guarantee-text {
+            color: #214b62;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .guarantee-block .guarantee-badge {
+            background: rgba(245, 179, 66, 0.12);
+            padding: 10px 24px;
+            border-radius: 60px;
+            border: 1px solid rgba(245, 179, 66, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .guarantee-block .guarantee-badge span {
+            font-weight: 700;
+            color: #b38a2e;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .guarantee-block .guarantee-badge .badge-icon {
+            font-size: 1.6rem;
+            line-height: 1;
         }
 
         /* ===== ТСЖ / ТСН / ЖСК ===== */
@@ -345,6 +585,7 @@
             gap: 16px 20px;
             border-left: 6px solid #3a6b8f;
             scroll-margin-top: 80px;
+            transition: all 0.3s ease;
         }
 
         .community-block .comm-label {
@@ -355,6 +596,7 @@
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
+            transition: color 0.3s ease;
         }
 
         .community-block .comm-label span {
@@ -366,15 +608,18 @@
             letter-spacing: 0.4px;
             color: #0f2c3d;
             font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .community-block .comm-desc {
             font-size: 0.95rem;
             color: #214b62;
+            transition: color 0.3s ease;
         }
 
         .community-block .comm-desc strong {
             color: #1a3f57;
+            transition: color 0.3s ease;
         }
 
         /* ===== ОТЗЫВЫ ===== */
@@ -386,6 +631,7 @@
             border: 1px solid rgba(160, 190, 210, 0.2);
             backdrop-filter: blur(2px);
             scroll-margin-top: 80px;
+            transition: all 0.3s ease;
         }
 
         .reviews-title {
@@ -398,6 +644,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            transition: color 0.3s ease;
         }
 
         .reviews-title::after {
@@ -413,6 +660,7 @@
             padding: 24px 28px;
             margin-bottom: 24px;
             border: 1px solid rgba(160, 190, 210, 0.2);
+            transition: all 0.3s ease;
         }
 
         .review-form .form-row {
@@ -432,8 +680,9 @@
             font-family: inherit;
             font-size: 0.95rem;
             background: rgba(255, 255, 255, 0.7);
-            transition: border 0.2s;
+            transition: all 0.2s ease;
             outline: none;
+            color: #142f42;
         }
 
         .review-form .form-row input:focus,
@@ -523,6 +772,7 @@
             padding: 16px 22px;
             border-radius: 24px;
             border: 1px solid rgba(160, 190, 210, 0.15);
+            transition: all 0.3s ease;
         }
 
         .review-item .review-header {
@@ -537,17 +787,20 @@
             font-weight: 600;
             color: #1a3d54;
             font-size: 1rem;
+            transition: color 0.3s ease;
         }
 
         .review-item .review-date {
             font-size: 0.75rem;
             color: #6b8ba2;
+            transition: color 0.3s ease;
         }
 
         .review-item .review-text {
             color: #142f42;
             font-size: 0.95rem;
             line-height: 1.5;
+            transition: color 0.3s ease;
         }
 
         .review-item .review-stars {
@@ -561,6 +814,7 @@
             font-style: italic;
             padding: 12px 0;
             text-align: center;
+            transition: color 0.3s ease;
         }
 
         /* ===== КОНТАКТЫ ===== */
@@ -579,6 +833,7 @@
             gap: 16px 24px;
             padding: 10px 0;
             border-bottom: 1px solid rgba(160, 190, 210, 0.2);
+            transition: border-color 0.3s ease;
         }
 
         .contact-row:last-child {
@@ -591,6 +846,7 @@
             text-align: center;
             color: #3a6b8f;
             opacity: 0.8;
+            transition: color 0.3s ease;
         }
 
         .contact-value {
@@ -599,13 +855,14 @@
             color: #072433;
             letter-spacing: 0.01em;
             word-break: break-word;
+            transition: color 0.3s ease;
         }
 
         .contact-value a {
             color: #1a4d6b;
             text-decoration: none;
             border-bottom: 1.5px dotted #b0ccdd;
-            transition: border-color 0.2s, color 0.2s;
+            transition: all 0.2s ease;
             cursor: pointer;
         }
 
@@ -625,6 +882,7 @@
             border-radius: 60px;
             margin-left: auto;
             white-space: nowrap;
+            transition: all 0.3s ease;
         }
 
         .footer-meta {
@@ -637,6 +895,7 @@
             align-items: center;
             font-size: 0.75rem;
             color: #4a6f86;
+            transition: all 0.3s ease;
         }
 
         .footer-meta .ip-tag {
@@ -645,6 +904,447 @@
             border-radius: 40px;
             color: #123a52;
             font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== РЕЖИМ ДЛЯ СЛАБОВИДЯЩИХ ===== */
+        body.accessibility-mode * {
+            font-size: 120% !important;
+            line-height: 1.8 !important;
+        }
+
+        body.accessibility-mode .card {
+            background: #ffffff !important;
+            border: 3px solid #000000 !important;
+        }
+
+        body.accessibility-mode .service-btn {
+            font-size: 1.1rem !important;
+            padding: 14px 20px !important;
+            border: 2px solid #000000 !important;
+            background: #f0f0f0 !important;
+            color: #000000 !important;
+        }
+
+        body.accessibility-mode .service-btn .btn-text {
+            font-size: 1.1rem !important;
+        }
+
+        body.accessibility-mode .service-btn.active {
+            background: #d4e3ed !important;
+            border: 3px solid #000000 !important;
+        }
+
+        body.accessibility-mode .quick-nav a {
+            font-size: 1.1rem !important;
+            padding: 10px 20px !important;
+            border: 2px solid #000000 !important;
+        }
+
+        body.accessibility-mode .owner-name {
+            font-size: 2.8rem !important;
+        }
+
+        body.accessibility-mode .about-text {
+            font-size: 1.2rem !important;
+            line-height: 1.9 !important;
+        }
+
+        body.accessibility-mode .community-block .comm-desc {
+            font-size: 1.15rem !important;
+        }
+
+        body.accessibility-mode .contact-value {
+            font-size: 1.5rem !important;
+        }
+
+        body.accessibility-mode .review-item .review-text {
+            font-size: 1.15rem !important;
+        }
+
+        body.accessibility-mode .service-detail .detail-text {
+            font-size: 1.2rem !important;
+        }
+
+        body.accessibility-mode .service-detail {
+            border: 2px solid #000000 !important;
+            background: #f8f8f8 !important;
+        }
+
+        body.accessibility-mode .service-btn:hover {
+            transform: none !important;
+            background: #d4e3ed !important;
+        }
+
+        body.accessibility-mode .quick-nav a:hover {
+            transform: none !important;
+        }
+
+        body.accessibility-mode .btn {
+            font-size: 1.1rem !important;
+            padding: 14px 32px !important;
+        }
+
+        body.accessibility-mode input,
+        body.accessibility-mode textarea {
+            font-size: 1.1rem !important;
+            padding: 14px 20px !important;
+        }
+
+        body.accessibility-mode .review-form .btn-secondary {
+            font-size: 1.1rem !important;
+            padding: 14px 32px !important;
+        }
+
+        body.accessibility-mode .review-form .form-status {
+            font-size: 1.1rem !important;
+        }
+
+        body.accessibility-mode .access-btn {
+            font-size: 1rem !important;
+            padding: 8px 22px !important;
+        }
+
+        /* ===== ТЁМНАЯ ТЕМА ===== */
+        body.dark-theme {
+            background: linear-gradient(145deg, #1a2a33 0%, #0d1a22 100%);
+        }
+
+        body.dark-theme .card {
+            background: rgba(30, 45, 55, 0.92);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+        }
+
+        body.dark-theme .card:hover {
+            box-shadow: 0 40px 72px -24px rgba(0, 0, 0, 0.9);
+        }
+
+        body.dark-theme .owner-name {
+            color: #e8edf0;
+        }
+
+        body.dark-theme .owner-name span {
+            color: #8aaec2;
+        }
+
+        body.dark-theme .status-badge {
+            background: #2a4a5f;
+            color: #d4e4ed;
+            border-color: rgba(255, 215, 160, 0.08);
+        }
+
+        body.dark-theme .title-role {
+            background: #2a4255;
+            color: #c0d8e5;
+            border-color: #3a5a6f;
+        }
+
+        body.dark-theme .tagline {
+            color: #8ab0c5;
+            background: rgba(42, 66, 85, 0.5);
+            border-color: #3a5a6f;
+        }
+
+        body.dark-theme .accent-stripe {
+            background: linear-gradient(90deg, #5a8aaa, #8abada, #5a8aaa);
+        }
+
+        body.dark-theme .quick-nav {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body.dark-theme .quick-nav a {
+            background: rgba(90, 140, 170, 0.12);
+            color: #c0d8e5;
+            border-color: rgba(90, 140, 170, 0.15);
+        }
+
+        body.dark-theme .quick-nav a:hover {
+            background: rgba(90, 140, 170, 0.25);
+            border-color: #5a8aaa;
+        }
+
+        body.dark-theme .quick-nav a.phone-btn {
+            background: rgba(90, 140, 170, 0.2);
+            border-color: #5a8aaa;
+        }
+
+        body.dark-theme .about-block {
+            background: rgba(30, 50, 65, 0.4);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-theme .about-text {
+            color: #c8dce5;
+        }
+
+        body.dark-theme .about-text strong {
+            color: #8abada;
+        }
+
+        body.dark-theme .about-title {
+            color: #7aabca;
+        }
+
+        body.dark-theme .services {
+            background: rgba(30, 50, 65, 0.3);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-theme .services-title {
+            color: #7aabca;
+        }
+
+        body.dark-theme .service-btn {
+            background: rgba(40, 65, 80, 0.6);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #c8dce5;
+        }
+
+        body.dark-theme .service-btn:hover {
+            background: rgba(60, 95, 115, 0.6);
+            border-color: #5a8aaa;
+        }
+
+        body.dark-theme .service-btn.active {
+            background: rgba(60, 100, 130, 0.5);
+            border-color: #5a8aaa;
+            box-shadow: 0 0 0 2px rgba(90, 140, 170, 0.3);
+        }
+
+        body.dark-theme .service-icon {
+            color: #7aabca;
+        }
+
+        body.dark-theme .service-detail {
+            background: rgba(40, 65, 85, 0.5);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-theme .detail-text {
+            color: #c8dce5;
+        }
+
+        body.dark-theme .detail-text strong {
+            color: #8abada;
+        }
+
+        body.dark-theme .detail-empty {
+            color: #6b8ba2;
+        }
+
+        body.dark-theme .work-schedule-block {
+            background: rgba(30, 55, 70, 0.4) !important;
+            border-color: rgba(255, 255, 255, 0.06) !important;
+            border-left-color: #5a8aaa !important;
+        }
+
+        body.dark-theme .work-schedule-block .schedule-title {
+            color: #b0c8d8;
+        }
+
+        body.dark-theme .work-schedule-block .schedule-text {
+            color: #b0c8d8;
+        }
+
+        body.dark-theme .work-schedule-block .schedule-text strong {
+            color: #c8dce5;
+        }
+
+        body.dark-theme .work-schedule-block .schedule-weekend {
+            color: #6b8ba2;
+        }
+
+        body.dark-theme .work-schedule-block .emergency-block {
+            background: rgba(90, 140, 170, 0.1) !important;
+            border-color: rgba(90, 140, 170, 0.15) !important;
+        }
+
+        body.dark-theme .work-schedule-block .emergency-title {
+            color: #ff7a7a !important;
+        }
+
+        body.dark-theme .work-schedule-block .emergency-24h {
+            color: #b0c8d8 !important;
+        }
+
+        body.dark-theme .guarantee-block {
+            background: rgba(30, 55, 70, 0.4) !important;
+            border-color: rgba(255, 255, 255, 0.06) !important;
+            border-left-color: #e8a830 !important;
+        }
+
+        body.dark-theme .guarantee-block .guarantee-title {
+            color: #d4c8a0 !important;
+        }
+
+        body.dark-theme .guarantee-block .guarantee-text {
+            color: #b0c8d8 !important;
+        }
+
+        body.dark-theme .guarantee-block .guarantee-badge {
+            background: rgba(200, 170, 70, 0.12) !important;
+            border-color: rgba(200, 170, 70, 0.2) !important;
+        }
+
+        body.dark-theme .guarantee-block .guarantee-badge span {
+            color: #d4b85a !important;
+        }
+
+        body.dark-theme .community-block {
+            background: rgba(30, 55, 70, 0.4);
+            border-color: rgba(255, 255, 255, 0.06);
+            border-left-color: #5a8aaa;
+        }
+
+        body.dark-theme .community-block .comm-label {
+            color: #aac8da;
+        }
+
+        body.dark-theme .community-block .comm-label span {
+            background: #2a4a5f;
+            color: #b0d0e0;
+        }
+
+        body.dark-theme .community-block .comm-desc {
+            color: #b0c8d8;
+        }
+
+        body.dark-theme .community-block .comm-desc strong {
+            color: #8abada;
+        }
+
+        body.dark-theme .reviews-block {
+            background: rgba(30, 50, 65, 0.3);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-theme .reviews-title {
+            color: #7aabca;
+        }
+
+        body.dark-theme .review-form {
+            background: rgba(40, 65, 85, 0.4);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-theme .review-form .form-row input,
+        body.dark-theme .review-form .form-row textarea {
+            background: rgba(20, 40, 55, 0.7);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #c8dce5;
+        }
+
+        body.dark-theme .review-form .form-row input::placeholder,
+        body.dark-theme .review-form .form-row textarea::placeholder {
+            color: #6b8ba2;
+        }
+
+        body.dark-theme .review-form .btn {
+            background: #4a7a9a;
+            color: white;
+        }
+
+        body.dark-theme .review-form .btn:hover {
+            background: #5a8aaa;
+        }
+
+        body.dark-theme .review-form .btn-secondary {
+            background: #2a4a5f;
+            color: #b0d0e0;
+        }
+
+        body.dark-theme .review-form .btn-secondary:hover {
+            background: #3a5a7a;
+        }
+
+        body.dark-theme .review-item {
+            background: rgba(40, 65, 85, 0.3);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-theme .review-item .review-name {
+            color: #c8dce5;
+        }
+
+        body.dark-theme .review-item .review-text {
+            color: #b0c8d8;
+        }
+
+        body.dark-theme .review-item .review-date {
+            color: #6b8ba2;
+        }
+
+        body.dark-theme .no-reviews {
+            color: #6b8ba2;
+        }
+
+        body.dark-theme .contacts .contact-row {
+            border-bottom-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-theme .contact-value {
+            color: #c8dce5;
+        }
+
+        body.dark-theme .contact-value a {
+            color: #7aabca;
+            border-bottom-color: rgba(90, 140, 170, 0.3);
+        }
+
+        body.dark-theme .contact-value a:hover {
+            color: #9acada;
+            border-bottom-color: #5a8aaa;
+        }
+
+        body.dark-theme .contact-label {
+            background: #2a4a5f;
+            color: #8ab0c5;
+        }
+
+        body.dark-theme .footer-meta {
+            border-top-color: rgba(255, 255, 255, 0.06);
+            color: #6b8ba2;
+        }
+
+        body.dark-theme .footer-meta .ip-tag {
+            background: #2a4a5f;
+            color: #8abada;
+        }
+
+        body.dark-theme .access-btn {
+            border-color: #5a8aaa;
+            color: #b0d0e0;
+        }
+
+        body.dark-theme .access-btn:hover {
+            background: rgba(90, 140, 170, 0.15);
+        }
+
+        body.dark-theme .access-btn.active {
+            background: #4a7a9a;
+            color: white;
+            border-color: #4a7a9a;
+        }
+
+        body.dark-theme .experience-block {
+            background: rgba(30, 55, 70, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        body.dark-theme .experience-block .exp-text {
+            color: #b0c8d8 !important;
+        }
+
+        body.dark-theme .experience-block .exp-text strong {
+            color: #8abada !important;
+        }
+
+        body.dark-theme .experience-block .exp-badge {
+            background: #2a4a5f !important;
+            color: #8abada !important;
         }
 
         /* ===== АДАПТИВ ===== */
@@ -654,6 +1354,17 @@
             }
             .card {
                 padding: 32px 28px 28px;
+            }
+            .experience-block .exp-badge {
+                margin-left: 0;
+            }
+            .guarantee-block {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .guarantee-block .guarantee-badge {
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -686,6 +1397,40 @@
             .about-text { font-size: 0.92rem; }
             .service-detail { padding: 16px 20px; }
             .detail-text { font-size: 0.92rem; }
+            .work-schedule-block {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .work-schedule-block .emergency-block {
+                width: 100%;
+                justify-content: center;
+            }
+            .accessibility-toolbar {
+                gap: 6px;
+            }
+            .access-btn {
+                font-size: 0.7rem;
+                padding: 4px 12px;
+            }
+            .accessibility-toolbar .divider {
+                font-size: 1rem;
+            }
+            .experience-block .exp-badge {
+                font-size: 0.8rem;
+                padding: 4px 14px;
+            }
+            .experience-block .exp-icon {
+                font-size: 1.5rem;
+            }
+            .experience-block .exp-text {
+                font-size: 0.85rem;
+            }
+            .guarantee-block .guarantee-badge {
+                padding: 8px 16px;
+            }
+            .guarantee-block .guarantee-badge span {
+                font-size: 0.95rem;
+            }
         }
 
         @media (max-width: 450px) {
@@ -712,6 +1457,31 @@
             .subhead { flex-direction: column; align-items: flex-start; }
             .quick-nav a { padding: 4px 8px; font-size: 0.6rem; }
             .quick-nav a .nav-icon { font-size: 0.7rem; }
+            .access-btn {
+                font-size: 0.6rem;
+                padding: 3px 10px;
+                border-width: 1.5px;
+            }
+            .experience-block {
+                padding: 12px 16px;
+                gap: 8px;
+            }
+            .experience-block .exp-badge {
+                font-size: 0.7rem;
+                padding: 3px 10px;
+            }
+            .guarantee-block {
+                padding: 16px 18px;
+            }
+            .guarantee-block .guarantee-title {
+                font-size: 1rem;
+            }
+            .guarantee-block .guarantee-text {
+                font-size: 0.85rem;
+            }
+            .guarantee-block .guarantee-badge span {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -720,10 +1490,20 @@
 
     <div class="accent-stripe"></div>
 
+    <!-- ===== КНОПКИ ДОСТУПНОСТИ ===== -->
+    <div class="accessibility-toolbar">
+        <button onclick="setNormalMode()" id="normalModeBtn" class="access-btn active">👁️ Обычный режим</button>
+        <button onclick="setAccessibilityMode()" id="accessibilityModeBtn" class="access-btn">🔍 Для слабовидящих</button>
+        <span class="divider">|</span>
+        <button onclick="toggleTheme()" id="themeToggleBtn" class="access-btn">🌙 Тёмная тема</button>
+    </div>
+
     <!-- ===== БЫСТРЫЕ КНОПКИ ===== -->
     <div class="quick-nav">
         <a href="#about-block"><span class="nav-icon">🏢</span> О компании</a>
         <a href="#services-block"><span class="nav-icon">🔧</span> Услуги</a>
+        <a href="#schedule-block"><span class="nav-icon">🕐</span> Режим работы</a>
+        <a href="#guarantee-block"><span class="nav-icon">🛡️</span> Гарантия</a>
         <a href="#community-block"><span class="nav-icon">🏢</span> ТСЖ / ТСН / ЖСК</a>
         <a href="#reviews-block"><span class="nav-icon">⭐</span> Отзывы</a>
         <a href="#contacts-block"><span class="nav-icon">📞</span> Контакты</a>
@@ -750,6 +1530,14 @@
         <div class="about-title">🏢 О компании</div>
         <div class="about-text">
             <p><strong>ИП Майборода Евгений Витальевич</strong> осуществляет обслуживание и ремонт объектов жилого и нежилого фонда на территории города Перми и Пермского края. Компания ориентирована на высокое качество и скорость выполняемых сантехнических и электрических работ. Обладает высоким уровнем технической и технологической оснащённости, развитой материально-технической базой, отлаженными производственными связями с поставщиками строительных материалов и субподрядными организациями, а также всей необходимой разрешительной документацией в соответствии с законодательством Российской Федерации.</p>
+
+            <!-- ===== ОПЫТ РАБОТЫ ===== -->
+            <div class="experience-block">
+                <span class="exp-icon">📅</span>
+                <span class="exp-text"><strong>Работаем в Перми и Пермском крае</strong></span>
+                <span class="exp-badge">с 21 февраля 2017 года</span>
+            </div>
+
             <p>За весь период работы в компании сформировался коллектив опытных и высококвалифицированных сотрудников, представляющих собой сплочённую команду профессионалов, способную решать задачи любой сложности, имеющих большой опыт в сфере обслуживания зданий и ориентированных на достижение самых высоких результатов.</p>
             <p><strong>ИП Майборода Евгений Витальевич</strong> предлагает потенциальным заказчикам выполнение полного комплекса услуг по обслуживанию ТСЖ, ТСН, ЖСК, капитальному ремонту инженерных систем и электрических коммуникаций зданий и сооружений промышленного и гражданского назначения, офисов, магазинов, складов, частных домов. Полученный за время работы опыт позволяет с уверенностью сказать о том, что мы в полной мере сможем удовлетворить любые Ваши пожелания с отменным качеством и в назначенный срок.</p>
         </div>
@@ -793,6 +1581,42 @@
         <div class="service-detail" id="serviceDetail">
             <span class="detail-icon">💬</span>
             <span class="detail-text detail-empty">Нажмите на любую услугу, чтобы узнать, что это такое и для чего нужно</span>
+        </div>
+    </div>
+
+    <!-- ===== РЕЖИМ РАБОТЫ ===== -->
+    <div class="work-schedule-block" id="schedule-block">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <span class="schedule-icon">🕐</span>
+            <div>
+                <div class="schedule-title">Режим работы</div>
+                <div class="schedule-text">
+                    <div>Пн–Пт: <strong>9:00 – 17:00</strong></div>
+                    <div class="schedule-weekend">Сб–Вс: <strong>выходной</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="emergency-block">
+            <span class="emergency-icon">🚨</span>
+            <div>
+                <div class="emergency-title">Аварийная служба</div>
+                <div class="emergency-24h">24/7 · круглосуточно</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ГАРАНТИЯ ===== -->
+    <div class="guarantee-block" id="guarantee-block">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <span class="guarantee-icon">🛡️</span>
+            <div>
+                <div class="guarantee-title">Гарантия 3 года</div>
+                <div class="guarantee-text">на все выполненные работы и установленные материалы</div>
+            </div>
+        </div>
+        <div class="guarantee-badge">
+            <span class="badge-icon">⭐</span>
+            <span>3 года надёжности</span>
         </div>
     </div>
 
@@ -1039,6 +1863,58 @@
         });
 
         loadReviews();
+
+        // ===== РЕЖИМ ДЛЯ СЛАБОВИДЯЩИХ =====
+        function setAccessibilityMode() {
+            document.body.classList.add('accessibility-mode');
+            document.getElementById('accessibilityModeBtn').classList.add('active');
+            document.getElementById('normalModeBtn').classList.remove('active');
+            localStorage.setItem('accessibilityMode', 'on');
+        }
+
+        function setNormalMode() {
+            document.body.classList.remove('accessibility-mode');
+            document.getElementById('normalModeBtn').classList.add('active');
+            document.getElementById('accessibilityModeBtn').classList.remove('active');
+            localStorage.setItem('accessibilityMode', 'off');
+        }
+
+        // ===== ТЁМНАЯ ТЕМА =====
+        function toggleTheme() {
+            const isDark = document.body.classList.toggle('dark-theme');
+            const btn = document.getElementById('themeToggleBtn');
+            if (isDark) {
+                btn.innerHTML = '☀️ Светлая тема';
+                localStorage.setItem('darkTheme', 'on');
+            } else {
+                btn.innerHTML = '🌙 Тёмная тема';
+                localStorage.setItem('darkTheme', 'off');
+            }
+        }
+
+        // Проверяем сохранённые настройки при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Режим для слабовидящих
+            const savedAccessibility = localStorage.getItem('accessibilityMode');
+            if (savedAccessibility === 'on') {
+                setAccessibilityMode();
+            } else {
+                setNormalMode();
+            }
+
+            // Тёмная тема
+            const savedTheme = localStorage.getItem('darkTheme');
+            if (savedTheme === 'on') {
+                document.body.classList.add('dark-theme');
+                document.getElementById('themeToggleBtn').innerHTML = '☀️ Светлая тема';
+            }
+        });
+
+        // Делаем функции глобальными для onclick
+        window.setAccessibilityMode = setAccessibilityMode;
+        window.setNormalMode = setNormalMode;
+        window.toggleTheme = toggleTheme;
+
     })();
 </script>
 
