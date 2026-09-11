@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>ИП Майборода Евгений Витальевич — сантехника, отопление, кондиционирование в Перми | Сантехник Пермь</title>
     <meta name="description" content="ИП Майборода Евгений Витальевич — сантехника, отопление, кондиционирование в Перми и Пермском крае. Сантехнические работы, монтаж отопительных систем, установка кондиционеров. Опыт с 2017 года. Гарантия 3 года. Тел: 8 902 646 92 44">
@@ -24,6 +25,13 @@
     <link rel="manifest" href="data:application/json,%7B%22name%22%3A%22%D0%9C%D0%B0%D0%B9%D0%B1%D0%BE%D1%80%D0%BE%D0%B4%D0%B0%22%2C%22short_name%22%3A%22%D0%9C%D0%B0%D0%B9%D0%B1%D0%BE%D1%80%D0%BE%D0%B4%D0%B0%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23eef2f5%22%2C%22theme_color%22%3A%22%233a6b8f%22%7D">
     <meta name="theme-color" content="#3a6b8f">
 
+    <!-- Safari / iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Майборода">
+    <meta name="format-detection" content="telephone=yes">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%233a6b8f'/%3E%3Ctext x='90' y='120' font-size='100' text-anchor='middle' fill='white'%3E%F0%9F%94%A7%3C/text%3E%3C/svg%3E">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -44,30 +52,144 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* ===== СБРОС + КРОССБРАУЗЕРНЫЕ ФИКСЫ ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Правильная высота для всех браузеров */
+        html, body {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            min-height: 100dvh;
+        }
 
         body {
             background: linear-gradient(145deg, #eef2f5 0%, #d5dee6 100%);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            min-height: 100vh;
+            background-attachment: fixed;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Roboto, Arial, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 24px;
             margin: 0;
             transition: background 0.3s ease;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-y: none;
         }
 
+        /* Кроссбраузерные инпуты */
+        input, textarea, select, button {
+            font-family: inherit;
+            font-size: inherit;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            border-radius: 0;
+        }
+
+        /* Возвращаем border-radius */
+        input, textarea, select, button {
+            border-radius: inherit;
+        }
+
+        /* Firefox: убираем внутреннюю обводку */
+        input::-moz-focus-inner,
+        button::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+        }
+
+        /* Firefox: плейсхолдеры */
+        input:-moz-placeholder, textarea:-moz-placeholder { opacity: 1; }
+        input::-moz-placeholder, textarea::-moz-placeholder { opacity: 1; }
+
+        /* IE/Edge: убираем крестики */
+        input::-ms-clear,
+        input::-ms-reveal { display: none; }
+
+        /* Safari: date/select */
+        input[type="date"] {
+            -webkit-appearance: none;
+            appearance: none;
+            min-height: 44px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            opacity: 0.6;
+            padding: 4px;
+        }
+
+        input[type="date"]::-webkit-date-and-time-value {
+            text-align: left;
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233a6b8f' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            padding-right: 42px !important;
+        }
+
+        /* Safari: чекбоксы/radio */
+        input[type="checkbox"],
+        input[type="radio"] {
+            -webkit-appearance: auto;
+            -moz-appearance: auto;
+            appearance: auto;
+        }
+
+        /* Фиксы для position:fixed */
+        .chat-float-btn,
+        .chat-window,
+        .pwa-install-btn,
+        .push-btn,
+        .toast {
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* Плавный скролл в контейнерах */
+        .chat-messages,
+        .chat-container,
+        .chat-window-body {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
         .card {
             max-width: 960px;
             width: 100%;
+            background: #ffffff;
             background: rgba(255, 255, 255, 0.85);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-radius: 48px;
             box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
             padding: 44px 48px 40px;
-            transition: all 0.3s ease;
+            transition: box-shadow 0.25s ease, transform 0.25s ease;
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
@@ -99,6 +221,8 @@
             font-size: 1.5rem;
             opacity: 0.4;
             user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
         .access-btn {
@@ -110,7 +234,6 @@
             font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
-            font-family: inherit;
             transition: all 0.2s ease;
         }
 
@@ -281,7 +404,6 @@
         }
 
         .team-avatar { font-size: 2.6rem; line-height: 1; margin-bottom: 12px; }
-
         .team-name { font-weight: 600; color: #1a3d54; font-size: 1rem; margin-bottom: 8px; }
 
         .team-role {
@@ -335,7 +457,6 @@
             transition: all 0.18s ease;
             text-align: left;
             width: 100%;
-            font-family: inherit;
             min-height: 48px;
         }
 
@@ -452,10 +573,10 @@
             justify-content: space-between;
             align-items: center;
             user-select: none;
+            -webkit-user-select: none;
         }
 
-        .faq-question .faq-arrow { font-size: 1.2rem; color: #3a6b8f; transition: transform 0.3s; }
-
+        .faq-question .faq-arrow { font-size: 1.2rem; color: #3a6b8f; transition: transform 0.3s ease; }
         .faq-item.open .faq-question .faq-arrow { transform: rotate(180deg); }
 
         .faq-answer {
@@ -498,11 +619,10 @@
             padding: 13px 22px;
             border-radius: 40px;
             border: 1px solid rgba(160, 190, 210, 0.3);
-            font-family: inherit;
             font-size: 0.95rem;
             background: rgba(255, 255, 255, 0.7);
-            outline: none;
             color: #142f42;
+            transition: border-color 0.2s ease;
         }
 
         .account-input-row input:focus, .account-input-row select:focus { border-color: #3a6b8f; }
@@ -513,11 +633,11 @@
             border: none;
             background: #3a6b8f;
             color: white;
-            font-family: inherit;
             font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
             white-space: nowrap;
+            transition: background 0.2s ease;
         }
 
         .account-input-row button:hover { background: #2a5a7a; }
@@ -549,8 +669,10 @@
             color: #b33a3a;
             font-size: 0.85rem;
             cursor: pointer;
-            font-family: inherit;
+            transition: all 0.2s ease;
         }
+
+        .account-logout:hover { background: rgba(179, 58, 58, 0.15); }
 
         .role-badge {
             display: inline-block;
@@ -584,10 +706,8 @@
             padding: 11px 18px;
             border-radius: 30px;
             border: 1px solid rgba(160, 190, 210, 0.3);
-            font-family: inherit;
             font-size: 0.9rem;
             background: rgba(255, 255, 255, 0.8);
-            outline: none;
             color: #142f42;
         }
 
@@ -597,7 +717,6 @@
             border: none;
             background: #3a6b8f;
             color: white;
-            font-family: inherit;
             font-size: 0.9rem;
             font-weight: 500;
             cursor: pointer;
@@ -628,7 +747,6 @@
             padding: 5px 12px;
             border-radius: 30px;
             border: 1px solid rgba(160, 190, 210, 0.4);
-            font-family: inherit;
             font-size: 0.78rem;
             background: white;
             cursor: pointer;
@@ -636,11 +754,11 @@
             font-weight: 600;
         }
 
-        /* ===== ЧАТ ПОДДЕРЖКИ ===== */
+        /* ===== ЧАТ (в кабинете) ===== */
         .chat-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             max-height: 400px;
             overflow-y: auto;
             padding: 16px 20px;
@@ -674,13 +792,7 @@
             border-bottom-left-radius: 6px;
         }
 
-        .chat-message .chat-time {
-            display: block;
-            font-size: 0.7rem;
-            opacity: 0.7;
-            margin-top: 4px;
-        }
-
+        .chat-message .chat-time { display: block; font-size: 0.7rem; opacity: 0.7; margin-top: 4px; }
         .chat-message.client .chat-time { color: #c8dce5; }
         .chat-message.support .chat-time { color: #5a7d94; }
 
@@ -692,12 +804,7 @@
             padding: 20px 0;
         }
 
-        .chat-input-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
-        }
+        .chat-input-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 
         .chat-input-row input {
             flex: 1;
@@ -705,10 +812,8 @@
             padding: 13px 22px;
             border-radius: 40px;
             border: 1px solid rgba(160, 190, 210, 0.3);
-            font-family: inherit;
             font-size: 0.95rem;
             background: rgba(255, 255, 255, 0.7);
-            outline: none;
             color: #142f42;
         }
 
@@ -720,7 +825,6 @@
             border: none;
             background: #3a6b8f;
             color: white;
-            font-family: inherit;
             font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
@@ -729,13 +833,7 @@
 
         .chat-input-row button:hover { background: #2a5a7a; }
 
-        /* Список диалогов для поддержки */
-        .chat-dialogs-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 18px;
-        }
+        .chat-dialogs-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
 
         .chat-dialog-item {
             padding: 14px 20px;
@@ -746,19 +844,210 @@
             transition: all 0.2s ease;
         }
 
-        .chat-dialog-item:hover {
-            background: rgba(255, 255, 255, 0.8);
-            border-color: #6f95b5;
-        }
-
-        .chat-dialog-item.active {
-            background: #d4e3ed;
-            border-color: #3a6b8f;
-        }
+        .chat-dialog-item:hover { background: rgba(255, 255, 255, 0.8); border-color: #6f95b5; }
+        .chat-dialog-item.active { background: #d4e3ed; border-color: #3a6b8f; }
 
         .chat-dialog-name { font-weight: 600; color: #1a3d54; font-size: 0.95rem; }
         .chat-dialog-last { font-size: 0.8rem; color: #6b8ba2; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+        /* ===== ПЛАВАЮЩАЯ КНОПКА ЧАТА ===== */
+        .chat-float-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3a6b8f, #4a7a9a);
+            color: white;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 12px 28px -8px rgba(58, 107, 143, 0.6);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-float-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 16px 36px -8px rgba(58, 107, 143, 0.75);
+        }
+
+        .chat-float-btn.active {
+            background: linear-gradient(135deg, #2a5a7a, #3a6b8f);
+            transform: rotate(90deg);
+        }
+
+        .chat-float-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #e74c3c;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .chat-float-badge.show { display: flex; }
+
+        /* ===== ОКНО ЧАТА ===== */
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            width: 380px;
+            max-width: calc(100vw - 48px);
+            height: 520px;
+            max-height: calc(100vh - 140px);
+            max-height: calc(100dvh - 140px);
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 24px 64px -16px rgba(0, 20, 40, 0.4);
+            z-index: 1001;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(160, 190, 210, 0.2);
+        }
+
+        .chat-window.open {
+            display: flex;
+            animation: chatSlideUp 0.3s ease;
+        }
+
+        @keyframes chatSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @-webkit-keyframes chatSlideUp {
+            from { opacity: 0; -webkit-transform: translateY(20px); }
+            to { opacity: 1; -webkit-transform: translateY(0); }
+        }
+
+        .chat-window-header {
+            background: linear-gradient(135deg, #3a6b8f, #4a7a9a);
+            color: white;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .chat-window-title { display: flex; align-items: center; gap: 12px; }
+
+        .chat-window-close {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chat-window-close:hover { background: rgba(255, 255, 255, 0.3); }
+
+        .chat-window-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-login-prompt {
+            padding: 40px 30px;
+            text-align: center;
+            color: #1a3d54;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-login-btn {
+            padding: 12px 32px;
+            border-radius: 40px;
+            border: none;
+            background: #3a6b8f;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chat-login-btn:hover { background: #2a5a7a; }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #f8fafc;
+        }
+
+        .chat-messages::-webkit-scrollbar { width: 6px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: #b0c8d8; border-radius: 10px; }
+        .chat-messages::-webkit-scrollbar-track { background: transparent; }
+
+        .chat-window-input {
+            padding: 14px 18px;
+            background: white;
+            border-top: 1px solid rgba(160, 190, 210, 0.2);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .chat-window-input input {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(160, 190, 210, 0.3);
+            font-size: 0.9rem;
+            color: #142f42;
+            background: #f8fafc;
+        }
+
+        .chat-window-input input:focus { border-color: #3a6b8f; background: white; }
+
+        .chat-window-input button {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: #3a6b8f;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-window-input button:hover { background: #2a5a7a; transform: scale(1.05); }
+
+        /* ===== ОТЗЫВЫ ===== */
         .review-form {
             background: rgba(255, 255, 255, 0.6);
             border-radius: 32px;
@@ -776,10 +1065,8 @@
             padding: 12px 18px;
             border-radius: 30px;
             border: 1px solid rgba(160, 190, 210, 0.3);
-            font-family: inherit;
             font-size: 0.95rem;
             background: rgba(255, 255, 255, 0.7);
-            outline: none;
             color: #142f42;
         }
 
@@ -791,7 +1078,6 @@
             padding: 10px 28px;
             border-radius: 60px;
             border: none;
-            font-family: inherit;
             font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
@@ -831,6 +1117,7 @@
         .review-item .review-stars { color: #f5b342; font-size: 0.9rem; letter-spacing: 2px; }
         .no-reviews { color: #6b8ba2; font-style: italic; padding: 12px 0; text-align: center; }
 
+        /* ===== ПОДПИСКА ===== */
         .subscribe-form { display: flex; flex-wrap: wrap; gap: 12px; }
         .subscribe-form input {
             flex: 1;
@@ -838,10 +1125,8 @@
             padding: 14px 22px;
             border-radius: 60px;
             border: 1px solid rgba(160, 190, 210, 0.3);
-            font-family: inherit;
             font-size: 0.95rem;
             background: rgba(255, 255, 255, 0.7);
-            outline: none;
             color: #142f42;
         }
 
@@ -851,7 +1136,6 @@
             border: none;
             background: #3a6b8f;
             color: white;
-            font-family: inherit;
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
@@ -862,6 +1146,7 @@
         .subscribe-status.ok { color: #2a6b4a; background: rgba(42, 107, 74, 0.08); }
         .subscribe-status.err { color: #b33a3a; background: rgba(179, 58, 58, 0.08); }
 
+        /* ===== КОНТАКТЫ ===== */
         .contacts { display: flex; flex-direction: column; gap: 14px; margin: 22px 0 16px; scroll-margin-top: 80px; }
 
         .contact-row {
@@ -912,6 +1197,7 @@
             font-weight: 500;
         }
 
+        /* ===== PWA / PUSH ===== */
         .pwa-install-btn, .push-btn {
             position: fixed;
             bottom: 24px;
@@ -920,7 +1206,6 @@
             background: #3a6b8f;
             color: white;
             border: none;
-            font-family: inherit;
             font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
@@ -931,14 +1216,16 @@
             z-index: 999;
         }
 
-        .pwa-install-btn { right: 24px; }
+        .pwa-install-btn { right: 100px; }
         .push-btn { left: 24px; }
         .pwa-install-btn.show, .push-btn.show { display: flex; }
 
+        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             top: 24px;
             left: 50%;
+            -webkit-transform: translateX(-50%) translateY(-100px);
             transform: translateX(-50%) translateY(-100px);
             background: #1e3a4f;
             color: white;
@@ -953,8 +1240,12 @@
             text-align: center;
         }
 
-        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast.show {
+            -webkit-transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0);
+        }
 
+        /* ===== РЕЖИМ ДЛЯ СЛАБОВИДЯЩИХ ===== */
         body.accessibility-mode * { font-size: 120% !important; line-height: 1.8 !important; }
         body.accessibility-mode .card { background: #ffffff !important; border: 3px solid #000000 !important; }
         body.accessibility-mode .service-btn { font-size: 1.1rem !important; padding: 14px 20px !important; border: 2px solid #000000 !important; background: #f0f0f0 !important; color: #000000 !important; }
@@ -966,6 +1257,7 @@
         body.accessibility-mode input, body.accessibility-mode textarea, body.accessibility-mode select { font-size: 1.1rem !important; padding: 14px 20px !important; }
         body.accessibility-mode .access-btn { font-size: 1rem !important; padding: 8px 22px !important; }
 
+        /* ===== ТЁМНАЯ ТЕМА ===== */
         body.dark-theme { background: linear-gradient(145deg, #1a2a33 0%, #0d1a22 100%); }
         body.dark-theme .card { background: rgba(30, 45, 55, 0.92); border: 1px solid rgba(255, 255, 255, 0.08); }
         body.dark-theme .owner-name { color: #e8edf0; }
@@ -1028,7 +1320,14 @@
         body.dark-theme .chat-message.support { background: rgba(90, 140, 170, 0.15); color: #c8dce5; }
         body.dark-theme .chat-dialog-item:hover { background: rgba(50, 80, 105, 0.5); }
         body.dark-theme .chat-dialog-item.active { background: rgba(60, 100, 130, 0.5); border-color: #5a8aaa; }
+        body.dark-theme .chat-window { background: rgba(30, 45, 55, 0.98); border-color: rgba(255, 255, 255, 0.08); }
+        body.dark-theme .chat-window-header { background: linear-gradient(135deg, #2a4a5f, #3a5a6f); }
+        body.dark-theme .chat-messages { background: rgba(20, 35, 45, 0.5); }
+        body.dark-theme .chat-window-input { background: rgba(30, 45, 55, 0.98); border-top-color: rgba(255, 255, 255, 0.08); }
+        body.dark-theme .chat-window-input input { background: rgba(20, 40, 55, 0.7); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
+        body.dark-theme .chat-login-prompt { color: #c8dce5; }
 
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
             .service-grid { grid-template-columns: repeat(2, 1fr); }
             .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1058,8 +1357,29 @@
             .order-form input, .order-form select, .order-form button { width: 100%; }
             .chat-input-row { flex-direction: column; }
             .chat-input-row input, .chat-input-row button { width: 100%; }
-            .pwa-install-btn { bottom: 16px; right: 16px; padding: 12px 20px; font-size: 0.85rem; }
+            .pwa-install-btn { bottom: 16px; right: 88px; padding: 10px 16px; font-size: 0.78rem; }
             .push-btn { bottom: 16px; left: 16px; padding: 10px 16px; font-size: 0.78rem; }
+        }
+
+        @media (max-width: 500px) {
+            .chat-window {
+                width: calc(100vw - 32px);
+                right: 16px;
+                bottom: 92px;
+                height: calc(100vh - 130px);
+                height: calc(100dvh - 130px);
+                max-height: 560px;
+            }
+
+            .chat-float-btn {
+                width: 56px;
+                height: 56px;
+                bottom: 16px;
+                right: 16px;
+                font-size: 1.5rem;
+            }
+
+            .pwa-install-btn { right: 80px; }
         }
 
         @media (max-width: 450px) {
@@ -1076,6 +1396,21 @@
             .subscribe-form { flex-direction: column; }
             .subscribe-form input, .subscribe-form button { width: 100%; }
             .team-card { padding: 18px 16px; }
+        }
+
+        /* ===== SAFARI-СПЕЦИФИЧНЫЕ ФИКСЫ ===== */
+        @supports (-webkit-touch-callout: none) {
+            html, body { overscroll-behavior: none; }
+            input[type="date"] { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; }
+            .card { -webkit-backdrop-filter: blur(10px); }
+            .chat-window { -webkit-backdrop-filter: blur(20px); }
+        }
+
+        /* ===== FIREFOX-СПЕЦИФИЧНЫЕ ФИКСЫ ===== */
+        @-moz-document url-prefix() {
+            .card { background: #ffffff; }
+            body.dark-theme .card { background: #1e2d37; }
+            select { background-image: none; }
         }
     </style>
 </head>
@@ -1342,7 +1677,7 @@
             <div class="account-step-title">Вход по номеру телефона</div>
             <div class="account-step-hint">Введите телефон — мы отправим код подтверждения.</div>
             <div class="account-input-row">
-                <input type="tel" id="clientPhone" placeholder="+7 (___) ___-__-__">
+                <input type="tel" id="clientPhone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
                 <button onclick="clientSendCode()">Получить код</button>
             </div>
         </div>
@@ -1351,7 +1686,7 @@
             <div class="account-step-title">Введите код из SMS</div>
             <div class="account-step-hint">Код отправлен на номер <strong id="clientPhoneDisplay"></strong></div>
             <div class="account-input-row">
-                <input type="text" id="clientCode" placeholder="6-значный код" maxlength="6" inputmode="numeric">
+                <input type="text" id="clientCode" placeholder="6-значный код" maxlength="6" inputmode="numeric" autocomplete="one-time-code">
                 <button onclick="clientVerifyCode()">Подтвердить</button>
                 <button class="btn-secondary" onclick="clientBackToPhone()">Назад</button>
             </div>
@@ -1361,7 +1696,7 @@
             <div class="account-step-title">Как к вам обращаться?</div>
             <div class="account-step-hint">Введите ваше имя — оно будет отображаться в кабинете.</div>
             <div class="account-input-row">
-                <input type="text" id="clientName" placeholder="Ваше имя">
+                <input type="text" id="clientName" placeholder="Ваше имя" autocomplete="name">
                 <button onclick="clientCompleteRegistration()">Готово</button>
             </div>
         </div>
@@ -1390,13 +1725,12 @@
             <div class="orders-title">📋 Мои заявки</div>
             <div id="clientOrdersList"></div>
 
-            <!-- ===== ЧАТ ПОДДЕРЖКИ ===== -->
             <div class="orders-title">💬 Чат с поддержкой</div>
             <div class="chat-container" id="clientChatContainer">
                 <div class="chat-empty">Напишите нам — мы ответим в ближайшее время</div>
             </div>
             <div class="chat-input-row">
-                <input type="text" id="clientChatInput" placeholder="Введите сообщение...">
+                <input type="text" id="clientChatInput" placeholder="Введите сообщение..." onkeypress="if(event.key==='Enter') clientSendChatMessage()">
                 <button onclick="clientSendChatMessage()">Отправить</button>
             </div>
         </div>
@@ -1410,8 +1744,8 @@
             <div class="account-step-title">Вход для сотрудников</div>
             <div class="account-step-hint">Введите свой телефон и пароль, который вы придумали при регистрации.</div>
             <div class="account-input-row">
-                <input type="tel" id="staffPhone" placeholder="+7 (___) ___-__-__">
-                <input type="password" id="staffPassword" placeholder="Ваш пароль">
+                <input type="tel" id="staffPhone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+                <input type="password" id="staffPassword" placeholder="Ваш пароль" autocomplete="current-password">
                 <button onclick="staffLoginStep1()">Войти</button>
                 <button class="btn-secondary" onclick="showStaffRegister()">Регистрация</button>
             </div>
@@ -1421,9 +1755,9 @@
             <div class="account-step-title">Регистрация сотрудника</div>
             <div class="account-step-hint">Заполните данные. После регистрации потребуется подтверждение администратора.</div>
             <div class="account-input-row">
-                <input type="text" id="regStaffName" placeholder="Ваше имя">
-                <input type="tel" id="regStaffPhone" placeholder="Телефон">
-                <input type="password" id="regStaffPassword" placeholder="Придумайте пароль">
+                <input type="text" id="regStaffName" placeholder="Ваше имя" autocomplete="name">
+                <input type="tel" id="regStaffPhone" placeholder="Телефон" autocomplete="tel">
+                <input type="password" id="regStaffPassword" placeholder="Придумайте пароль" autocomplete="new-password">
                 <select id="regStaffRole">
                     <option value="plumber">🔧 Сантехник</option>
                     <option value="electrician">⚡ Электрик</option>
@@ -1439,7 +1773,7 @@
             <div class="account-step-title">🔐 Подтверждение администратора</div>
             <div class="account-step-hint">Для завершения введите пароль администратора сайта.</div>
             <div class="account-input-row">
-                <input type="password" id="adminConfirmPassword" placeholder="Пароль администратора">
+                <input type="password" id="adminConfirmPassword" placeholder="Пароль администратора" autocomplete="current-password">
                 <button onclick="staffLoginStep2()">Подтвердить</button>
                 <button class="btn-secondary" onclick="backToStaffLogin()">Назад</button>
             </div>
@@ -1479,7 +1813,6 @@
                 <div id="plumberOrdersList"></div>
             </div>
 
-            <!-- ПОДДЕРЖКА: чат с клиентами -->
             <div id="supportPanel" style="display:none;">
                 <div class="orders-title">💬 Диалоги с клиентами</div>
                 <div class="chat-dialogs-list" id="supportDialogsList"></div>
@@ -1488,7 +1821,7 @@
                     <div class="orders-title" id="supportChatTitle">Диалог</div>
                     <div class="chat-container" id="supportChatContainer"></div>
                     <div class="chat-input-row">
-                        <input type="text" id="supportChatInput" placeholder="Введите ответ...">
+                        <input type="text" id="supportChatInput" placeholder="Введите ответ..." onkeypress="if(event.key==='Enter') supportSendChatMessage()">
                         <button onclick="supportSendChatMessage()">Отправить</button>
                     </div>
                 </div>
@@ -1500,7 +1833,7 @@
     <div class="subscribe-block" id="subscribe-block">
         <h2 class="subscribe-title">📧 Подписка на новости и акции</h2>
         <div class="subscribe-form">
-            <input type="email" id="subscribeEmail" placeholder="Ваш e-mail">
+            <input type="email" id="subscribeEmail" placeholder="Ваш e-mail" autocomplete="email">
             <button onclick="subscribeUser()">Подписаться</button>
         </div>
         <div class="subscribe-status" id="subscribeStatus"></div>
@@ -1512,19 +1845,19 @@
 
         <div class="review-form" id="reviewForm">
             <div class="form-row">
-                <input type="text" id="reviewName" placeholder="Ваше имя" required>
-                <input type="tel" id="reviewPhone" placeholder="Номер телефона" required>
+                <input type="text" id="reviewName" placeholder="Ваше имя" required autocomplete="name">
+                <input type="tel" id="reviewPhone" placeholder="Номер телефона" required autocomplete="tel">
             </div>
             <div class="form-row">
                 <input type="number" id="reviewRating" placeholder="Оценка (1-5)" min="1" max="5" required>
-                <input type="text" id="reviewCity" placeholder="Город">
+                <input type="text" id="reviewCity" placeholder="Город" autocomplete="address-level2">
             </div>
             <div class="form-row">
                 <textarea id="reviewText" placeholder="Ваш отзыв..." required></textarea>
             </div>
             <div class="form-row">
                 <div class="code-input">
-                    <input type="text" id="reviewCode" placeholder="Код из SMS" style="min-width: 120px;">
+                    <input type="text" id="reviewCode" placeholder="Код из SMS" style="min-width: 120px;" inputmode="numeric" autocomplete="one-time-code">
                     <button class="btn btn-secondary" id="sendCodeBtn">📩 Получить код</button>
                     <button class="btn" id="submitReviewBtn" disabled>✅ Оставить отзыв</button>
                 </div>
@@ -1561,57 +1894,159 @@
     </div>
 </div>
 
-<button class="pwa-install-btn" id="pwaInstallBtn" onclick="installPWA()">📲 Установить как приложение</button>
-<button class="push-btn" id="pushBtn" onclick="enablePush()">🔔 Включить уведомления</button>
+<!-- ===== ПЛАВАЮЩАЯ КНОПКА ЧАТА ===== -->
+<button class="chat-float-btn" id="chatFloatBtn" onclick="toggleChatWindow()">
+    💬
+    <span class="chat-float-badge" id="chatFloatBadge"></span>
+</button>
+
+<!-- ===== ОКНО ЧАТА ===== -->
+<div class="chat-window" id="chatWindow">
+    <div class="chat-window-header">
+        <div class="chat-window-title">
+            <span style="font-size:1.4rem;">💬</span>
+            <div>
+                <div style="font-weight:600;">Поддержка</div>
+                <div style="font-size:0.75rem;opacity:0.8;">ИП Майборода</div>
+            </div>
+        </div>
+        <button class="chat-window-close" onclick="toggleChatWindow()">✕</button>
+    </div>
+
+    <div class="chat-window-body" id="chatNeedLogin">
+        <div class="chat-login-prompt">
+            <div style="font-size:2rem;margin-bottom:12px;">🔒</div>
+            <div style="font-weight:600;margin-bottom:8px;">Войдите, чтобы написать</div>
+            <div style="font-size:0.85rem;color:#5a7d94;margin-bottom:16px;">Чтобы обратиться в поддержку, войдите в кабинет клиента по номеру телефона.</div>
+            <button class="chat-login-btn" onclick="closeChatAndGoToLogin()">Войти в кабинет</button>
+        </div>
+    </div>
+
+    <div class="chat-window-body" id="chatAuthorized" style="display:none;">
+        <div class="chat-messages" id="chatWindowMessages"></div>
+        <div class="chat-window-input">
+            <input type="text" id="chatWindowInput" placeholder="Введите сообщение..." onkeypress="if(event.key==='Enter') sendChatFromWindow()">
+            <button onclick="sendChatFromWindow()">📩</button>
+        </div>
+    </div>
+</div>
+
+<button class="pwa-install-btn" id="pwaInstallBtn" onclick="installPWA()">📲 Установить</button>
+<button class="push-btn" id="pushBtn" onclick="enablePush()">🔔 Уведомления</button>
 
 <div class="toast" id="toast"></div>
 
 <script>
     // ============================================================
+    // ===== БЕЗОПАСНАЯ ОБЁРТКА (кроссбраузерность) =====
+    // ============================================================
+    (function() {
+        // Проверка поддержки localStorage (в Safari Private Mode может падать)
+        var storageAvailable = (function() {
+            try {
+                var x = '__storage_test__';
+                localStorage.setItem(x, x);
+                localStorage.removeItem(x);
+                return true;
+            } catch(e) {
+                return false;
+            }
+        })();
+
+        if (!storageAvailable) {
+            window._storageFallback = {};
+            window.safeStorage = {
+                getItem: function(k) { return window._storageFallback[k] || null; },
+                setItem: function(k, v) { window._storageFallback[k] = String(v); },
+                removeItem: function(k) { delete window._storageFallback[k]; },
+                key: function(i) { return Object.keys(window._storageFallback)[i] || null; },
+                get length() { return Object.keys(window._storageFallback).length; }
+            };
+            window._origLocalStorage = window.localStorage;
+            try {
+                Object.defineProperty(window, 'localStorage', { value: window.safeStorage, configurable: true });
+            } catch(e) {}
+        }
+
+        // Полифилл для Array.prototype.includes (старые браузеры)
+        if (!Array.prototype.includes) {
+            Array.prototype.includes = function(search) {
+                return this.indexOf(search) !== -1;
+            };
+        }
+
+        // Полифилл для String.prototype.includes
+        if (!String.prototype.includes) {
+            String.prototype.includes = function(search) {
+                return this.indexOf(search) !== -1;
+            };
+        }
+
+        // Полифилл для Object.assign
+        if (typeof Object.assign !== 'function') {
+            Object.assign = function(target) {
+                for (var i = 1; i < arguments.length; i++) {
+                    var src = arguments[i];
+                    if (src) {
+                        for (var k in src) {
+                            if (Object.prototype.hasOwnProperty.call(src, k)) target[k] = src[k];
+                        }
+                    }
+                }
+                return target;
+            };
+        }
+    })();
+
+    // ============================================================
     // ===== УСЛУГИ =====
     // ============================================================
     (function() {
-        const buttons = document.querySelectorAll('.service-btn');
-        const detailBlock = document.getElementById('serviceDetail');
+        var buttons = document.querySelectorAll('.service-btn');
+        var detailBlock = document.getElementById('serviceDetail');
 
-        function setDetail(htmlContent, icon = '💬') {
-            detailBlock.innerHTML = `<span class="detail-icon">${icon}</span><span class="detail-text">${htmlContent}</span>`;
+        function setDetail(htmlContent, icon) {
+            icon = icon || '💬';
+            detailBlock.innerHTML = '<span class="detail-icon">' + icon + '</span><span class="detail-text">' + htmlContent + '</span>';
         }
 
-        buttons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                buttons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const detail = this.getAttribute('data-detail');
-                const iconSpan = this.querySelector('.service-icon');
-                const icon = iconSpan ? iconSpan.textContent : '💬';
-                if (detail) setDetail(detail, icon);
-                else setDetail('Описание услуги пока не добавлено.', '📌');
-            });
-        });
+        for (var i = 0; i < buttons.length; i++) {
+            (function(btn) {
+                btn.addEventListener('click', function() {
+                    for (var j = 0; j < buttons.length; j++) buttons[j].classList.remove('active');
+                    this.classList.add('active');
+                    var detail = this.getAttribute('data-detail');
+                    var iconSpan = this.querySelector('.service-icon');
+                    var icon = iconSpan ? iconSpan.textContent : '💬';
+                    if (detail) setDetail(detail, icon);
+                    else setDetail('Описание услуги пока не добавлено.', '📌');
+                });
+            })(buttons[i]);
+        }
     })();
 
     // ============================================================
     // ===== УТИЛИТЫ =====
     // ============================================================
     function showToast(msg) {
-        const toast = document.getElementById('toast');
+        var toast = document.getElementById('toast');
         toast.textContent = msg;
         toast.classList.add('show');
         clearTimeout(window._toastTimer);
-        window._toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
+        window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3500);
     }
 
     function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
+        var div = document.createElement('div');
+        div.textContent = text == null ? '' : text;
         return div.innerHTML;
     }
 
     function toggleFaq(el) {
-        const item = el.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        var item = el.parentElement;
+        var isOpen = item.classList.contains('open');
+        var all = document.querySelectorAll('.faq-item');
+        for (var i = 0; i < all.length; i++) all[i].classList.remove('open');
         if (!isOpen) item.classList.add('open');
     }
 
@@ -1622,28 +2057,28 @@
         document.body.classList.add('accessibility-mode');
         document.getElementById('accessibilityModeBtn').classList.add('active');
         document.getElementById('normalModeBtn').classList.remove('active');
-        localStorage.setItem('accessibilityMode', 'on');
+        try { localStorage.setItem('accessibilityMode', 'on'); } catch(e) {}
     }
 
     function setNormalMode() {
         document.body.classList.remove('accessibility-mode');
         document.getElementById('normalModeBtn').classList.add('active');
         document.getElementById('accessibilityModeBtn').classList.remove('active');
-        localStorage.setItem('accessibilityMode', 'off');
+        try { localStorage.setItem('accessibilityMode', 'off'); } catch(e) {}
     }
 
     // ============================================================
     // ===== ТЁМНАЯ ТЕМА =====
     // ============================================================
     function toggleTheme() {
-        const isDark = document.body.classList.toggle('dark-theme');
-        const btn = document.getElementById('themeToggleBtn');
+        var isDark = document.body.classList.toggle('dark-theme');
+        var btn = document.getElementById('themeToggleBtn');
         if (isDark) {
             btn.innerHTML = '☀️ Светлая тема';
-            localStorage.setItem('darkTheme', 'on');
+            try { localStorage.setItem('darkTheme', 'on'); } catch(e) {}
         } else {
             btn.innerHTML = '🌙 Тёмная тема';
-            localStorage.setItem('darkTheme', 'off');
+            try { localStorage.setItem('darkTheme', 'off'); } catch(e) {}
         }
     }
 
@@ -1651,7 +2086,7 @@
     // ===== QR-КОД =====
     // ============================================================
     (function() {
-        const qrContainer = document.getElementById('qrcode');
+        var qrContainer = document.getElementById('qrcode');
         if (!qrContainer) return;
 
         function renderQR() {
@@ -1681,24 +2116,24 @@
     // ===== ПОДПИСКА =====
     // ============================================================
     function subscribeUser() {
-        const email = document.getElementById('subscribeEmail').value.trim();
-        const status = document.getElementById('subscribeStatus');
+        var email = document.getElementById('subscribeEmail').value.trim();
+        var status = document.getElementById('subscribeStatus');
 
-        if (!email || !email.includes('@') || !email.includes('.')) {
+        if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
             status.textContent = '❌ Введите корректный e-mail';
             status.className = 'subscribe-status show err';
             return;
         }
 
-        let subs = [];
+        var subs = [];
         try { subs = JSON.parse(localStorage.getItem('subscribers') || '[]'); } catch(e) {}
-        if (subs.includes(email)) {
+        if (subs.indexOf(email) !== -1) {
             status.textContent = 'ℹ️ Вы уже подписаны';
             status.className = 'subscribe-status show ok';
             return;
         }
         subs.push(email);
-        localStorage.setItem('subscribers', JSON.stringify(subs));
+        try { localStorage.setItem('subscribers', JSON.stringify(subs)); } catch(e) {}
 
         status.textContent = '✅ Спасибо! Вы подписаны.';
         status.className = 'subscribe-status show ok';
@@ -1709,18 +2144,19 @@
     // ============================================================
     // ===== КАБИНЕТ КЛИЕНТА =====
     // ============================================================
-    let currentClient = null;
-    let clientSmsCode = '';
-    let tempClientPhone = '';
+    var currentClient = null;
+    var clientSmsCode = '';
+    var tempClientPhone = '';
 
     function clientShowStep(stepId) {
-        document.querySelectorAll('#client-block .account-step').forEach(s => s.classList.remove('active'));
+        var steps = document.querySelectorAll('#client-block .account-step');
+        for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
         document.getElementById(stepId).classList.add('active');
         document.getElementById('clientPanel').classList.remove('show');
     }
 
     function clientSendCode() {
-        const phone = document.getElementById('clientPhone').value.trim();
+        var phone = document.getElementById('clientPhone').value.trim();
         if (!phone || phone.length < 10) {
             showToast('❌ Введите корректный номер телефона');
             return;
@@ -1730,20 +2166,22 @@
         clientSmsCode = String(Math.floor(100000 + Math.random() * 900000));
 
         document.getElementById('clientPhoneDisplay').textContent = phone;
-        console.log(`[SMS] Код для ${phone}: ${clientSmsCode}`);
-        showToast(`📱 Код отправлен на ${phone}`);
+        console.log('[SMS] Код для ' + phone + ': ' + clientSmsCode);
+        showToast('📱 Код отправлен на ' + phone);
         clientShowStep('clientStepCode');
     }
 
     function clientVerifyCode() {
-        const code = document.getElementById('clientCode').value.trim();
+        var code = document.getElementById('clientCode').value.trim();
         if (!code || code.length !== 6) { showToast('❌ Введите 6-значный код'); return; }
         if (code !== clientSmsCode) { showToast('❌ Неверный код'); return; }
 
-        const clients = JSON.parse(localStorage.getItem('clients') || '{}');
+        var clients = {};
+        try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
+
         if (clients[tempClientPhone]) {
             currentClient = clients[tempClientPhone];
-            localStorage.setItem('currentClient', JSON.stringify(currentClient));
+            try { localStorage.setItem('currentClient', JSON.stringify(currentClient)); } catch(e) {}
             renderClientPanel();
             showToast('✅ Вы вошли');
         } else {
@@ -1757,14 +2195,17 @@
     }
 
     function clientCompleteRegistration() {
-        const name = document.getElementById('clientName').value.trim();
+        var name = document.getElementById('clientName').value.trim();
         if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
 
-        currentClient = { name, phone: tempClientPhone };
-        const clients = JSON.parse(localStorage.getItem('clients') || '{}');
+        currentClient = { name: name, phone: tempClientPhone };
+        var clients = {};
+        try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
         clients[tempClientPhone] = currentClient;
-        localStorage.setItem('clients', JSON.stringify(clients));
-        localStorage.setItem('currentClient', JSON.stringify(currentClient));
+        try {
+            localStorage.setItem('clients', JSON.stringify(clients));
+            localStorage.setItem('currentClient', JSON.stringify(currentClient));
+        } catch(e) {}
 
         renderClientPanel();
         showToast('✅ Регистрация завершена!');
@@ -1772,23 +2213,23 @@
 
     function clientLogout() {
         currentClient = null;
-        localStorage.removeItem('currentClient');
+        try { localStorage.removeItem('currentClient'); } catch(e) {}
         clientShowStep('clientStepPhone');
         document.getElementById('clientPhone').value = '';
         document.getElementById('clientCode').value = '';
         document.getElementById('clientName').value = '';
         showToast('👋 Вы вышли');
+        if (typeof updateChatWindow === 'function') updateChatWindow();
     }
 
     function renderClientPanel() {
-        document.querySelectorAll('#client-block .account-step').forEach(s => s.classList.remove('active'));
+        var steps = document.querySelectorAll('#client-block .account-step');
+        for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
         document.getElementById('clientPanel').classList.add('show');
-        document.getElementById('clientUserName').innerHTML = `
-            ${escapeHtml(currentClient.name)}
-            <span class="role-badge role-client">Клиент</span>
-        `;
+        document.getElementById('clientUserName').innerHTML = escapeHtml(currentClient.name) + ' <span class="role-badge role-client">Клиент</span>';
         renderClientOrders();
         renderClientChat();
+        if (typeof updateChatWindow === 'function') updateChatWindow();
     }
 
     function getClientOrdersKey() {
@@ -1796,22 +2237,24 @@
     }
 
     function clientCreateOrder() {
-        const service = document.getElementById('clientOrderService').value;
-        const address = document.getElementById('clientOrderAddress').value.trim();
-        const date = document.getElementById('clientOrderDate').value;
+        var service = document.getElementById('clientOrderService').value;
+        var address = document.getElementById('clientOrderAddress').value.trim();
+        var date = document.getElementById('clientOrderDate').value;
 
         if (!service) { showToast('❌ Выберите услугу'); return; }
         if (!address) { showToast('❌ Введите адрес'); return; }
 
-        const orders = JSON.parse(localStorage.getItem(getClientOrdersKey()) || '[]');
+        var orders = [];
+        try { orders = JSON.parse(localStorage.getItem(getClientOrdersKey()) || '[]'); } catch(e) {}
+
         orders.unshift({
             id: Date.now(),
-            service, address,
+            service: service, address: address,
             date: date || new Date().toLocaleDateString('ru-RU'),
             status: 'new',
             created: new Date().toLocaleString('ru-RU')
         });
-        localStorage.setItem(getClientOrdersKey(), JSON.stringify(orders));
+        try { localStorage.setItem(getClientOrdersKey(), JSON.stringify(orders)); } catch(e) {}
 
         document.getElementById('clientOrderService').value = '';
         document.getElementById('clientOrderAddress').value = '';
@@ -1822,68 +2265,74 @@
     }
 
     function renderClientOrders() {
-        const list = document.getElementById('clientOrdersList');
-        const orders = JSON.parse(localStorage.getItem(getClientOrdersKey()) || '[]');
+        var list = document.getElementById('clientOrdersList');
+        var orders = [];
+        try { orders = JSON.parse(localStorage.getItem(getClientOrdersKey()) || '[]'); } catch(e) {}
 
         if (orders.length === 0) {
             list.innerHTML = '<div class="no-reviews">У вас пока нет заявок</div>';
             return;
         }
 
-        const statusMap = {
+        var statusMap = {
             'new': { text: '🟡 Новая', cls: 'status-new' },
             'work': { text: '🔵 В работе', cls: 'status-work' },
             'done': { text: '🟢 Выполнено', cls: 'status-done' }
         };
 
-        list.innerHTML = orders.map(o => {
-            const st = statusMap[o.status] || statusMap.new;
-            return `
-                <div class="order-item">
-                    <div class="order-info">
-                        <div class="order-service">${escapeHtml(o.service)}</div>
-                        <div class="order-date">${escapeHtml(o.address)} · ${escapeHtml(o.date)}</div>
-                    </div>
-                    <span style="padding:5px 16px;border-radius:30px;font-size:0.78rem;font-weight:600;">${st.text}</span>
-                </div>
-            `;
-        }).join('');
+        var html = '';
+        for (var i = 0; i < orders.length; i++) {
+            var o = orders[i];
+            var st = statusMap[o.status] || statusMap.new;
+            html += '<div class="order-item">' +
+                '<div class="order-info">' +
+                '<div class="order-service">' + escapeHtml(o.service) + '</div>' +
+                '<div class="order-date">' + escapeHtml(o.address) + ' · ' + escapeHtml(o.date) + '</div>' +
+                '</div>' +
+                '<span style="padding:5px 16px;border-radius:30px;font-size:0.78rem;font-weight:600;">' + st.text + '</span>' +
+                '</div>';
+        }
+        list.innerHTML = html;
     }
 
-    // ===== ЧАТ КЛИЕНТА =====
+    // ===== ЧАТ КЛИЕНТА (в кабинете) =====
     function getClientChatKey() {
         return 'chat_' + (currentClient ? currentClient.phone : 'guest');
     }
 
     function renderClientChat() {
-        const container = document.getElementById('clientChatContainer');
+        var container = document.getElementById('clientChatContainer');
         if (!container || !currentClient) return;
 
-        const messages = JSON.parse(localStorage.getItem(getClientChatKey()) || '[]');
+        var messages = [];
+        try { messages = JSON.parse(localStorage.getItem(getClientChatKey()) || '[]'); } catch(e) {}
 
         if (messages.length === 0) {
             container.innerHTML = '<div class="chat-empty">Напишите нам — мы ответим в ближайшее время</div>';
             return;
         }
 
-        container.innerHTML = messages.map(m => `
-            <div class="chat-message ${m.from === 'client' ? 'client' : 'support'}">
-                ${escapeHtml(m.text)}
-                <span class="chat-time">${escapeHtml(m.time || '')}</span>
-            </div>
-        `).join('');
-
+        var html = '';
+        for (var i = 0; i < messages.length; i++) {
+            var m = messages[i];
+            html += '<div class="chat-message ' + (m.from === 'client' ? 'client' : 'support') + '">' +
+                escapeHtml(m.text) +
+                '<span class="chat-time">' + escapeHtml(m.time || '') + '</span>' +
+                '</div>';
+        }
+        container.innerHTML = html;
         container.scrollTop = container.scrollHeight;
     }
 
     function clientSendChatMessage() {
-        const input = document.getElementById('clientChatInput');
-        const text = input.value.trim();
+        var input = document.getElementById('clientChatInput');
+        var text = input.value.trim();
         if (!text) { showToast('❌ Введите сообщение'); return; }
         if (!currentClient) { showToast('❌ Вы не вошли'); return; }
 
-        const key = getClientChatKey();
-        const messages = JSON.parse(localStorage.getItem(key) || '[]');
+        var key = getClientChatKey();
+        var messages = [];
+        try { messages = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
 
         messages.push({
             from: 'client',
@@ -1894,29 +2343,30 @@
             clientPhone: currentClient.phone
         });
 
-        localStorage.setItem(key, JSON.stringify(messages));
+        try { localStorage.setItem(key, JSON.stringify(messages)); } catch(e) {}
         input.value = '';
         renderClientChat();
+        if (typeof renderChatWindowMessages === 'function') renderChatWindowMessages();
         showToast('✅ Сообщение отправлено');
     }
 
     // ============================================================
     // ===== КАБИНЕТ СОТРУДНИКА =====
     // ============================================================
-    const ADMIN_PASSWORD = 'Maksim2011';
+    var ADMIN_PASSWORD = 'Maksim2011';
 
-    let currentStaff = null;
-    let pendingStaff = null;
-    let isRegistering = false;
-    let activeDialogPhone = null;
+    var currentStaff = null;
+    var pendingStaff = null;
+    var isRegistering = false;
+    var activeDialogPhone = null;
 
     function initStaff() {
         if (!localStorage.getItem('staff')) {
-            const defaultStaff = [
+            var defaultStaff = [
                 { name: 'Майборода Евгений Витальевич', phone: '+79026469244', password: 'director2024', role: 'admin' },
                 { name: 'Максим', phone: '+79655667290', password: 'Maksim2011', role: 'admin' }
             ];
-            localStorage.setItem('staff', JSON.stringify(defaultStaff));
+            try { localStorage.setItem('staff', JSON.stringify(defaultStaff)); } catch(e) {}
         }
     }
     initStaff();
@@ -1926,11 +2376,12 @@
     }
 
     function saveStaffList(list) {
-        localStorage.setItem('staff', JSON.stringify(list));
+        try { localStorage.setItem('staff', JSON.stringify(list)); } catch(e) {}
     }
 
     function showStaffStep(stepId) {
-        document.querySelectorAll('#account-block .account-step').forEach(s => s.classList.remove('active'));
+        var steps = document.querySelectorAll('#account-block .account-step');
+        for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
         document.getElementById(stepId).classList.add('active');
         document.getElementById('staffPanel').classList.remove('show');
     }
@@ -1948,13 +2399,16 @@
     }
 
     function staffLoginStep1() {
-        const phone = document.getElementById('staffPhone').value.trim();
-        const password = document.getElementById('staffPassword').value.trim();
+        var phone = document.getElementById('staffPhone').value.trim();
+        var password = document.getElementById('staffPassword').value.trim();
 
         if (!phone || !password) { showToast('❌ Введите телефон и пароль'); return; }
 
-        const staff = getStaffList();
-        const found = staff.find(s => s.phone === phone && s.password === password);
+        var staff = getStaffList();
+        var found = null;
+        for (var i = 0; i < staff.length; i++) {
+            if (staff[i].phone === phone && staff[i].password === password) { found = staff[i]; break; }
+        }
 
         if (!found) { showToast('❌ Неверный телефон или пароль'); return; }
 
@@ -1965,33 +2419,35 @@
     }
 
     function staffRegisterStep1() {
-        const name = document.getElementById('regStaffName').value.trim();
-        const phone = document.getElementById('regStaffPhone').value.trim();
-        const password = document.getElementById('regStaffPassword').value.trim();
-        const role = document.getElementById('regStaffRole').value;
+        var name = document.getElementById('regStaffName').value.trim();
+        var phone = document.getElementById('regStaffPhone').value.trim();
+        var password = document.getElementById('regStaffPassword').value.trim();
+        var role = document.getElementById('regStaffRole').value;
 
         if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
         if (!phone || phone.length < 10) { showToast('❌ Введите телефон'); return; }
         if (!password || password.length < 4) { showToast('❌ Пароль минимум 4 символа'); return; }
 
-        const staff = getStaffList();
-        if (staff.find(s => s.phone === phone)) { showToast('❌ Такой телефон уже есть'); return; }
+        var staff = getStaffList();
+        for (var i = 0; i < staff.length; i++) {
+            if (staff[i].phone === phone) { showToast('❌ Такой телефон уже есть'); return; }
+        }
 
         isRegistering = true;
-        pendingStaff = { name, phone, password, role };
+        pendingStaff = { name: name, phone: phone, password: password, role: role };
         showStaffStep('stepAdminConfirm');
         showToast('🔐 Введите пароль администратора');
     }
 
     function staffLoginStep2() {
-        const adminPass = document.getElementById('adminConfirmPassword').value.trim();
+        var adminPass = document.getElementById('adminConfirmPassword').value.trim();
 
         if (!adminPass) { showToast('❌ Введите пароль администратора'); return; }
         if (adminPass !== ADMIN_PASSWORD) { showToast('❌ Неверный пароль администратора'); return; }
         if (!pendingStaff) { showToast('❌ Ошибка'); return; }
 
         if (isRegistering) {
-            const staff = getStaffList();
+            var staff = getStaffList();
             staff.push(pendingStaff);
             saveStaffList(staff);
             showToast('✅ Регистрация завершена!');
@@ -2002,13 +2458,13 @@
         currentStaff = pendingStaff;
         pendingStaff = null;
         isRegistering = false;
-        localStorage.setItem('currentStaff', JSON.stringify(currentStaff));
+        try { localStorage.setItem('currentStaff', JSON.stringify(currentStaff)); } catch(e) {}
         renderStaffPanel();
     }
 
     function staffLogout() {
         currentStaff = null;
-        localStorage.removeItem('currentStaff');
+        try { localStorage.removeItem('currentStaff'); } catch(e) {}
         showStaffStep('stepStaffLogin');
         document.getElementById('staffPhone').value = '';
         document.getElementById('staffPassword').value = '';
@@ -2020,17 +2476,18 @@
     }
 
     function renderStaffPanel() {
-        document.querySelectorAll('#account-block .account-step').forEach(s => s.classList.remove('active'));
+        var steps = document.querySelectorAll('#account-block .account-step');
+        for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
         document.getElementById('staffPanel').classList.add('show');
 
-        const roleNames = {
+        var roleNames = {
             'admin': 'Администратор',
             'plumber': 'Сантехник',
             'electrician': 'Электрик',
             'welder': 'Сварщик',
             'support': 'Поддержка'
         };
-        const roleClasses = {
+        var roleClasses = {
             'admin': 'role-admin',
             'plumber': 'role-master',
             'electrician': 'role-master',
@@ -2038,12 +2495,7 @@
             'support': 'role-support'
         };
 
-        document.getElementById('staffUserName').innerHTML = `
-            ${escapeHtml(currentStaff.name)}
-            <span class="role-badge ${roleClasses[currentStaff.role] || 'role-master'}">
-                ${roleNames[currentStaff.role] || currentStaff.role}
-            </span>
-        `;
+        document.getElementById('staffUserName').innerHTML = escapeHtml(currentStaff.name) + ' <span class="role-badge ' + (roleClasses[currentStaff.role] || 'role-master') + '">' + (roleNames[currentStaff.role] || currentStaff.role) + '</span>';
 
         document.getElementById('adminPanel').style.display = 'none';
         document.getElementById('directorPanel').style.display = 'none';
@@ -2055,7 +2507,7 @@
             document.getElementById('directorPanel').style.display = 'block';
             renderStaffList();
             renderAllOrders();
-        } else if (['plumber','electrician','welder'].includes(currentStaff.role)) {
+        } else if (currentStaff.role === 'plumber' || currentStaff.role === 'electrician' || currentStaff.role === 'welder') {
             document.getElementById('plumberPanel').style.display = 'block';
             renderPlumberOrders();
         } else if (currentStaff.role === 'support') {
@@ -2065,17 +2517,19 @@
     }
 
     function addStaff() {
-        const name = document.getElementById('newStaffName').value.trim();
-        const phone = document.getElementById('newStaffPhone').value.trim();
-        const password = document.getElementById('newStaffPassword').value.trim();
-        const role = document.getElementById('newStaffRole').value;
+        var name = document.getElementById('newStaffName').value.trim();
+        var phone = document.getElementById('newStaffPhone').value.trim();
+        var password = document.getElementById('newStaffPassword').value.trim();
+        var role = document.getElementById('newStaffRole').value;
 
         if (!name || !phone || !password) { showToast('❌ Заполните все поля'); return; }
 
-        const staff = getStaffList();
-        if (staff.find(s => s.phone === phone)) { showToast('❌ Такой телефон уже есть'); return; }
+        var staff = getStaffList();
+        for (var i = 0; i < staff.length; i++) {
+            if (staff[i].phone === phone) { showToast('❌ Такой телефон уже есть'); return; }
+        }
 
-        staff.push({ name, phone, password, role });
+        staff.push({ name: name, phone: phone, password: password, role: role });
         saveStaffList(staff);
 
         document.getElementById('newStaffName').value = '';
@@ -2087,10 +2541,10 @@
     }
 
     function renderStaffList() {
-        const list = document.getElementById('staffList');
-        const staff = getStaffList();
+        var list = document.getElementById('staffList');
+        var staff = getStaffList();
 
-        const roleNames = {
+        var roleNames = {
             'admin': '🛡️ Администратор',
             'plumber': '🔧 Сантехник',
             'electrician': '⚡ Электрик',
@@ -2098,37 +2552,47 @@
             'support': '💬 Поддержка'
         };
 
-        list.innerHTML = staff.map(s => `
-            <div class="order-item">
-                <div class="order-info">
-                    <div class="order-service">${escapeHtml(s.name)}</div>
-                    <div class="order-date">${escapeHtml(s.phone)} · ${roleNames[s.role] || s.role}</div>
-                </div>
-                <button class="account-logout" onclick="removeStaff('${escapeHtml(s.phone)}')">Удалить</button>
-            </div>
-        `).join('');
+        var html = '';
+        for (var i = 0; i < staff.length; i++) {
+            var s = staff[i];
+            html += '<div class="order-item">' +
+                '<div class="order-info">' +
+                '<div class="order-service">' + escapeHtml(s.name) + '</div>' +
+                '<div class="order-date">' + escapeHtml(s.phone) + ' · ' + (roleNames[s.role] || s.role) + '</div>' +
+                '</div>' +
+                '<button class="account-logout" onclick="removeStaff(\'' + escapeHtml(s.phone) + '\')">Удалить</button>' +
+                '</div>';
+        }
+        list.innerHTML = html;
     }
 
     function removeStaff(phone) {
         if (!confirm('Удалить сотрудника?')) return;
-        let staff = getStaffList();
-        staff = staff.filter(s => s.phone !== phone);
-        saveStaffList(staff);
+        var staff = getStaffList();
+        var newStaff = [];
+        for (var i = 0; i < staff.length; i++) {
+            if (staff[i].phone !== phone) newStaff.push(staff[i]);
+        }
+        saveStaffList(newStaff);
         renderStaffList();
         showToast('✅ Сотрудник удалён');
     }
 
     function renderAllOrders() {
-        const list = document.getElementById('allOrdersList');
-        const allOrders = [];
+        var list = document.getElementById('allOrdersList');
+        var allOrders = [];
 
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key.startsWith('orders_')) {
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (key && key.indexOf('orders_') === 0) {
                 try {
-                    const orders = JSON.parse(localStorage.getItem(key));
-                    const phone = key.replace('orders_', '');
-                    orders.forEach(o => allOrders.push({...o, clientPhone: phone}));
+                    var orders = JSON.parse(localStorage.getItem(key));
+                    var phone = key.replace('orders_', '');
+                    for (var j = 0; j < orders.length; j++) {
+                        var o = orders[j];
+                        o.clientPhone = phone;
+                        allOrders.push(o);
+                    }
                 } catch(e) {}
             }
         }
@@ -2138,45 +2602,54 @@
             return;
         }
 
-        list.innerHTML = allOrders.map(o => `
-            <div class="order-item">
-                <div class="order-info">
-                    <div class="order-service">${escapeHtml(o.service)}</div>
-                    <div class="order-date">${escapeHtml(o.address)} · ${escapeHtml(o.date)} · ${escapeHtml(o.clientPhone)}</div>
-                </div>
-                <select class="status-select" onchange="changeOrderStatus('${escapeHtml(o.clientPhone)}', ${o.id}, this.value)">
-                    <option value="new" ${o.status === 'new' ? 'selected' : ''}>🟡 Новая</option>
-                    <option value="work" ${o.status === 'work' ? 'selected' : ''}>🔵 В работе</option>
-                    <option value="done" ${o.status === 'done' ? 'selected' : ''}>🟢 Выполнено</option>
-                </select>
-            </div>
-        `).join('');
+        var html = '';
+        for (var i = 0; i < allOrders.length; i++) {
+            var o = allOrders[i];
+            html += '<div class="order-item">' +
+                '<div class="order-info">' +
+                '<div class="order-service">' + escapeHtml(o.service) + '</div>' +
+                '<div class="order-date">' + escapeHtml(o.address) + ' · ' + escapeHtml(o.date) + ' · ' + escapeHtml(o.clientPhone) + '</div>' +
+                '</div>' +
+                '<select class="status-select" onchange="changeOrderStatus(\'' + escapeHtml(o.clientPhone) + '\', ' + o.id + ', this.value)">' +
+                '<option value="new" ' + (o.status === 'new' ? 'selected' : '') + '>🟡 Новая</option>' +
+                '<option value="work" ' + (o.status === 'work' ? 'selected' : '') + '>🔵 В работе</option>' +
+                '<option value="done" ' + (o.status === 'done' ? 'selected' : '') + '>🟢 Выполнено</option>' +
+                '</select>' +
+                '</div>';
+        }
+        list.innerHTML = html;
     }
 
     function changeOrderStatus(clientPhone, orderId, newStatus) {
-        const key = 'orders_' + clientPhone;
+        var key = 'orders_' + clientPhone;
         try {
-            const orders = JSON.parse(localStorage.getItem(key) || '[]');
-            const idx = orders.findIndex(o => o.id === orderId);
-            if (idx !== -1) {
-                orders[idx].status = newStatus;
-                localStorage.setItem(key, JSON.stringify(orders));
-                showToast('✅ Статус обновлён');
+            var orders = JSON.parse(localStorage.getItem(key) || '[]');
+            for (var i = 0; i < orders.length; i++) {
+                if (orders[i].id === orderId) {
+                    orders[i].status = newStatus;
+                    break;
+                }
             }
+            localStorage.setItem(key, JSON.stringify(orders));
+            showToast('✅ Статус обновлён');
         } catch(e) {}
     }
 
     function renderPlumberOrders() {
-        const list = document.getElementById('plumberOrdersList');
-        const allOrders = [];
+        var list = document.getElementById('plumberOrdersList');
+        var allOrders = [];
 
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key.startsWith('orders_')) {
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (key && key.indexOf('orders_') === 0) {
                 try {
-                    const orders = JSON.parse(localStorage.getItem(key));
-                    const phone = key.replace('orders_', '');
-                    orders.forEach(o => allOrders.push({...o, clientPhone: phone}));
+                    var orders = JSON.parse(localStorage.getItem(key));
+                    var phone = key.replace('orders_', '');
+                    for (var j = 0; j < orders.length; j++) {
+                        var o = orders[j];
+                        o.clientPhone = phone;
+                        allOrders.push(o);
+                    }
                 } catch(e) {}
             }
         }
@@ -2186,32 +2659,35 @@
             return;
         }
 
-        list.innerHTML = allOrders.map(o => `
-            <div class="order-item">
-                <div class="order-info">
-                    <div class="order-service">${escapeHtml(o.service)}</div>
-                    <div class="order-date">${escapeHtml(o.address)} · ${escapeHtml(o.date)}</div>
-                </div>
-                <select class="status-select" onchange="changeOrderStatus('${escapeHtml(o.clientPhone)}', ${o.id}, this.value)">
-                    <option value="new" ${o.status === 'new' ? 'selected' : ''}>🟡 Новая</option>
-                    <option value="work" ${o.status === 'work' ? 'selected' : ''}>🔵 В работе</option>
-                    <option value="done" ${o.status === 'done' ? 'selected' : ''}>🟢 Выполнено</option>
-                </select>
-            </div>
-        `).join('');
+        var html = '';
+        for (var i = 0; i < allOrders.length; i++) {
+            var o = allOrders[i];
+            html += '<div class="order-item">' +
+                '<div class="order-info">' +
+                '<div class="order-service">' + escapeHtml(o.service) + '</div>' +
+                '<div class="order-date">' + escapeHtml(o.address) + ' · ' + escapeHtml(o.date) + '</div>' +
+                '</div>' +
+                '<select class="status-select" onchange="changeOrderStatus(\'' + escapeHtml(o.clientPhone) + '\', ' + o.id + ', this.value)">' +
+                '<option value="new" ' + (o.status === 'new' ? 'selected' : '') + '>🟡 Новая</option>' +
+                '<option value="work" ' + (o.status === 'work' ? 'selected' : '') + '>🔵 В работе</option>' +
+                '<option value="done" ' + (o.status === 'done' ? 'selected' : '') + '>🟢 Выполнено</option>' +
+                '</select>' +
+                '</div>';
+        }
+        list.innerHTML = html;
     }
 
     // ===== ЧАТ ПОДДЕРЖКИ (сотрудник) =====
     function getAllDialogs() {
-        const dialogs = [];
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key.startsWith('chat_')) {
+        var dialogs = [];
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (key && key.indexOf('chat_') === 0) {
                 try {
-                    const messages = JSON.parse(localStorage.getItem(key));
+                    var messages = JSON.parse(localStorage.getItem(key));
                     if (messages.length === 0) continue;
-                    const phone = key.replace('chat_', '');
-                    const lastMsg = messages[messages.length - 1];
+                    var phone = key.replace('chat_', '');
+                    var lastMsg = messages[messages.length - 1];
                     dialogs.push({
                         phone: phone,
                         clientName: lastMsg.clientName || 'Клиент',
@@ -2222,24 +2698,28 @@
                 } catch(e) {}
             }
         }
-        return dialogs.sort((a,b) => b.count - a.count);
+        dialogs.sort(function(a, b) { return b.count - a.count; });
+        return dialogs;
     }
 
     function renderSupportDialogs() {
-        const list = document.getElementById('supportDialogsList');
-        const dialogs = getAllDialogs();
+        var list = document.getElementById('supportDialogsList');
+        var dialogs = getAllDialogs();
 
         if (dialogs.length === 0) {
             list.innerHTML = '<div class="no-reviews">Пока нет диалогов с клиентами</div>';
             return;
         }
 
-        list.innerHTML = dialogs.map(d => `
-            <div class="chat-dialog-item ${d.phone === activeDialogPhone ? 'active' : ''}" onclick="openSupportDialog('${escapeHtml(d.phone)}')">
-                <div class="chat-dialog-name">${escapeHtml(d.clientName)} (${escapeHtml(d.phone)})</div>
-                <div class="chat-dialog-last">${d.lastFrom === 'client' ? '👤 ' : '💬 '}${escapeHtml(d.lastText)}</div>
-            </div>
-        `).join('');
+        var html = '';
+        for (var i = 0; i < dialogs.length; i++) {
+            var d = dialogs[i];
+            html += '<div class="chat-dialog-item ' + (d.phone === activeDialogPhone ? 'active' : '') + '" onclick="openSupportDialog(\'' + escapeHtml(d.phone) + '\')">' +
+                '<div class="chat-dialog-name">' + escapeHtml(d.clientName) + ' (' + escapeHtml(d.phone) + ')</div>' +
+                '<div class="chat-dialog-last">' + (d.lastFrom === 'client' ? '👤 ' : '💬 ') + escapeHtml(d.lastText) + '</div>' +
+                '</div>';
+        }
+        list.innerHTML = html;
     }
 
     function openSupportDialog(phone) {
@@ -2251,34 +2731,38 @@
     }
 
     function renderSupportChat() {
-        const container = document.getElementById('supportChatContainer');
+        var container = document.getElementById('supportChatContainer');
         if (!container || !activeDialogPhone) return;
 
-        const messages = JSON.parse(localStorage.getItem('chat_' + activeDialogPhone) || '[]');
+        var messages = [];
+        try { messages = JSON.parse(localStorage.getItem('chat_' + activeDialogPhone) || '[]'); } catch(e) {}
 
         if (messages.length === 0) {
             container.innerHTML = '<div class="chat-empty">Нет сообщений</div>';
             return;
         }
 
-        container.innerHTML = messages.map(m => `
-            <div class="chat-message ${m.from === 'client' ? 'client' : 'support'}">
-                ${escapeHtml(m.text)}
-                <span class="chat-time">${escapeHtml(m.time || '')}</span>
-            </div>
-        `).join('');
-
+        var html = '';
+        for (var i = 0; i < messages.length; i++) {
+            var m = messages[i];
+            html += '<div class="chat-message ' + (m.from === 'client' ? 'client' : 'support') + '">' +
+                escapeHtml(m.text) +
+                '<span class="chat-time">' + escapeHtml(m.time || '') + '</span>' +
+                '</div>';
+        }
+        container.innerHTML = html;
         container.scrollTop = container.scrollHeight;
     }
 
     function supportSendChatMessage() {
-        const input = document.getElementById('supportChatInput');
-        const text = input.value.trim();
+        var input = document.getElementById('supportChatInput');
+        var text = input.value.trim();
         if (!text) { showToast('❌ Введите ответ'); return; }
         if (!activeDialogPhone) { showToast('❌ Выберите диалог'); return; }
 
-        const key = 'chat_' + activeDialogPhone;
-        const messages = JSON.parse(localStorage.getItem(key) || '[]');
+        var key = 'chat_' + activeDialogPhone;
+        var messages = [];
+        try { messages = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
 
         messages.push({
             from: 'support',
@@ -2288,18 +2772,119 @@
             replyBy: currentStaff.name
         });
 
-        localStorage.setItem(key, JSON.stringify(messages));
+        try { localStorage.setItem(key, JSON.stringify(messages)); } catch(e) {}
         input.value = '';
         renderSupportChat();
         showToast('✅ Ответ отправлен');
     }
 
     // ============================================================
+    // ===== ПЛАВАЮЩАЯ КНОПКА ЧАТА =====
+    // ============================================================
+    var chatWindowOpen = false;
+
+    function toggleChatWindow() {
+        var win = document.getElementById('chatWindow');
+        var btn = document.getElementById('chatFloatBtn');
+        chatWindowOpen = !chatWindowOpen;
+
+        if (chatWindowOpen) {
+            win.classList.add('open');
+            btn.classList.add('active');
+            btn.innerHTML = '✕<span class="chat-float-badge" id="chatFloatBadge"></span>';
+            updateChatWindow();
+            setTimeout(function() {
+                var input = document.getElementById('chatWindowInput');
+                if (input && currentClient) input.focus();
+            }, 300);
+        } else {
+            win.classList.remove('open');
+            btn.classList.remove('active');
+            btn.innerHTML = '💬<span class="chat-float-badge" id="chatFloatBadge"></span>';
+        }
+    }
+
+    function closeChatAndGoToLogin() {
+        toggleChatWindow();
+        document.getElementById('client-block').scrollIntoView({behavior:'smooth', block:'start'});
+        showToast('👤 Войдите в кабинет клиента');
+    }
+
+    function updateChatWindow() {
+        var needLogin = document.getElementById('chatNeedLogin');
+        var authorized = document.getElementById('chatAuthorized');
+
+        if (currentClient) {
+            needLogin.style.display = 'none';
+            authorized.style.display = 'flex';
+            renderChatWindowMessages();
+        } else {
+            needLogin.style.display = 'flex';
+            authorized.style.display = 'none';
+        }
+    }
+
+    function renderChatWindowMessages() {
+        var container = document.getElementById('chatWindowMessages');
+        if (!container || !currentClient) return;
+
+        var key = 'chat_' + currentClient.phone;
+        var messages = [];
+        try { messages = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
+
+        if (messages.length === 0) {
+            container.innerHTML = '<div style="text-align:center;color:#6b8ba2;font-style:italic;font-size:0.85rem;padding:30px 0;">👋 Здравствуйте, ' + escapeHtml(currentClient.name) + '!<br>Напишите нам — мы ответим в ближайшее время.</div>';
+            return;
+        }
+
+        var html = '';
+        for (var i = 0; i < messages.length; i++) {
+            var m = messages[i];
+            html += '<div class="chat-message ' + (m.from === 'client' ? 'client' : 'support') + '">' +
+                escapeHtml(m.text) +
+                '<span class="chat-time">' + escapeHtml(m.time || '') + '</span>' +
+                '</div>';
+        }
+        container.innerHTML = html;
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function sendChatFromWindow() {
+        var input = document.getElementById('chatWindowInput');
+        var text = input.value.trim();
+
+        if (!currentClient) {
+            showToast('❌ Войдите в кабинет клиента');
+            return;
+        }
+        if (!text) return;
+
+        var key = 'chat_' + currentClient.phone;
+        var messages = [];
+        try { messages = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
+
+        messages.push({
+            from: 'client',
+            text: text,
+            time: new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'}),
+            date: new Date().toLocaleDateString('ru-RU'),
+            clientName: currentClient.name,
+            clientPhone: currentClient.phone
+        });
+
+        try { localStorage.setItem(key, JSON.stringify(messages)); } catch(e) {}
+        input.value = '';
+        renderChatWindowMessages();
+        renderClientChat();
+        showToast('✅ Сообщение отправлено');
+    }
+
+    // ============================================================
     // ===== PWA / PUSH =====
     // ============================================================
-    let deferredPrompt = null;
+    var deferredPrompt = null;
 
-    window.addEventListener('beforeinstallprompt', (e) => {
+    window.addEventListener('beforeinstallprompt', function(e) {
         e.preventDefault();
         deferredPrompt = e;
         document.getElementById('pwaInstallBtn').classList.add('show');
@@ -2308,30 +2893,34 @@
     function installPWA() {
         if (deferredPrompt) {
             deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choice) => {
+            deferredPrompt.userChoice.then(function(choice) {
                 if (choice.outcome === 'accepted') showToast('✅ Приложение установлено!');
                 deferredPrompt = null;
                 document.getElementById('pwaInstallBtn').classList.remove('show');
             });
         } else {
-            showToast('ℹ️ Откройте сайт в Chrome/Edge');
+            showToast('ℹ️ Откройте сайт в Chrome/Edge/Яндекс и установите через меню');
         }
     }
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('data:text/javascript,self.addEventListener("fetch",()=>{});').catch(() => {});
+        try {
+            navigator.serviceWorker.register('data:text/javascript,self.addEventListener("fetch",()=>{});').catch(function() {});
+        } catch(e) {}
     }
 
     function enablePush() {
         if (!('Notification' in window)) { showToast('❌ Браузер не поддерживает'); return; }
 
-        Notification.requestPermission().then(perm => {
+        Notification.requestPermission().then(function(perm) {
             if (perm === 'granted') {
-                localStorage.setItem('pushEnabled', 'on');
+                try { localStorage.setItem('pushEnabled', 'on'); } catch(e) {}
                 document.getElementById('pushBtn').classList.remove('show');
                 showToast('✅ Уведомления включены!');
-                setTimeout(() => {
-                    new Notification('ИП Майборода', { body: 'Спасибо! Теперь вы будете получать новости.' });
+                setTimeout(function() {
+                    try {
+                        new Notification('ИП Майборода', { body: 'Спасибо! Теперь вы будете получать новости.' });
+                    } catch(e) {}
                 }, 1000);
             } else {
                 showToast('❌ Уведомления не разрешены');
@@ -2343,23 +2932,24 @@
     // ===== ОТЗЫВЫ =====
     // ============================================================
     (function() {
-        let reviews = [];
-        let isCodeSent = false;
-        let generatedCode = '';
+        var reviews = [];
+        var isCodeSent = false;
+        var generatedCode = '';
 
-        const reviewName = document.getElementById('reviewName');
-        const reviewPhone = document.getElementById('reviewPhone');
-        const reviewRating = document.getElementById('reviewRating');
-        const reviewCity = document.getElementById('reviewCity');
-        const reviewText = document.getElementById('reviewText');
-        const reviewCode = document.getElementById('reviewCode');
-        const sendCodeBtn = document.getElementById('sendCodeBtn');
-        const submitReviewBtn = document.getElementById('submitReviewBtn');
-        const formStatus = document.getElementById('formStatus');
-        const reviewsList = document.getElementById('reviewsList');
+        var reviewName = document.getElementById('reviewName');
+        var reviewPhone = document.getElementById('reviewPhone');
+        var reviewRating = document.getElementById('reviewRating');
+        var reviewCity = document.getElementById('reviewCity');
+        var reviewText = document.getElementById('reviewText');
+        var reviewCode = document.getElementById('reviewCode');
+        var sendCodeBtn = document.getElementById('sendCodeBtn');
+        var submitReviewBtn = document.getElementById('submitReviewBtn');
+        var formStatus = document.getElementById('formStatus');
+        var reviewsList = document.getElementById('reviewsList');
 
         function loadReviews() {
-            const saved = localStorage.getItem('reviews');
+            var saved = null;
+            try { saved = localStorage.getItem('reviews'); } catch(e) {}
             if (saved) {
                 try { reviews = JSON.parse(saved); } catch(e) { reviews = []; }
             } else {
@@ -2371,7 +2961,7 @@
                     text: 'Отличный специалист! Сделал отопление в доме быстро и качественно. Рекомендую!',
                     date: new Date().toLocaleDateString('ru-RU')
                 }];
-                localStorage.setItem('reviews', JSON.stringify(reviews));
+                try { localStorage.setItem('reviews', JSON.stringify(reviews)); } catch(e) {}
             }
             renderReviews();
         }
@@ -2381,28 +2971,34 @@
                 reviewsList.innerHTML = '<div class="no-reviews">Пока нет отзывов. Будьте первым!</div>';
                 return;
             }
-            reviewsList.innerHTML = reviews.map(r => `
-                <div class="review-item">
-                    <div class="review-header">
-                        <span class="review-name">${escapeHtml(r.name)}</span>
-                        <span class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
-                    </div>
-                    <div style="font-size:0.8rem; color:#5a7d94; margin-bottom:4px;">
-                        ${escapeHtml(r.city || '')} · ${r.date || ''}
-                    </div>
-                    <div class="review-text">${escapeHtml(r.text)}</div>
-                </div>
-            `).join('');
+            var html = '';
+            for (var i = 0; i < reviews.length; i++) {
+                var r = reviews[i];
+                var stars = '';
+                for (var s = 0; s < r.rating; s++) stars += '★';
+                for (var s2 = r.rating; s2 < 5; s2++) stars += '☆';
+                html += '<div class="review-item">' +
+                    '<div class="review-header">' +
+                    '<span class="review-name">' + escapeHtml(r.name) + '</span>' +
+                    '<span class="review-stars">' + stars + '</span>' +
+                    '</div>' +
+                    '<div style="font-size:0.8rem; color:#5a7d94; margin-bottom:4px;">' +
+                    escapeHtml(r.city || '') + ' · ' + (r.date || '') +
+                    '</div>' +
+                    '<div class="review-text">' + escapeHtml(r.text) + '</div>' +
+                    '</div>';
+            }
+            reviewsList.innerHTML = html;
         }
 
-        function showStatus(msg, isError = false) {
+        function showStatus(msg, isError) {
             formStatus.textContent = msg;
             formStatus.className = 'form-status show' + (isError ? ' error' : '');
-            setTimeout(() => { formStatus.className = 'form-status'; }, 5000);
+            setTimeout(function() { formStatus.className = 'form-status'; }, 5000);
         }
 
         sendCodeBtn.addEventListener('click', function() {
-            const phone = reviewPhone.value.trim();
+            var phone = reviewPhone.value.trim();
             if (!phone || phone.length < 10) {
                 showStatus('❌ Введите корректный номер телефона', true);
                 return;
@@ -2411,16 +3007,16 @@
             isCodeSent = true;
             submitReviewBtn.disabled = false;
             showStatus('📱 Код отправлен на ваш номер');
-            console.log(`[SMS] Код: ${generatedCode}`);
+            console.log('[SMS] Код: ' + generatedCode);
         });
 
         submitReviewBtn.addEventListener('click', function() {
-            const name = reviewName.value.trim();
-            const phone = reviewPhone.value.trim();
-            const rating = parseInt(reviewRating.value);
-            const city = reviewCity.value.trim();
-            const text = reviewText.value.trim();
-            const code = reviewCode.value.trim();
+            var name = reviewName.value.trim();
+            var phone = reviewPhone.value.trim();
+            var rating = parseInt(reviewRating.value, 10);
+            var city = reviewCity.value.trim();
+            var text = reviewText.value.trim();
+            var code = reviewCode.value.trim();
 
             if (!name || name.length < 2) { showStatus('❌ Введите имя', true); return; }
             if (!phone || phone.length < 10) { showStatus('❌ Введите телефон', true); return; }
@@ -2430,10 +3026,10 @@
             if (code !== generatedCode) { showStatus('❌ Неверный код', true); return; }
 
             reviews.push({
-                name, phone, rating, city: city || '', text,
+                name: name, phone: phone, rating: rating, city: city || '', text: text,
                 date: new Date().toLocaleDateString('ru-RU')
             });
-            localStorage.setItem('reviews', JSON.stringify(reviews));
+            try { localStorage.setItem('reviews', JSON.stringify(reviews)); } catch(e) {}
             renderReviews();
 
             reviewName.value = ''; reviewPhone.value = ''; reviewRating.value = '';
@@ -2449,15 +3045,23 @@
     // ===== ИНИЦИАЛИЗАЦИЯ =====
     // ============================================================
     document.addEventListener('DOMContentLoaded', function() {
-        if (localStorage.getItem('accessibilityMode') === 'on') setAccessibilityMode();
+        // Режим доступности
+        var accMode = null;
+        try { accMode = localStorage.getItem('accessibilityMode'); } catch(e) {}
+        if (accMode === 'on') setAccessibilityMode();
         else setNormalMode();
 
-        if (localStorage.getItem('darkTheme') === 'on') {
+        // Тёмная тема
+        var darkMode = null;
+        try { darkMode = localStorage.getItem('darkTheme'); } catch(e) {}
+        if (darkMode === 'on') {
             document.body.classList.add('dark-theme');
             document.getElementById('themeToggleBtn').innerHTML = '☀️ Светлая тема';
         }
 
-        const savedClient = localStorage.getItem('currentClient');
+        // Восстановление сессии клиента
+        var savedClient = null;
+        try { savedClient = localStorage.getItem('currentClient'); } catch(e) {}
         if (savedClient) {
             try {
                 currentClient = JSON.parse(savedClient);
@@ -2465,7 +3069,9 @@
             } catch(e) {}
         }
 
-        const savedStaff = localStorage.getItem('currentStaff');
+        // Восстановление сессии сотрудника
+        var savedStaff = null;
+        try { savedStaff = localStorage.getItem('currentStaff'); } catch(e) {}
         if (savedStaff) {
             try {
                 currentStaff = JSON.parse(savedStaff);
@@ -2473,14 +3079,21 @@
             } catch(e) {}
         }
 
-        if ('Notification' in window && Notification.permission !== 'granted' && localStorage.getItem('pushEnabled') !== 'on') {
-            setTimeout(() => {
-                document.getElementById('pushBtn').classList.add('show');
-            }, 5000);
+        // Push
+        if ('Notification' in window && Notification.permission !== 'granted') {
+            var pushEnabled = null;
+            try { pushEnabled = localStorage.getItem('pushEnabled'); } catch(e) {}
+            if (pushEnabled !== 'on') {
+                setTimeout(function() {
+                    document.getElementById('pushBtn').classList.add('show');
+                }, 5000);
+            }
         }
     });
 
-    // Глобальные функции
+    // ============================================================
+    // ===== ГЛОБАЛЬНЫЕ ФУНКЦИИ =====
+    // ============================================================
     window.setAccessibilityMode = setAccessibilityMode;
     window.setNormalMode = setNormalMode;
     window.toggleTheme = toggleTheme;
@@ -2506,6 +3119,10 @@
     window.changeOrderStatus = changeOrderStatus;
     window.openSupportDialog = openSupportDialog;
     window.supportSendChatMessage = supportSendChatMessage;
+    window.toggleChatWindow = toggleChatWindow;
+    window.closeChatAndGoToLogin = closeChatAndGoToLogin;
+    window.sendChatFromWindow = sendChatFromWindow;
+    window.updateChatWindow = updateChatWindow;
 </script>
 
 </body>
