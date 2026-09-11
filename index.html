@@ -36,13 +36,9 @@
       "@context": "https://schema.org",
       "@type": "Plumber",
       "name": "ИП Майборода Евгений Витальевич",
-      "alternateName": ["Майборода Евгений", "ИП Майборода", "Сантехника Пермь"],
-      "description": "Сантехнические работы, монтаж отопительных систем и кондиционирования в Перми и Пермском крае.",
-      "url": "https://mayborodaevgeniyvitalievich.github.io/santehnika-permskiikrai/",
       "telephone": "+79026469244",
       "email": "ydk59perm@mail.ru",
       "address": {"@type": "PostalAddress", "addressLocality": "Пермь", "addressRegion": "Пермский край", "addressCountry": "RU"},
-      "areaServed": [{"@type": "City", "name": "Пермь"}, {"@type": "State", "name": "Пермский край"}],
       "founder": {"@type": "Person", "name": "Майборода Евгений Витальевич"},
       "foundingDate": "2017-02-21"
     }
@@ -73,7 +69,6 @@
             font-family: inherit;
             font-size: inherit;
             -webkit-appearance: none;
-            -moz-appearance: none;
             appearance: none;
             outline: none;
             border-radius: 0;
@@ -81,22 +76,9 @@
 
         input, textarea, select, button { border-radius: inherit; }
         input::-moz-focus-inner, button::-moz-focus-inner { border: 0; padding: 0; }
-        input:-moz-placeholder, textarea:-moz-placeholder { opacity: 1; }
-        input::-moz-placeholder, textarea::-moz-placeholder { opacity: 1; }
-        input::-ms-clear, input::-ms-reveal { display: none; }
 
-        input[type="date"] {
-            -webkit-appearance: none;
-            appearance: none;
-            min-height: 44px;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-align-items: center;
-            align-items: center;
-        }
-
+        input[type="date"] { -webkit-appearance: none; appearance: none; min-height: 44px; }
         input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; padding: 4px; }
-        input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 
         select {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233a6b8f' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
@@ -105,311 +87,100 @@
             padding-right: 42px !important;
         }
 
-        input[type="checkbox"], input[type="radio"] {
-            -webkit-appearance: auto;
-            -moz-appearance: auto;
-            appearance: auto;
-        }
-
-        .chat-float-btn, .chat-window, .pwa-install-btn, .push-btn, .toast {
+        .chat-float-btn, .chat-window, .pwa-install-btn, .push-btn, .toast, .sms-toast {
             -webkit-transform: translateZ(0);
             transform: translateZ(0);
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
 
-        .chat-messages, .chat-container, .chat-window-body { -webkit-overflow-scrolling: touch; }
-
         .card {
             max-width: 960px;
             width: 100%;
-            background: #ffffff;
             background: rgba(255, 255, 255, 0.85);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-radius: 48px;
             box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
             padding: 44px 48px 40px;
-            transition: box-shadow 0.25s ease, transform 0.25s ease;
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .card:hover { box-shadow: 0 40px 72px -24px rgba(0, 30, 50, 0.40); transform: translateY(-4px); }
+        .accent-stripe { height: 5px; width: 100px; background: linear-gradient(90deg, #3a6b8f, #6a9ec4, #3a6b8f); border-radius: 20px; margin-bottom: 24px; }
 
-        .accent-stripe {
-            height: 5px;
-            width: 100px;
-            background: linear-gradient(90deg, #3a6b8f, #6a9ec4, #3a6b8f);
-            border-radius: 20px;
-            margin-bottom: 24px;
-        }
-
-        .accessibility-toolbar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 16px;
-            padding: 8px 0 12px;
-            border-bottom: 1px dashed rgba(160, 190, 210, 0.3);
-            align-items: center;
-        }
-
+        .accessibility-toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; padding: 8px 0 12px; border-bottom: 1px dashed rgba(160, 190, 210, 0.3); align-items: center; }
         .accessibility-toolbar .divider { color: #b0c8d8; font-size: 1.5rem; opacity: 0.4; user-select: none; }
 
-        .access-btn {
-            padding: 6px 18px;
-            border-radius: 30px;
-            border: 2px solid #3a6b8f;
-            background: transparent;
-            color: #1a3d54;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
+        .access-btn { padding: 6px 18px; border-radius: 30px; border: 2px solid #3a6b8f; background: transparent; color: #1a3d54; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
         .access-btn:hover { background: rgba(58, 107, 143, 0.1); }
         .access-btn.active { background: #3a6b8f; color: white; }
 
-        .quick-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-            padding: 12px 0;
-            border-bottom: 2px solid rgba(160, 190, 210, 0.25);
-        }
+        .quick-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; padding: 12px 0; border-bottom: 2px solid rgba(160, 190, 210, 0.25); }
 
-        .quick-nav a {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 60px;
-            background: rgba(58, 107, 143, 0.08);
-            color: #1a3d54;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-decoration: none;
-            border: 1px solid rgba(58, 107, 143, 0.15);
-            transition: all 0.2s ease;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
+        .quick-nav a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 60px; background: rgba(58, 107, 143, 0.08); color: #1a3d54; font-size: 0.8rem; font-weight: 500; text-decoration: none; border: 1px solid rgba(58, 107, 143, 0.15); transition: all 0.2s ease; cursor: pointer; white-space: nowrap; }
         .quick-nav a:hover { background: rgba(58, 107, 143, 0.18); border-color: #3a6b8f; transform: translateY(-2px); }
         .quick-nav a.phone-btn { background: rgba(58, 107, 143, 0.15); border-color: #3a6b8f; font-weight: 600; }
 
         .header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
 
-        .status-badge {
-            display: inline-block;
-            background: #1e3a4f;
-            color: #f0f4f8;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.8px;
-            padding: 6px 20px 5px;
-            border-radius: 60px;
-            text-transform: uppercase;
-        }
+        .status-badge { display: inline-block; background: #1e3a4f; color: #f0f4f8; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.8px; padding: 6px 20px 5px; border-radius: 60px; text-transform: uppercase; }
 
-        h1.owner-name {
-            font-size: 2.6rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            color: #1a2c3b;
-            line-height: 1.15;
-            margin-top: 10px;
-        }
-
+        h1.owner-name { font-size: 2.6rem; font-weight: 600; letter-spacing: -0.02em; color: #1a2c3b; line-height: 1.15; margin-top: 10px; }
         .owner-name span { font-weight: 300; color: #4d6a7e; }
+
         .subhead { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 12px 0 18px; }
 
-        .title-role {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #2a4b62;
-            background: #e5eef6;
-            padding: 4px 24px 5px;
-            border-radius: 60px;
-            border: 1px solid #cbdce7;
-        }
+        .title-role { font-size: 1.1rem; font-weight: 400; color: #2a4b62; background: #e5eef6; padding: 4px 24px 5px; border-radius: 60px; border: 1px solid #cbdce7; }
 
-        .tagline {
-            font-size: 0.9rem;
-            color: #4a6d84;
-            background: rgba(225, 238, 248, 0.6);
-            padding: 4px 20px;
-            border-radius: 40px;
-            border: 1px solid #cbdce7;
-        }
+        .tagline { font-size: 0.9rem; color: #4a6d84; background: rgba(225, 238, 248, 0.6); padding: 4px 20px; border-radius: 40px; border: 1px solid #cbdce7; }
 
-        .about-block, .team-block, .services, .faq-block, .account-block, .reviews-block {
-            margin: 28px 0 20px;
-            padding: 28px 30px;
-            border-radius: 40px;
-            background: rgba(240, 246, 250, 0.5);
-            border: 1px solid rgba(160, 190, 210, 0.2);
-            scroll-margin-top: 80px;
-        }
+        .about-block, .team-block, .services, .faq-block, .account-block, .reviews-block { margin: 28px 0 20px; padding: 28px 30px; border-radius: 40px; background: rgba(240, 246, 250, 0.5); border: 1px solid rgba(160, 190, 210, 0.2); scroll-margin-top: 80px; }
 
-        .about-title, .team-title, .services-title, .faq-title, .account-title, .reviews-title, .subscribe-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: #3a6a84;
-            font-weight: 600;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .about-title, .team-title, .services-title, .faq-title, .account-title, .reviews-title, .subscribe-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.2px; color: #3a6a84; font-weight: 600; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
 
-        .about-title::after, .team-title::after, .services-title::after, .faq-title::after, .account-title::after, .reviews-title::after, .subscribe-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, #b0c8d8, transparent);
-        }
+        .about-title::after, .team-title::after, .services-title::after, .faq-title::after, .account-title::after, .reviews-title::after, .subscribe-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, #b0c8d8, transparent); }
 
         .about-text { color: #142f42; font-size: 1rem; line-height: 1.8; }
         .about-text p { margin-bottom: 14px; }
         .about-text strong { color: #1a4a66; }
 
-        .experience-block {
-            margin: 20px 0 18px;
-            padding: 16px 24px;
-            border-radius: 60px;
-            background: linear-gradient(135deg, rgba(58, 107, 143, 0.08), rgba(58, 107, 143, 0.02));
-            border: 1px solid rgba(58, 107, 143, 0.12);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 12px 20px;
-        }
-
+        .experience-block { margin: 20px 0 18px; padding: 16px 24px; border-radius: 60px; background: linear-gradient(135deg, rgba(58, 107, 143, 0.08), rgba(58, 107, 143, 0.02)); border: 1px solid rgba(58, 107, 143, 0.12); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
         .experience-block .exp-icon { font-size: 2rem; }
         .experience-block .exp-text { font-size: 1rem; color: #1a3d54; }
         .experience-block .exp-text strong { color: #1a4a66; font-weight: 700; }
-
-        .experience-block .exp-badge {
-            background: #3a6b8f;
-            color: white;
-            font-weight: 600;
-            padding: 6px 22px;
-            border-radius: 40px;
-            font-size: 0.95rem;
-            margin-left: auto;
-        }
+        .experience-block .exp-badge { background: #3a6b8f; color: white; font-weight: 600; padding: 6px 22px; border-radius: 40px; font-size: 0.95rem; margin-left: auto; }
 
         .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-        .team-card {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 28px;
-            padding: 22px 20px;
-            text-align: center;
-            border: 1px solid rgba(160, 190, 210, 0.15);
-            transition: all 0.25s ease;
-        }
-
-        .team-card:hover { background: rgba(255, 255, 255, 0.85); border-color: #6f95b5; transform: translateY(-4px); box-shadow: 0 12px 28px -12px rgba(58, 107, 143, 0.25); }
-
+        .team-card { background: rgba(255, 255, 255, 0.6); border-radius: 28px; padding: 22px 20px; text-align: center; border: 1px solid rgba(160, 190, 210, 0.15); transition: all 0.25s ease; }
+        .team-card:hover { background: rgba(255, 255, 255, 0.85); border-color: #6f95b5; transform: translateY(-4px); }
         .team-avatar { font-size: 2.6rem; line-height: 1; margin-bottom: 12px; }
         .team-name { font-weight: 600; color: #1a3d54; font-size: 1rem; margin-bottom: 8px; }
-
-        .team-role {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            margin-bottom: 12px;
-        }
-
+        .team-role { display: inline-block; padding: 4px 16px; border-radius: 30px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 12px; }
         .role-director-badge { background: rgba(245, 179, 66, 0.2); color: #8a6a1e; }
         .role-admin-badge { background: rgba(58, 107, 143, 0.15); color: #3a6b8f; }
         .role-master-badge { background: rgba(106, 158, 196, 0.15); color: #3a6b8f; }
         .role-support-badge { background: rgba(42, 107, 74, 0.15); color: #2a6b4a; }
-
         .team-desc { font-size: 0.85rem; color: #4a6d84; line-height: 1.6; }
 
-        .team-note {
-            margin-top: 20px;
-            padding: 14px 22px;
-            border-radius: 60px;
-            background: linear-gradient(135deg, rgba(58, 107, 143, 0.06), rgba(106, 158, 196, 0.03));
-            border: 1px solid rgba(58, 107, 143, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.9rem;
-            color: #214b62;
-            line-height: 1.5;
-        }
-
+        .team-note { margin-top: 20px; padding: 14px 22px; border-radius: 60px; background: linear-gradient(135deg, rgba(58, 107, 143, 0.06), rgba(106, 158, 196, 0.03)); border: 1px solid rgba(58, 107, 143, 0.1); display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: #214b62; line-height: 1.5; }
         .team-note span:first-child { font-size: 1.4rem; }
 
         .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
-        .service-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(180, 200, 215, 0.4);
-            border-radius: 60px;
-            padding: 10px 14px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #1a384b;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.18s ease;
-            text-align: left;
-            width: 100%;
-            min-height: 48px;
-        }
-
+        .service-btn { background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(180, 200, 215, 0.4); border-radius: 60px; padding: 10px 14px; font-size: 0.85rem; font-weight: 500; color: #1a384b; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.18s ease; text-align: left; width: 100%; min-height: 48px; }
         .service-btn:hover { background: #eaf3fb; border-color: #6f95b5; }
         .service-btn.active { background: #d4e3ed; border-color: #3a6b8f; }
-
         .service-icon { font-size: 1.3rem; width: 28px; text-align: center; color: #2f6180; flex-shrink: 0; }
         .service-btn .btn-text { flex: 1; font-size: 0.82rem; line-height: 1.2; }
 
-        .service-detail {
-            margin: 18px 0 10px;
-            padding: 22px 30px;
-            border-radius: 40px;
-            background: rgba(235, 243, 250, 0.7);
-            border: 1px solid rgba(160, 190, 210, 0.3);
-            min-height: 90px;
-            display: flex;
-            align-items: flex-start;
-            gap: 18px 24px;
-            flex-wrap: wrap;
-        }
-
+        .service-detail { margin: 18px 0 10px; padding: 22px 30px; border-radius: 40px; background: rgba(235, 243, 250, 0.7); border: 1px solid rgba(160, 190, 210, 0.3); min-height: 90px; display: flex; align-items: flex-start; gap: 18px 24px; flex-wrap: wrap; }
         .detail-icon { font-size: 2.4rem; opacity: 0.85; }
         .detail-text { font-size: 1.02rem; color: #142f42; line-height: 1.7; flex: 1; }
         .detail-text strong { color: #1b4a66; font-weight: 600; }
         .detail-empty { color: #6b8ba2; font-style: italic; opacity: 0.8; font-size: 0.95rem; }
 
-        .work-schedule-block, .guarantee-block, .community-block, .qr-block, .subscribe-block {
-            margin: 28px 0 18px;
-            padding: 24px 30px;
-            border-radius: 40px;
-            background: rgba(245, 248, 250, 0.7);
-            border: 1px solid rgba(160, 190, 210, 0.2);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px 24px;
-        }
-
+        .work-schedule-block, .guarantee-block, .community-block, .qr-block, .subscribe-block { margin: 28px 0 18px; padding: 24px 30px; border-radius: 40px; background: rgba(245, 248, 250, 0.7); border: 1px solid rgba(160, 190, 210, 0.2); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
         .work-schedule-block { border-left: 6px solid #3a6b8f; }
         .guarantee-block { background: linear-gradient(135deg, rgba(58, 107, 143, 0.06), rgba(245, 200, 60, 0.04)); border-left: 6px solid #f5b342; }
         .community-block { border-left: 6px solid #3a6b8f; }
@@ -419,278 +190,106 @@
         .schedule-text, .guarantee-text { color: #214b62; font-size: 0.95rem; line-height: 1.6; }
         .schedule-text strong, .guarantee-text strong { color: #1a3d54; }
 
-        .emergency-block {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(58, 107, 143, 0.06);
-            padding: 10px 20px;
-            border-radius: 60px;
-            border: 1px solid rgba(58, 107, 143, 0.12);
-        }
-
+        .emergency-block { display: flex; align-items: center; gap: 12px; background: rgba(58, 107, 143, 0.06); padding: 10px 20px; border-radius: 60px; border: 1px solid rgba(58, 107, 143, 0.12); }
         .emergency-icon { font-size: 1.6rem; }
         .emergency-title { font-weight: 600; color: #b33a3a; font-size: 0.9rem; }
         .emergency-24h { color: #1a3d54; font-size: 0.95rem; font-weight: 500; }
 
-        .guarantee-badge {
-            background: rgba(245, 179, 66, 0.12);
-            padding: 10px 24px;
-            border-radius: 60px;
-            border: 1px solid rgba(245, 179, 66, 0.25);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .guarantee-badge { background: rgba(245, 179, 66, 0.12); padding: 10px 24px; border-radius: 60px; border: 1px solid rgba(245, 179, 66, 0.25); display: flex; align-items: center; gap: 10px; }
         .guarantee-badge span { font-weight: 700; color: #b38a2e; font-size: 1.1rem; }
 
-        .comm-label {
-            font-weight: 500;
-            color: #1a3d54;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .comm-label span {
-            background: #b8cedc;
-            padding: 4px 16px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #0f2c3d;
-            font-weight: 600;
-        }
-
+        .comm-label { font-weight: 500; color: #1a3d54; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .comm-label span { background: #b8cedc; padding: 4px 16px; border-radius: 40px; font-size: 0.75rem; text-transform: uppercase; color: #0f2c3d; font-weight: 600; }
         .comm-desc { font-size: 0.95rem; color: #214b62; }
         .comm-desc strong { color: #1a3f57; }
 
-        .faq-item {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 24px;
-            margin-bottom: 10px;
-            border: 1px solid rgba(160, 190, 210, 0.15);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 16px 22px;
-            cursor: pointer;
-            font-weight: 500;
-            color: #1a3d54;
-            font-size: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-        }
-
+        .faq-item { background: rgba(255, 255, 255, 0.5); border-radius: 24px; margin-bottom: 10px; border: 1px solid rgba(160, 190, 210, 0.15); overflow: hidden; }
+        .faq-question { padding: 16px 22px; cursor: pointer; font-weight: 500; color: #1a3d54; font-size: 1rem; display: flex; justify-content: space-between; align-items: center; user-select: none; }
         .faq-question .faq-arrow { font-size: 1.2rem; color: #3a6b8f; transition: transform 0.3s ease; }
         .faq-item.open .faq-question .faq-arrow { transform: rotate(180deg); }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            padding: 0 22px;
-            color: #214b62;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 22px; color: #214b62; font-size: 0.95rem; line-height: 1.7; }
         .faq-item.open .faq-answer { max-height: 500px; padding: 0 22px 18px; }
 
-        .qr-code-box {
-            background: white;
-            padding: 12px;
-            border-radius: 24px;
-            box-shadow: 0 6px 20px -8px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 144px;
-            min-height: 144px;
-        }
-
+        .qr-code-box { background: white; padding: 12px; border-radius: 24px; box-shadow: 0 6px 20px -8px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; min-width: 144px; min-height: 144px; }
         .qr-code-box img, .qr-code-box canvas { display: block; width: 120px !important; height: 120px !important; }
 
         .account-step { display: none; }
         .account-step.active { display: block; }
-
         .account-step-title { font-weight: 600; color: #1a3d54; font-size: 1.05rem; margin-bottom: 14px; }
         .account-step-hint { font-size: 0.88rem; color: #5a7d94; margin-bottom: 16px; line-height: 1.5; }
 
         .account-input-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
-        .account-input-row input, .account-input-row select {
-            flex: 1;
-            min-width: 160px;
-            padding: 13px 22px;
-            border-radius: 40px;
-            border: 1px solid rgba(160, 190, 210, 0.3);
-            font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.7);
-            color: #142f42;
-            transition: border-color 0.2s ease;
-        }
-
+        .account-input-row input, .account-input-row select { flex: 1; min-width: 160px; padding: 13px 22px; border-radius: 40px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.95rem; background: rgba(255, 255, 255, 0.7); color: #142f42; }
         .account-input-row input:focus, .account-input-row select:focus { border-color: #3a6b8f; }
 
-        .account-input-row button {
-            padding: 13px 30px;
-            border-radius: 40px;
-            border: none;
-            background: #3a6b8f;
-            color: white;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: background 0.2s ease;
-        }
-
+        .account-input-row button { padding: 13px 30px; border-radius: 40px; border: none; background: #3a6b8f; color: white; font-size: 0.95rem; font-weight: 500; cursor: pointer; white-space: nowrap; }
         .account-input-row button:hover { background: #2a5a7a; }
         .account-input-row .btn-secondary { background: #d4e2ed; color: #1a3d54; }
         .account-input-row .btn-secondary:hover { background: #c0d4e2; }
 
+        /* Плашка с кодом */
+        .sms-code-display {
+            background: linear-gradient(135deg, #f5b342, #e8a830);
+            color: #1a2c3b;
+            padding: 16px 22px;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: none;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 8px 20px -8px rgba(245, 179, 66, 0.5);
+        }
+
+        .sms-code-display.show { display: flex; }
+        .sms-code-display .sms-code-icon { font-size: 1.8rem; }
+        .sms-code-display .sms-code-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            color: #1a2c3b;
+            background: white;
+            padding: 6px 18px;
+            border-radius: 16px;
+            font-family: 'Courier New', monospace;
+        }
+
         .account-panel { display: none; }
         .account-panel.show { display: block; }
 
-        .account-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(160, 190, 210, 0.2);
-        }
-
+        .account-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(160, 190, 210, 0.2); }
         .account-user { font-weight: 600; color: #1a3d54; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
-        .account-logout {
-            padding: 6px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(179, 58, 58, 0.3);
-            background: rgba(179, 58, 58, 0.06);
-            color: #b33a3a;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
+        .account-logout { padding: 6px 18px; border-radius: 30px; border: 1px solid rgba(179, 58, 58, 0.3); background: rgba(179, 58, 58, 0.06); color: #b33a3a; font-size: 0.85rem; cursor: pointer; }
         .account-logout:hover { background: rgba(179, 58, 58, 0.15); }
 
-        .role-badge {
-            display: inline-block;
-            padding: 3px 14px;
-            border-radius: 30px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
+        .role-badge { display: inline-block; padding: 3px 14px; border-radius: 30px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
         .role-admin { background: rgba(245, 179, 66, 0.2); color: #8a6a1e; }
         .role-master { background: rgba(58, 107, 143, 0.15); color: #3a6b8f; }
         .role-support { background: rgba(42, 107, 74, 0.15); color: #2a6b4a; }
         .role-client { background: rgba(120, 120, 120, 0.15); color: #555; }
 
-        .order-form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 22px;
-            padding: 18px 20px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 28px;
-            border: 1px solid rgba(160, 190, 210, 0.15);
-        }
-
-        .order-form input, .order-form select {
-            flex: 1;
-            min-width: 140px;
-            padding: 11px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(160, 190, 210, 0.3);
-            font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.8);
-            color: #142f42;
-        }
-
-        .order-form button {
-            padding: 11px 26px;
-            border-radius: 30px;
-            border: none;
-            background: #3a6b8f;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
+        .order-form { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; padding: 18px 20px; background: rgba(255, 255, 255, 0.5); border-radius: 28px; border: 1px solid rgba(160, 190, 210, 0.15); }
+        .order-form input, .order-form select { flex: 1; min-width: 140px; padding: 11px 18px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.9rem; background: rgba(255, 255, 255, 0.8); color: #142f42; }
+        .order-form button { padding: 11px 26px; border-radius: 30px; border: none; background: #3a6b8f; color: white; font-size: 0.9rem; font-weight: 500; cursor: pointer; }
         .order-form button:hover { background: #2a5a7a; }
 
         .orders-title { font-weight: 600; color: #1a3d54; font-size: 1rem; margin-bottom: 12px; margin-top: 16px; }
 
-        .order-item {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(160, 190, 210, 0.15);
-            margin-bottom: 10px;
-        }
-
+        .order-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 20px; border-radius: 20px; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(160, 190, 210, 0.15); margin-bottom: 10px; }
         .order-info { flex: 1; }
         .order-service { font-weight: 600; color: #1a3d54; font-size: 0.95rem; }
         .order-date { font-size: 0.78rem; color: #6b8ba2; margin-top: 2px; }
 
-        .status-select {
-            padding: 5px 12px;
-            border-radius: 30px;
-            border: 1px solid rgba(160, 190, 210, 0.4);
-            font-size: 0.78rem;
-            background: white;
-            cursor: pointer;
-            color: #1a3d54;
-            font-weight: 600;
-        }
+        .status-select { padding: 5px 12px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.4); font-size: 0.78rem; background: white; cursor: pointer; color: #1a3d54; font-weight: 600; }
 
-        .chat-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 400px;
-            overflow-y: auto;
-            padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 28px;
-            border: 1px solid rgba(160, 190, 210, 0.2);
-            margin-bottom: 14px;
-            min-height: 100px;
-        }
+        .chat-container { display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto; padding: 16px 20px; background: rgba(255, 255, 255, 0.6); border-radius: 28px; border: 1px solid rgba(160, 190, 210, 0.2); margin-bottom: 14px; min-height: 100px; }
 
-        .chat-message {
-            max-width: 80%;
-            padding: 12px 18px;
-            border-radius: 20px;
-            font-size: 0.92rem;
-            line-height: 1.5;
-            word-break: break-word;
-        }
-
+        .chat-message { max-width: 80%; padding: 12px 18px; border-radius: 20px; font-size: 0.92rem; line-height: 1.5; word-break: break-word; }
         .chat-message.client { align-self: flex-end; background: #3a6b8f; color: white; border-bottom-right-radius: 6px; }
         .chat-message.support { align-self: flex-start; background: rgba(58, 107, 143, 0.1); color: #1a3d54; border-bottom-left-radius: 6px; }
-
         .chat-message .chat-time { display: block; font-size: 0.7rem; opacity: 0.7; margin-top: 4px; }
         .chat-message.client .chat-time { color: #c8dce5; }
         .chat-message.support .chat-time { color: #5a7d94; }
@@ -698,293 +297,65 @@
         .chat-empty { text-align: center; color: #6b8ba2; font-style: italic; font-size: 0.9rem; padding: 20px 0; }
 
         .chat-input-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-
-        .chat-input-row input {
-            flex: 1;
-            min-width: 200px;
-            padding: 13px 22px;
-            border-radius: 40px;
-            border: 1px solid rgba(160, 190, 210, 0.3);
-            font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.7);
-            color: #142f42;
-        }
-
+        .chat-input-row input { flex: 1; min-width: 200px; padding: 13px 22px; border-radius: 40px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.95rem; background: rgba(255, 255, 255, 0.7); color: #142f42; }
         .chat-input-row input:focus { border-color: #3a6b8f; }
-
-        .chat-input-row button {
-            padding: 13px 28px;
-            border-radius: 40px;
-            border: none;
-            background: #3a6b8f;
-            color: white;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
+        .chat-input-row button { padding: 13px 28px; border-radius: 40px; border: none; background: #3a6b8f; color: white; font-size: 0.95rem; font-weight: 500; cursor: pointer; white-space: nowrap; }
         .chat-input-row button:hover { background: #2a5a7a; }
 
         .chat-dialogs-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
 
-        .chat-dialog-item {
-            padding: 14px 20px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(160, 190, 210, 0.15);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
+        .chat-dialog-item { padding: 14px 20px; border-radius: 20px; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(160, 190, 210, 0.15); cursor: pointer; transition: all 0.2s ease; }
         .chat-dialog-item:hover { background: rgba(255, 255, 255, 0.8); border-color: #6f95b5; }
         .chat-dialog-item.active { background: #d4e3ed; border-color: #3a6b8f; }
-
         .chat-dialog-name { font-weight: 600; color: #1a3d54; font-size: 0.95rem; }
         .chat-dialog-last { font-size: 0.8rem; color: #6b8ba2; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        .chat-float-btn {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3a6b8f, #4a7a9a);
-            color: white;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            box-shadow: 0 12px 28px -8px rgba(58, 107, 143, 0.6);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chat-float-btn:hover { transform: scale(1.08); box-shadow: 0 16px 36px -8px rgba(58, 107, 143, 0.75); }
+        .chat-float-btn { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #3a6b8f, #4a7a9a); color: white; border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(58, 107, 143, 0.6); z-index: 1000; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .chat-float-btn:hover { transform: scale(1.08); }
         .chat-float-btn.active { background: linear-gradient(135deg, #2a5a7a, #3a6b8f); transform: rotate(90deg); }
 
-        .chat-float-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: #e74c3c;
-            color: white;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid white;
-        }
-
+        .chat-float-badge { position: absolute; top: -4px; right: -4px; background: #e74c3c; color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 0.75rem; font-weight: 700; display: none; align-items: center; justify-content: center; border: 2px solid white; }
         .chat-float-badge.show { display: flex; }
 
-        .chat-window {
-            position: fixed;
-            bottom: 100px;
-            right: 24px;
-            width: 380px;
-            max-width: calc(100vw - 48px);
-            height: 520px;
-            max-height: calc(100vh - 140px);
-            max-height: calc(100dvh - 140px);
-            background: white;
-            border-radius: 28px;
-            box-shadow: 0 24px 64px -16px rgba(0, 20, 40, 0.4);
-            z-index: 1001;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid rgba(160, 190, 210, 0.2);
-        }
+        .chat-window { position: fixed; bottom: 100px; right: 24px; width: 380px; max-width: calc(100vw - 48px); height: 520px; max-height: calc(100vh - 140px); max-height: calc(100dvh - 140px); background: white; border-radius: 28px; box-shadow: 0 24px 64px -16px rgba(0, 20, 40, 0.4); z-index: 1001; display: none; flex-direction: column; overflow: hidden; border: 1px solid rgba(160, 190, 210, 0.2); }
+        .chat-window.open { display: flex; }
 
-        .chat-window.open { display: flex; animation: chatSlideUp 0.3s ease; }
-
-        @keyframes chatSlideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @-webkit-keyframes chatSlideUp {
-            from { opacity: 0; -webkit-transform: translateY(20px); }
-            to { opacity: 1; -webkit-transform: translateY(0); }
-        }
-
-        .chat-window-header {
-            background: linear-gradient(135deg, #3a6b8f, #4a7a9a);
-            color: white;
-            padding: 18px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
+        .chat-window-header { background: linear-gradient(135deg, #3a6b8f, #4a7a9a); color: white; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
         .chat-window-title { display: flex; align-items: center; gap: 12px; }
-
-        .chat-window-close {
-            background: rgba(255, 255, 255, 0.15);
-            border: none;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
+        .chat-window-close { background: rgba(255, 255, 255, 0.15); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 1rem; cursor: pointer; }
         .chat-window-close:hover { background: rgba(255, 255, 255, 0.3); }
 
         .chat-window-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 
-        .chat-login-prompt {
-            padding: 40px 30px;
-            text-align: center;
-            color: #1a3d54;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chat-login-btn {
-            padding: 12px 32px;
-            border-radius: 40px;
-            border: none;
-            background: #3a6b8f;
-            color: white;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
+        .chat-login-prompt { padding: 40px 30px; text-align: center; color: #1a3d54; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .chat-login-btn { padding: 12px 32px; border-radius: 40px; border: none; background: #3a6b8f; color: white; font-size: 0.95rem; font-weight: 600; cursor: pointer; }
         .chat-login-btn:hover { background: #2a5a7a; }
 
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: #f8fafc;
-        }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; background: #f8fafc; }
 
-        .chat-messages::-webkit-scrollbar { width: 6px; }
-        .chat-messages::-webkit-scrollbar-thumb { background: #b0c8d8; border-radius: 10px; }
-        .chat-messages::-webkit-scrollbar-track { background: transparent; }
-
-        .chat-window-input {
-            padding: 14px 18px;
-            background: white;
-            border-top: 1px solid rgba(160, 190, 210, 0.2);
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .chat-window-input input {
-            flex: 1;
-            padding: 12px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(160, 190, 210, 0.3);
-            font-size: 0.9rem;
-            color: #142f42;
-            background: #f8fafc;
-        }
-
+        .chat-window-input { padding: 14px 18px; background: white; border-top: 1px solid rgba(160, 190, 210, 0.2); display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+        .chat-window-input input { flex: 1; padding: 12px 18px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.9rem; color: #142f42; background: #f8fafc; }
         .chat-window-input input:focus { border-color: #3a6b8f; background: white; }
+        .chat-window-input button { width: 44px; height: 44px; border-radius: 50%; border: none; background: #3a6b8f; color: white; font-size: 1.1rem; cursor: pointer; flex-shrink: 0; }
+        .chat-window-input button:hover { background: #2a5a7a; }
 
-        .chat-window-input button {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: none;
-            background: #3a6b8f;
-            color: white;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chat-window-input button:hover { background: #2a5a7a; transform: scale(1.05); }
-
-        .review-form {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 32px;
-            padding: 24px 28px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(160, 190, 210, 0.2);
-        }
-
+        .review-form { background: rgba(255, 255, 255, 0.6); border-radius: 32px; padding: 24px 28px; margin-bottom: 24px; border: 1px solid rgba(160, 190, 210, 0.2); }
         .review-form .form-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
-
-        .review-form .form-row input,
-        .review-form .form-row textarea {
-            flex: 1;
-            min-width: 200px;
-            padding: 12px 18px;
-            border-radius: 30px;
-            border: 1px solid rgba(160, 190, 210, 0.3);
-            font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.7);
-            color: #142f42;
-        }
-
+        .review-form .form-row input, .review-form .form-row textarea { flex: 1; min-width: 200px; padding: 12px 18px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.95rem; background: rgba(255, 255, 255, 0.7); color: #142f42; }
         .review-form .form-row textarea { resize: vertical; min-height: 80px; }
         .review-form .form-row .code-input { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .review-form .form-row .code-input input { flex: 1; min-width: 120px; }
 
-        .review-form .btn {
-            padding: 10px 28px;
-            border-radius: 60px;
-            border: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            background: #3a6b8f;
-            color: white;
-        }
-
+        .review-form .btn { padding: 10px 28px; border-radius: 60px; border: none; font-size: 0.95rem; font-weight: 500; cursor: pointer; background: #3a6b8f; color: white; }
         .review-form .btn:hover { background: #2a5a7a; }
         .review-form .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .review-form .btn-secondary { background: #d4e2ed; color: #1a3d54; }
 
-        .review-form .form-status {
-            font-size: 0.9rem;
-            color: #2a6b4a;
-            margin-top: 10px;
-            padding: 10px 16px;
-            border-radius: 20px;
-            background: rgba(42, 107, 74, 0.08);
-            display: none;
-        }
-
+        .review-form .form-status { font-size: 0.9rem; color: #2a6b4a; margin-top: 10px; padding: 10px 16px; border-radius: 20px; background: rgba(42, 107, 74, 0.08); display: none; }
         .review-form .form-status.error { color: #b33a3a; background: rgba(179, 58, 58, 0.08); }
         .review-form .form-status.show { display: block; }
 
-        .review-item {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 16px 22px;
-            border-radius: 24px;
-            border: 1px solid rgba(160, 190, 210, 0.15);
-            margin-bottom: 10px;
-        }
-
+        .review-item { background: rgba(255, 255, 255, 0.5); padding: 16px 22px; border-radius: 24px; border: 1px solid rgba(160, 190, 210, 0.15); margin-bottom: 10px; }
         .review-item .review-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
         .review-item .review-name { font-weight: 600; color: #1a3d54; font-size: 1rem; }
         .review-item .review-date { font-size: 0.75rem; color: #6b8ba2; }
@@ -993,125 +364,57 @@
         .no-reviews { color: #6b8ba2; font-style: italic; padding: 12px 0; text-align: center; }
 
         .subscribe-form { display: flex; flex-wrap: wrap; gap: 12px; }
-        .subscribe-form input {
-            flex: 1;
-            min-width: 220px;
-            padding: 14px 22px;
-            border-radius: 60px;
-            border: 1px solid rgba(160, 190, 210, 0.3);
-            font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.7);
-            color: #142f42;
-        }
-
-        .subscribe-form button {
-            padding: 14px 32px;
-            border-radius: 60px;
-            border: none;
-            background: #3a6b8f;
-            color: white;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
+        .subscribe-form input { flex: 1; min-width: 220px; padding: 14px 22px; border-radius: 60px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.95rem; background: rgba(255, 255, 255, 0.7); color: #142f42; }
+        .subscribe-form button { padding: 14px 32px; border-radius: 60px; border: none; background: #3a6b8f; color: white; font-size: 0.95rem; font-weight: 600; cursor: pointer; }
         .subscribe-status { margin-top: 12px; font-size: 0.9rem; padding: 10px 16px; border-radius: 20px; display: none; }
         .subscribe-status.show { display: block; }
         .subscribe-status.ok { color: #2a6b4a; background: rgba(42, 107, 74, 0.08); }
         .subscribe-status.err { color: #b33a3a; background: rgba(179, 58, 58, 0.08); }
 
         .contacts { display: flex; flex-direction: column; gap: 14px; margin: 22px 0 16px; scroll-margin-top: 80px; }
-
-        .contact-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px 24px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(160, 190, 210, 0.2);
-        }
-
+        .contact-row { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; padding: 10px 0; border-bottom: 1px solid rgba(160, 190, 210, 0.2); }
         .contact-row:last-child { border-bottom: none; }
         .contact-icon { font-size: 1.5rem; width: 36px; text-align: center; color: #3a6b8f; opacity: 0.8; }
         .contact-value { font-size: 1.25rem; font-weight: 500; color: #072433; word-break: break-word; }
         .contact-value a { color: #1a4d6b; text-decoration: none; border-bottom: 1.5px dotted #b0ccdd; }
         .contact-value a:hover { color: #00283d; border-bottom-color: #3a6b8f; }
+        .contact-label { font-size: 0.7rem; font-weight: 400; color: #5a7d94; text-transform: uppercase; letter-spacing: 0.6px; background: #e2edf5; padding: 2px 16px; border-radius: 60px; margin-left: auto; white-space: nowrap; }
 
-        .contact-label {
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: #5a7d94;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            background: #e2edf5;
-            padding: 2px 16px;
-            border-radius: 60px;
-            margin-left: auto;
-            white-space: nowrap;
-        }
+        .footer-meta { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(160, 190, 210, 0.25); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #4a6f86; }
+        .footer-meta .ip-tag { background: #d4e2ed; padding: 4px 16px; border-radius: 40px; color: #123a52; font-weight: 500; }
 
-        .footer-meta {
-            margin-top: 28px;
-            padding-top: 22px;
-            border-top: 1px solid rgba(160, 190, 210, 0.25);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.75rem;
-            color: #4a6f86;
-        }
-
-        .footer-meta .ip-tag {
-            background: #d4e2ed;
-            padding: 4px 16px;
-            border-radius: 40px;
-            color: #123a52;
-            font-weight: 500;
-        }
-
-        .pwa-install-btn, .push-btn {
-            position: fixed;
-            bottom: 24px;
-            padding: 14px 24px;
-            border-radius: 60px;
-            background: #3a6b8f;
-            color: white;
-            border: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 12px 28px -8px rgba(58, 107, 143, 0.5);
-            display: none;
-            align-items: center;
-            gap: 10px;
-            z-index: 999;
-        }
-
+        .pwa-install-btn, .push-btn { position: fixed; bottom: 24px; padding: 14px 24px; border-radius: 60px; background: #3a6b8f; color: white; border: none; font-size: 0.9rem; font-weight: 600; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(58, 107, 143, 0.5); display: none; align-items: center; gap: 10px; z-index: 999; }
         .pwa-install-btn { right: 100px; }
         .push-btn { left: 24px; }
         .pwa-install-btn.show, .push-btn.show { display: flex; }
 
-        .toast {
+        .toast { position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-100px); background: #1e3a4f; color: white; padding: 14px 28px; border-radius: 60px; font-size: 0.9rem; font-weight: 500; box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4); z-index: 9999; transition: transform 0.4s ease; max-width: 90%; text-align: center; }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* Всплывающее окно с SMS-кодом */
+        .sms-popup {
             position: fixed;
-            top: 24px;
+            top: 80px;
             left: 50%;
-            -webkit-transform: translateX(-50%) translateY(-100px);
-            transform: translateX(-50%) translateY(-100px);
-            background: #1e3a4f;
-            color: white;
-            padding: 14px 28px;
-            border-radius: 60px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4);
-            z-index: 9999;
-            transition: transform 0.4s ease;
+            transform: translateX(-50%) translateY(-200px);
+            background: linear-gradient(135deg, #f5b342, #e8a830);
+            color: #1a2c3b;
+            padding: 20px 32px;
+            border-radius: 28px;
+            box-shadow: 0 24px 60px -12px rgba(245, 179, 66, 0.6);
+            z-index: 9998;
+            transition: transform 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
             max-width: 90%;
-            text-align: center;
+            border: 3px solid white;
         }
 
-        .toast.show { -webkit-transform: translateX(-50%) translateY(0); transform: translateX(-50%) translateY(0); }
+        .sms-popup.show { transform: translateX(-50%) translateY(0); }
+        .sms-popup .sms-popup-icon { font-size: 2rem; }
+        .sms-popup .sms-popup-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.7; font-weight: 600; }
+        .sms-popup .sms-popup-code { font-size: 2rem; font-weight: 800; letter-spacing: 6px; font-family: 'Courier New', monospace; color: #1a2c3b; background: white; padding: 6px 20px; border-radius: 16px; }
 
         body.accessibility-mode * { font-size: 120% !important; line-height: 1.8 !important; }
         body.accessibility-mode .card { background: #ffffff !important; border: 3px solid #000000 !important; }
@@ -1184,14 +487,14 @@
         body.dark-theme .role-support-badge { background: rgba(106, 191, 138, 0.15); color: #6abf8a; }
         body.dark-theme .chat-message.client { background: #4a7a9a; color: white; }
         body.dark-theme .chat-message.support { background: rgba(90, 140, 170, 0.15); color: #c8dce5; }
-        body.dark-theme .chat-dialog-item:hover { background: rgba(50, 80, 105, 0.5); }
-        body.dark-theme .chat-dialog-item.active { background: rgba(60, 100, 130, 0.5); border-color: #5a8aaa; }
         body.dark-theme .chat-window { background: rgba(30, 45, 55, 0.98); border-color: rgba(255, 255, 255, 0.08); }
         body.dark-theme .chat-window-header { background: linear-gradient(135deg, #2a4a5f, #3a5a6f); }
         body.dark-theme .chat-messages { background: rgba(20, 35, 45, 0.5); }
         body.dark-theme .chat-window-input { background: rgba(30, 45, 55, 0.98); border-top-color: rgba(255, 255, 255, 0.08); }
         body.dark-theme .chat-window-input input { background: rgba(20, 40, 55, 0.7); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
         body.dark-theme .chat-login-prompt { color: #c8dce5; }
+        body.dark-theme .sms-code-display { background: linear-gradient(135deg, #c8993a, #b88728); color: #fff; }
+        body.dark-theme .sms-code-display .sms-code-value { background: rgba(255,255,255,0.15); color: #fff; }
 
         @media (max-width: 768px) {
             .service-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1214,7 +517,6 @@
             .work-schedule-block { flex-direction: column; align-items: flex-start; }
             .work-schedule-block .emergency-block { width: 100%; justify-content: center; }
             .access-btn { font-size: 0.7rem; padding: 4px 12px; }
-            .experience-block .exp-badge { font-size: 0.8rem; padding: 4px 14px; }
             .qr-block { flex-direction: column; text-align: center; }
             .account-input-row { flex-direction: column; }
             .account-input-row input, .account-input-row button, .account-input-row select { width: 100%; }
@@ -1224,10 +526,13 @@
             .chat-input-row input, .chat-input-row button { width: 100%; }
             .pwa-install-btn { bottom: 16px; right: 88px; padding: 10px 16px; font-size: 0.78rem; }
             .push-btn { bottom: 16px; left: 16px; padding: 10px 16px; font-size: 0.78rem; }
+            .sms-popup { top: 60px; padding: 16px 24px; }
+            .sms-popup .sms-popup-code { font-size: 1.5rem; letter-spacing: 4px; }
+            .sms-code-display .sms-code-value { font-size: 1.4rem; letter-spacing: 3px; }
         }
 
         @media (max-width: 500px) {
-            .chat-window { width: calc(100vw - 32px); right: 16px; bottom: 92px; height: calc(100vh - 130px); height: calc(100dvh - 130px); max-height: 560px; }
+            .chat-window { width: calc(100vw - 32px); right: 16px; bottom: 92px; height: calc(100vh - 130px); max-height: 560px; }
             .chat-float-btn { width: 56px; height: 56px; bottom: 16px; right: 16px; font-size: 1.5rem; }
             .pwa-install-btn { right: 80px; }
         }
@@ -1250,9 +555,7 @@
 
         @supports (-webkit-touch-callout: none) {
             html, body { overscroll-behavior: none; }
-            input[type="date"] { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; }
             .card { -webkit-backdrop-filter: blur(10px); }
-            .chat-window { -webkit-backdrop-filter: blur(20px); }
         }
 
         @-moz-document url-prefix() {
@@ -1314,14 +617,13 @@
                 <span class="exp-badge">с 21 февраля 2017 года</span>
             </div>
 
-            <p>За весь период работы в компании сформировался коллектив опытных и высококвалифицированных сотрудников, представляющих собой сплочённую команду профессионалов, способную решать задачи любой сложности, имеющих большой опыт в сфере обслуживания зданий и ориентированных на достижение самых высоких результатов.</p>
+            <p>За весь период работы в компании сформировался коллектив опытных и высококвалифицированных сотрудников, представляющих собой сплочённую команду профессионалов, способную решать задачи любой сложности.</p>
             <p><strong>ИП Майборода Евгений Витальевич</strong> предлагает потенциальным заказчикам выполнение полного комплекса услуг по обслуживанию ТСЖ, ТСН, ЖСК, капитальному ремонту инженерных систем и электрических коммуникаций зданий и сооружений промышленного и гражданского назначения, частных домов.</p>
         </div>
     </div>
 
     <div class="team-block" id="team-block">
         <h2 class="team-title">👥 Наша команда</h2>
-
         <div class="team-grid">
             <div class="team-card">
                 <div class="team-avatar">👨‍💼</div>
@@ -1329,35 +631,30 @@
                 <div class="team-role role-director-badge">Директор</div>
                 <div class="team-desc">Основатель компании. Опыт в сфере ЖКХ и инженерных систем с 2017 года.</div>
             </div>
-
             <div class="team-card">
                 <div class="team-avatar">👨‍💻</div>
                 <div class="team-name">Максим</div>
                 <div class="team-role role-admin-badge">Администратор сайта, создатель сайта</div>
                 <div class="team-desc">Отвечает за работу сайта, заявки, поддержку клиентов и развитие компании.</div>
             </div>
-
             <div class="team-card">
                 <div class="team-avatar">🔧</div>
                 <div class="team-name">Сантехник</div>
                 <div class="team-role role-master-badge">Сантехнические работы</div>
                 <div class="team-desc">Монтаж и ремонт систем водоснабжения, канализации, отопления.</div>
             </div>
-
             <div class="team-card">
                 <div class="team-avatar">⚡</div>
                 <div class="team-name">Электрик</div>
                 <div class="team-role role-master-badge">Электромонтаж</div>
                 <div class="team-desc">Монтаж и ремонт электрических сетей, щитов, освещения.</div>
             </div>
-
             <div class="team-card">
                 <div class="team-avatar">🔥</div>
                 <div class="team-name">Сварщик</div>
                 <div class="team-role role-master-badge">Сварочные работы</div>
                 <div class="team-desc">Сварка трубопроводов, металлоконструкций, инженерных систем.</div>
             </div>
-
             <div class="team-card">
                 <div class="team-avatar">💬</div>
                 <div class="team-name">Поддержка</div>
@@ -1365,47 +662,36 @@
                 <div class="team-desc">Отвечает на вопросы клиентов, помогает с заявками и консультациями.</div>
             </div>
         </div>
-
-        <div class="team-note">
-            <span>💡</span>
-            <span>Все сотрудники компании — квалифицированные специалисты с опытом работы в сфере ЖКХ и инженерных систем.</span>
-        </div>
     </div>
 
     <div class="services" id="services-block">
         <h2 class="services-title">Чем занимается</h2>
         <div class="service-grid" id="serviceGrid">
-            <button class="service-btn" data-detail="<strong>🔧 Сантехнические работы</strong> — всё, что связано с водой и трубами. Прокладываем новые трубы, заменяем старые, устанавливаем раковины, унитазы, ванны, душевые кабины, смесители. Без протечек и головной боли.">
+            <button class="service-btn" data-detail="<strong>🔧 Сантехнические работы</strong> — всё, что связано с водой и трубами. Прокладываем новые трубы, заменяем старые, устанавливаем раковины, унитазы, ванны, душевые кабины, смесители.">
                 <span class="service-icon">🔧</span>
                 <span class="btn-text">Сантехнические работы</span>
             </button>
-
-            <button class="service-btn" data-detail="<strong>🔥 Отопительные системы</strong> — то, что греет ваш дом зимой. Проектируем и монтируем радиаторное отопление, тёплые полы, котельные. Подбираем оборудование под ваш бюджет.">
+            <button class="service-btn" data-detail="<strong>🔥 Отопительные системы</strong> — то, что греет ваш дом зимой. Проектируем и монтируем радиаторное отопление, тёплые полы, котельные.">
                 <span class="service-icon">🔥</span>
                 <span class="btn-text">Отопительные системы</span>
             </button>
-
             <button class="service-btn" data-detail="<strong>❄️ Кондиционирование и вентиляция</strong> — свежий воздух и комфортная температура. Устанавливаем сплит-системы, мультизональные системы, приточную вентиляцию.">
                 <span class="service-icon">❄️</span>
                 <span class="btn-text">Кондиционирование</span>
             </button>
-
             <button class="service-btn" data-detail="<strong>💧 Водоснабжение и канализация</strong> — подача чистой воды и отвод грязной. Монтируем внутренние и наружные сети. Устанавливаем насосные станции, фильтры, септики.">
                 <span class="service-icon">💧</span>
                 <span class="btn-text">Водоснабжение</span>
             </button>
-
             <button class="service-btn" data-detail="<strong>🛠️ Ремонт и обслуживание</strong> — диагностика, ремонт котлов, насосов, кондиционеров. Прочистка засоров, плановое ТО, аварийные выезды.">
                 <span class="service-icon">🛠️</span>
                 <span class="btn-text">Ремонт и сервис</span>
             </button>
-
-            <button class="service-btn" data-detail="<strong>📐 Проектирование инженерных сетей</strong> — чертежи и расчёты до монтажа. Схемы разводки труб, тепловые расчёты, 3D-модели. Согласование с коммунальными службами.">
+            <button class="service-btn" data-detail="<strong>📐 Проектирование инженерных сетей</strong> — чертежи и расчёты до монтажа. Схемы разводки труб, тепловые расчёты, 3D-модели.">
                 <span class="service-icon">📐</span>
                 <span class="btn-text">Проектирование</span>
             </button>
         </div>
-
         <div class="service-detail" id="serviceDetail">
             <span class="detail-icon">💬</span>
             <span class="detail-text detail-empty">Нажмите на любую услугу, чтобы узнать подробнее</span>
@@ -1451,7 +737,7 @@
             <span>ТСЖ</span> <span>ТСН</span> <span>ЖСК</span>
         </div>
         <div class="comm-desc">
-            <strong>ИП Майборода Евгений Витальевич</strong> — работаем с товариществами собственников жилья, ТСН, ЖСК и другими объединениями. Выполняем монтаж, замену и ремонт систем отопления, водоснабжения, канализации в многоквартирных домах.
+            <strong>ИП Майборода Евгений Витальевич</strong> — работаем с товариществами собственников жилья, ТСН, ЖСК и другими объединениями.
         </div>
     </div>
 
@@ -1463,7 +749,7 @@
                 <span>Сколько стоит выезд мастера?</span>
                 <span class="faq-arrow">▼</span>
             </div>
-            <div class="faq-answer">Выезд мастера для диагностики и оценки работ — <strong>бесплатно</strong> при заказе услуги. Если вы отказываетесь от работ, выезд оплачивается по тарифу.</div>
+            <div class="faq-answer">Выезд мастера для диагностики и оценки работ — <strong>бесплатно</strong> при заказе услуги.</div>
         </div>
 
         <div class="faq-item">
@@ -1487,7 +773,7 @@
                 <span>Работаете ли вы с юридическими лицами?</span>
                 <span class="faq-arrow">▼</span>
             </div>
-            <div class="faq-answer">Да, мы работаем с <strong>ТСЖ, ТСН, ЖСК, управляющими компаниями</strong>. Предоставляем все закрывающие документы.</div>
+            <div class="faq-answer">Да, мы работаем с <strong>ТСЖ, ТСН, ЖСК, управляющими компаниями</strong>.</div>
         </div>
 
         <div class="faq-item">
@@ -1495,7 +781,7 @@
                 <span>Вы работаете только в Перми или по краю тоже?</span>
                 <span class="faq-arrow">▼</span>
             </div>
-            <div class="faq-answer">Работаем <strong>в Перми и по всему Пермскому краю</strong>. Выезд за город обсуждается индивидуально.</div>
+            <div class="faq-answer">Работаем <strong>в Перми и по всему Пермскому краю</strong>.</div>
         </div>
     </div>
 
@@ -1524,6 +810,13 @@
         <div class="account-step" id="clientStepCode">
             <div class="account-step-title">Введите код из SMS</div>
             <div class="account-step-hint">Код отправлен на номер <strong id="clientPhoneDisplay"></strong></div>
+            <div class="sms-code-display show" id="clientSmsDisplay">
+                <span class="sms-code-icon">📱</span>
+                <div>
+                    <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.5px;opacity:0.8;">Ваш код</div>
+                    <div class="sms-code-value" id="clientSmsCodeValue">------</div>
+                </div>
+            </div>
             <div class="account-input-row">
                 <input type="text" id="clientCode" placeholder="6-значный код" maxlength="6" inputmode="numeric" autocomplete="one-time-code">
                 <button onclick="clientVerifyCode()">Подтвердить</button>
@@ -1580,7 +873,7 @@
 
         <div class="account-step active" id="stepStaffLogin">
             <div class="account-step-title">Вход для сотрудников</div>
-            <div class="account-step-hint">Введите свой телефон и пароль, который вы придумали при регистрации.</div>
+            <div class="account-step-hint">Введите свой телефон и пароль.</div>
             <div class="account-input-row">
                 <input type="tel" id="staffPhone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
                 <input type="password" id="staffPassword" placeholder="Ваш пароль" autocomplete="current-password">
@@ -1609,7 +902,7 @@
 
         <div class="account-step" id="stepAdminConfirm">
             <div class="account-step-title">🔐 Подтверждение администратора</div>
-            <div class="account-step-hint">Для завершения введите пароль администратора сайта.</div>
+            <div class="account-step-hint">Введите пароль администратора сайта.</div>
             <div class="account-input-row">
                 <input type="password" id="adminConfirmPassword" placeholder="Пароль администратора" autocomplete="current-password">
                 <button onclick="staffLoginStep2()">Подтвердить</button>
@@ -1640,7 +933,6 @@
                 </div>
                 <div id="staffList"></div>
 
-                <!-- ===== ЛОГ SMS-КОДОВ ===== -->
                 <div style="margin-top: 24px;">
                     <div class="orders-title">📱 SMS-коды клиентов (лог)</div>
                     <div id="smsLogList"></div>
@@ -1736,6 +1028,15 @@
     </div>
 </div>
 
+<!-- Всплывающее окно SMS-кода -->
+<div class="sms-popup" id="smsPopup">
+    <span class="sms-popup-icon">📱</span>
+    <div>
+        <div class="sms-popup-label">Ваш код подтверждения</div>
+        <div class="sms-popup-code" id="smsPopupCode">------</div>
+    </div>
+</div>
+
 <button class="chat-float-btn" id="chatFloatBtn" onclick="toggleChatWindow()">
     💬
     <span class="chat-float-badge" id="chatFloatBadge"></span>
@@ -1757,7 +1058,7 @@
         <div class="chat-login-prompt">
             <div style="font-size:2rem;margin-bottom:12px;">🔒</div>
             <div style="font-weight:600;margin-bottom:8px;">Войдите, чтобы написать</div>
-            <div style="font-size:0.85rem;color:#5a7d94;margin-bottom:16px;">Чтобы обратиться в поддержку, войдите в кабинет клиента по номеру телефона.</div>
+            <div style="font-size:0.85rem;color:#5a7d94;margin-bottom:16px;">Войдите в кабинет клиента по номеру телефона.</div>
             <button class="chat-login-btn" onclick="closeChatAndGoToLogin()">Войти в кабинет</button>
         </div>
     </div>
@@ -1810,19 +1111,6 @@
         if (!String.prototype.includes) {
             String.prototype.includes = function(search) { return this.indexOf(search) !== -1; };
         }
-        if (typeof Object.assign !== 'function') {
-            Object.assign = function(target) {
-                for (var i = 1; i < arguments.length; i++) {
-                    var src = arguments[i];
-                    if (src) {
-                        for (var k in src) {
-                            if (Object.prototype.hasOwnProperty.call(src, k)) target[k] = src[k];
-                        }
-                    }
-                }
-                return target;
-            };
-        }
     })();
 
     // ============================================================
@@ -1861,6 +1149,16 @@
         toast.classList.add('show');
         clearTimeout(window._toastTimer);
         window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3500);
+    }
+
+    function showSmsPopup(code) {
+        var popup = document.getElementById('smsPopup');
+        document.getElementById('smsPopupCode').textContent = code;
+        popup.classList.add('show');
+        clearTimeout(window._smsPopupTimer);
+        window._smsPopupTimer = setTimeout(function() {
+            popup.classList.remove('show');
+        }, 8000);
     }
 
     function escapeHtml(text) {
@@ -2046,11 +1344,16 @@
         clientSmsCode = String(Math.floor(100000 + Math.random() * 900000));
 
         document.getElementById('clientPhoneDisplay').textContent = phone;
+        document.getElementById('clientSmsCodeValue').textContent = clientSmsCode;
         console.log('[SMS] Код для ' + phone + ': ' + clientSmsCode);
 
+        // Лог для админа
         if (typeof logSmsCode === 'function') logSmsCode(phone, clientSmsCode, 'client');
 
-        showToast('📱 Код отправлен на ' + phone);
+        // Всплывающее окно с кодом
+        showSmsPopup(clientSmsCode);
+
+        // Показываем шаг с кодом
         clientShowStep('clientStepCode');
     }
 
@@ -2875,7 +2178,7 @@
         function showStatus(msg, isError) {
             formStatus.textContent = msg;
             formStatus.className = 'form-status show' + (isError ? ' error' : '');
-            setTimeout(function() { formStatus.className = 'form-status'; }, 5000);
+            setTimeout(function() { formStatus.className = 'form-status'; }, 8000);
         }
 
         sendCodeBtn.addEventListener('click', function() {
@@ -2887,8 +2190,11 @@
             generatedCode = String(Math.floor(100000 + Math.random() * 900000));
             isCodeSent = true;
             submitReviewBtn.disabled = false;
-            showStatus('📱 Код отправлен на ваш номер');
+            showStatus('📱 Ваш код: ' + generatedCode);
             console.log('[SMS] Код: ' + generatedCode);
+
+            // Всплывающее окно с кодом
+            showSmsPopup(generatedCode);
 
             if (typeof logSmsCode === 'function') logSmsCode(phone, generatedCode, 'review');
         });
@@ -3004,6 +2310,7 @@
     window.renderSmsLog = renderSmsLog;
     window.clearSmsLog = clearSmsLog;
     window.logSmsCode = logSmsCode;
+    window.showSmsPopup = showSmsPopup;
 </script>
 
 </body>
