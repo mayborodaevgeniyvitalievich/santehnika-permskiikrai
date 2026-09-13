@@ -52,27 +52,49 @@
     </script>
 
     <!-- OneSignal Push -->
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script>
-      window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(async function(OneSignal) {
-        try {
-          await OneSignal.init({
-            appId: "405f7f9c-5011-44ef-adc4-2e3ad6197423",
-            serviceWorkerPath: "/OneSignalSDKWorker.js",
-            serviceWorkerUpdaterPath: "/OneSignalSDKUpdaterWorker.js",
-            serviceWorkerParam: { scope: "/" },
-            allowLocalhostAsSecureOrigin: true,
-            notifyButton: { enable: false }
-          });
-          console.log("[OneSignal] Инициализирован");
-          window.oneSignalReady = true;
-        } catch(e) {
-          console.error("[OneSignal] Ошибка:", e);
-          window.oneSignalReady = false;
-        }
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    try {
+      await OneSignal.init({
+        appId: "405f7f9c-5011-44ef-adc4-2e3ad6197423",
+        serviceWorkerPath: "/OneSignalSDKWorker.js",
+        serviceWorkerUpdaterPath: "/OneSignalSDKUpdaterWorker.js",
+        serviceWorkerParam: { scope: "/" },
+        allowLocalhostAsSecureOrigin: true,
+        notifyButton: { enable: false }
       });
-    </script>
+      console.log("[OneSignal] Инициализирован");
+      window.oneSignalReady = true;
+    } catch(e) {
+      console.error("[OneSignal] Ошибка:", e);
+      window.oneSignalReady = false;
+    }
+  });
+</script>
+
+<!-- Firebase Phone Auth -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDw0OcegP9oAolncf6l4rharekvwltEllU",
+    authDomain: "provoda-37cab.firebaseapp.com",
+    projectId: "provoda-37cab",
+    storageBucket: "provoda-37cab.firebasestorage.app",
+    messagingSenderId: "872195471252",
+    appId: "1:872195471252:web:2728b5e6afef09386a4181"
+  };
+
+  if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    console.log("[Firebase] Инициализирован");
+    window.firebaseReady = true;
+  } else {
+    window.firebaseReady = false;
+  }
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
@@ -1094,6 +1116,9 @@
 <button class="push-btn" id="pushBtn" onclick="enablePush()">🔔 Уведомления</button>
 
 <div class="toast" id="toast"></div>
+
+<!-- Firebase reCAPTCHA container -->
+<div id="recaptcha-container"></div>
 <script>
     // ============================================================
     // ===== КРОССБРАУЗЕРНАЯ ОБЁРТКА =====
@@ -1350,42 +1375,92 @@
         document.getElementById('clientPanel').classList.remove('show');
     }
 
-    function clientSendCode() {
+        function clientSendCode() {
         var phone = document.getElementById('clientPhone').value.trim();
         if (!phone || phone.length < 10) {
             showToast('❌ Введите корректный номер телефона');
             return;
         }
 
+        if (phone.charAt(0) !== '+') {
+            phone = '+' + phone.replace(/\D/g, '');
+        }
+
         tempClientPhone = phone;
-        clientSmsCode = String(Math.floor(100000 + Math.random() * 900000));
-
         document.getElementById('clientPhoneDisplay').textContent = phone;
-        document.getElementById('clientSmsCodeValue').textContent = clientSmsCode;
-        console.log('[SMS] Код для ' + phone + ': ' + clientSmsCode);
+        document.getElementById('clientSmsCodeValue').textContent = '------';
 
-        if (typeof logSmsCode === 'function') logSmsCode(phone, clientSmsCode, 'client');
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            showToast('❌ Firebase не загружен. Проверьте интернет.');
+            return;
+        }
 
-        showSmsPopup(clientSmsCode);
-        clientShowStep('clientStepCode');
+        var recaptchaContainer = document.getElementById('recaptcha-container');
+        recaptchaContainer.innerHTML = '';
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            'size': 'invisible',
+            'callback': function(response) {
+                console.log('[Firebase] reCAPTCHA пройдена');
+            }
+        });
+
+        firebase.auth().signInWithPhoneNumber(phone, window.recaptchaVerifier)
+            .then(function(confirmationResult) {
+                window.confirmationResult = confirmationResult;
+                console.log('[Firebase] SMS отправлена на ' + phone);
+                showToast('📱 SMS отправлена на ' + phone);
+                clientShowStep('clientStepCode');
+            })
+            .catch(function(error) {
+                console.error('[Firebase] Ошибка:', error);
+                var errorMsg = '❌ Ошибка: ' + error.message;
+                if (error.code === 'auth/invalid-phone-number') {
+                    errorMsg = '❌ Неверный формат номера';
+                } else if (error.code === 'auth/too-many-requests') {
+                    errorMsg = '❌ Слишком много попыток. Подождите.';
+                } else if (error.code === 'auth/quota-exceeded') {
+                    errorMsg = '❌ Лимит SMS исчерпан на сегодня.';
+                }
+                showToast(errorMsg);
+            });
     }
 
-    function clientVerifyCode() {
+        function clientVerifyCode() {
         var code = document.getElementById('clientCode').value.trim();
         if (!code || code.length !== 6) { showToast('❌ Введите 6-значный код'); return; }
-        if (code !== clientSmsCode) { showToast('❌ Неверный код'); return; }
 
-        var clients = {};
-        try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
-
-        if (clients[tempClientPhone]) {
-            currentClient = clients[tempClientPhone];
-            try { localStorage.setItem('currentClient', JSON.stringify(currentClient)); } catch(e) {}
-            renderClientPanel();
-            showToast('✅ Вы вошли');
-        } else {
-            clientShowStep('clientStepName');
+        if (!window.confirmationResult) {
+            showToast('❌ Сначала получите SMS');
+            return;
         }
+
+        window.confirmationResult.confirm(code)
+            .then(function(result) {
+                console.log('[Firebase] Код верный');
+                var user = result.user;
+
+                var clients = {};
+                try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
+
+                if (clients[tempClientPhone]) {
+                    currentClient = clients[tempClientPhone];
+                    currentClient.firebaseUid = user.uid;
+                    try { localStorage.setItem('currentClient', JSON.stringify(currentClient)); } catch(e) {}
+                    renderClientPanel();
+                    showToast('✅ Вы вошли');
+                } else {
+                    window.tempFirebaseUid = user.uid;
+                    clientShowStep('clientStepName');
+                }
+            })
+            .catch(function(error) {
+                console.error('[Firebase] Ошибка кода:', error);
+                var errorMsg = '❌ Неверный код';
+                if (error.code === 'auth/code-expired') {
+                    errorMsg = '❌ Код истёк. Получите новый.';
+                }
+                showToast(errorMsg);
+            });
     }
 
     function clientBackToPhone() {
@@ -1393,11 +1468,15 @@
         clientShowStep('clientStepPhone');
     }
 
-    function clientCompleteRegistration() {
+        function clientCompleteRegistration() {
         var name = document.getElementById('clientName').value.trim();
         if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
 
-        currentClient = { name: name, phone: tempClientPhone };
+        currentClient = {
+            name: name,
+            phone: tempClientPhone,
+            firebaseUid: window.tempFirebaseUid || ''
+        };
         var clients = {};
         try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
         clients[tempClientPhone] = currentClient;
