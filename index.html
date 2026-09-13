@@ -1462,7 +1462,7 @@
             showToast(errorMsg);
         });
 }
-            .catch(function(error) {
+            .catch(function(error) 
                 console.error('[Firebase] Ошибка кода:', error);
                 var errorMsg = '❌ Неверный код';
                 if (error.code === 'auth/code-expired') {
