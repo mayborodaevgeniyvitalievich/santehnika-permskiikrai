@@ -1426,33 +1426,42 @@
     }
 
         function clientVerifyCode() {
-        var code = document.getElementById('clientCode').value.trim();
-        if (!code || code.length !== 6) { showToast('❌ Введите 6-значный код'); return; }
+    var code = document.getElementById('clientCode').value.trim();
+    if (!code || code.length !== 6) { showToast('❌ Введите 6-значный код'); return; }
 
-        if (!window.confirmationResult) {
-            showToast('❌ Сначала получите SMS');
-            return;
-        }
+    if (!window.confirmationResult) {
+        showToast('❌ Сначала получите SMS');
+        return;
+    }
 
-        window.confirmationResult.confirm(code)
-            .then(function(result) {
-                console.log('[Firebase] Код верный');
-                var user = result.user;
+    window.confirmationResult.confirm(code)
+        .then(function(result) {
+            console.log('[Firebase] Код верный');
+            var user = result.user;
 
-                var clients = {};
-                try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
+            var clients = {};
+            try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
 
-                if (clients[tempClientPhone]) {
-                    currentClient = clients[tempClientPhone];
-                    currentClient.firebaseUid = user.uid;
-                    try { localStorage.setItem('currentClient', JSON.stringify(currentClient)); } catch(e) {}
-                    renderClientPanel();
-                    showToast('✅ Вы вошли');
-                } else {
-                    window.tempFirebaseUid = user.uid;
-                    clientShowStep('clientStepName');
-                }
-            })
+            if (clients[tempClientPhone]) {
+                currentClient = clients[tempClientPhone];
+                currentClient.firebaseUid = user.uid;
+                try { localStorage.setItem('currentClient', JSON.stringify(currentClient)); } catch(e) {}
+                renderClientPanel();
+                showToast('✅ Вы вошли');
+            } else {
+                window.tempFirebaseUid = user.uid;
+                clientShowStep('clientStepName');
+            }
+        })
+        .catch(function(error) {
+            console.error('[Firebase] Ошибка кода:', error);
+            var errorMsg = '❌ Неверный код';
+            if (error.code === 'auth/code-expired') {
+                errorMsg = '❌ Код истёк. Получите новый.';
+            }
+            showToast(errorMsg);
+        });
+}
             .catch(function(error) {
                 console.error('[Firebase] Ошибка кода:', error);
                 var errorMsg = '❌ Неверный код';
@@ -1463,31 +1472,26 @@
             });
     }
 
-    function clientBackToPhone() {
-        document.getElementById('clientCode').value = '';
-        clientShowStep('clientStepPhone');
-    }
+    function clientCompleteRegistration() {
+    var name = document.getElementById('clientName').value.trim();
+    if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
 
-        function clientCompleteRegistration() {
-        var name = document.getElementById('clientName').value.trim();
-        if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
+    currentClient = {
+        name: name,
+        phone: tempClientPhone,
+        firebaseUid: window.tempFirebaseUid || ''
+    };
+    var clients = {};
+    try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
+    clients[tempClientPhone] = currentClient;
+    try {
+        localStorage.setItem('clients', JSON.stringify(clients));
+        localStorage.setItem('currentClient', JSON.stringify(currentClient));
+    } catch(e) {}
 
-        currentClient = {
-            name: name,
-            phone: tempClientPhone,
-            firebaseUid: window.tempFirebaseUid || ''
-        };
-        var clients = {};
-        try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
-        clients[tempClientPhone] = currentClient;
-        try {
-            localStorage.setItem('clients', JSON.stringify(clients));
-            localStorage.setItem('currentClient', JSON.stringify(currentClient));
-        } catch(e) {}
-
-        renderClientPanel();
-        showToast('✅ Регистрация завершена!');
-    }
+    renderClientPanel();
+    showToast('✅ Регистрация завершена!');
+}
 
     function clientLogout() {
         currentClient = null;
