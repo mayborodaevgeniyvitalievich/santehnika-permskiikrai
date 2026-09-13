@@ -1375,6 +1375,11 @@
         document.getElementById('clientPanel').classList.remove('show');
     }
 
+    function clientBackToPhone() {
+    document.getElementById('clientCode').value = '';
+    clientShowStep('clientStepPhone');
+}
+    
         function clientSendCode() {
         var phone = document.getElementById('clientPhone').value.trim();
         if (!phone || phone.length < 10) {
