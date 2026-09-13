@@ -1462,16 +1462,7 @@
             showToast(errorMsg);
         });
 }        
-            .catch(function(error) {
-            console.error('[Firebase] Ошибка кода:', error);
-            var errorMsg = '❌ Неверный код';
-            if (error.code === 'auth/code-expired') {
-                errorMsg = '❌ Код истёк. Получите новый.';
-            }
-            showToast(errorMsg);
-        });
-    }
-
+        
     function clientCompleteRegistration() {
     var name = document.getElementById('clientName').value.trim();
     if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
