@@ -14,15 +14,15 @@
     <meta name="geo.placename" content="Пермь">
     <meta name="geo.position" content="58.010455;56.234183">
     <meta name="ICBM" content="58.010455, 56.234183">
-    <link rel="canonical" href="https://mayborodaevgeniyvitalievich.github.io/santehnika-permskiikrai/">
+    <link rel="canonical" href="https://provoda.space/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="ИП Майборода Евгений Витальевич — сантехника, отопление, кондиционирование в Перми">
     <meta property="og:description" content="Сантехнические работы, монтаж отопительных систем, кондиционирование в Перми и Пермском крае. Опыт с 2017 года. Гарантия 3 года.">
-    <meta property="og:url" content="https://mayborodaevgeniyvitalievich.github.io/santehnika-permskiikrai/">
+    <meta property="og:url" content="https://provoda.space/">
     <meta property="og:site_name" content="ИП Майборода Евгений Витальевич">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary">
-    <link rel="manifest" href="data:application/json,%7B%22name%22%3A%22%D0%9C%D0%B0%D0%B9%D0%B1%D0%BE%D1%80%D0%BE%D0%B4%D0%B0%22%2C%22short_name%22%3A%22%D0%9C%D0%B0%D0%B9%D0%B1%D0%BE%D1%80%D0%BE%D0%B4%D0%B0%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23eef2f5%22%2C%22theme_color%22%3A%22%233a6b8f%22%7D">
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#3a6b8f">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,12 +36,42 @@
       "@context": "https://schema.org",
       "@type": "Plumber",
       "name": "ИП Майборода Евгений Витальевич",
+      "alternateName": ["Майборода Евгений", "ИП Майборода", "Сантехника Пермь"],
+      "description": "Сантехнические работы, монтаж отопительных систем и кондиционирования в Перми и Пермском крае.",
+      "url": "https://provoda.space/",
       "telephone": "+79026469244",
       "email": "ydk59perm@mail.ru",
       "address": {"@type": "PostalAddress", "addressLocality": "Пермь", "addressRegion": "Пермский край", "addressCountry": "RU"},
+      "geo": {"@type": "GeoCoordinates", "latitude": 58.010455, "longitude": 56.234183},
+      "areaServed": [{"@type": "City", "name": "Пермь"}, {"@type": "State", "name": "Пермский край"}],
       "founder": {"@type": "Person", "name": "Майборода Евгений Витальевич"},
-      "foundingDate": "2017-02-21"
+      "foundingDate": "2017-02-21",
+      "priceRange": "₽₽",
+      "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00"}]
     }
+    </script>
+
+    <!-- OneSignal Push -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        try {
+          await OneSignal.init({
+            appId: "405f7f9c-5011-44ef-adc4-2e3ad6197423",
+            serviceWorkerPath: "/OneSignalSDKWorker.js",
+            serviceWorkerUpdaterPath: "/OneSignalSDKUpdaterWorker.js",
+            serviceWorkerParam: { scope: "/" },
+            allowLocalhostAsSecureOrigin: true,
+            notifyButton: { enable: false }
+          });
+          console.log("[OneSignal] Инициализирован");
+          window.oneSignalReady = true;
+        } catch(e) {
+          console.error("[OneSignal] Ошибка:", e);
+          window.oneSignalReady = false;
+        }
+      });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
@@ -65,79 +95,42 @@
             overscroll-behavior-y: none;
         }
 
-        input, textarea, select, button {
-            font-family: inherit;
-            font-size: inherit;
-            -webkit-appearance: none;
-            appearance: none;
-            outline: none;
-            border-radius: 0;
-        }
-
+        input, textarea, select, button { font-family: inherit; font-size: inherit; -webkit-appearance: none; appearance: none; outline: none; border-radius: 0; }
         input, textarea, select, button { border-radius: inherit; }
         input::-moz-focus-inner, button::-moz-focus-inner { border: 0; padding: 0; }
-
         input[type="date"] { -webkit-appearance: none; appearance: none; min-height: 44px; }
         input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.6; padding: 4px; }
+        select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233a6b8f' d='M6 9L1 4h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; padding-right: 42px !important; }
 
-        select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233a6b8f' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 18px center;
-            padding-right: 42px !important;
-        }
+        .chat-float-btn, .chat-window, .gpt-float-btn, .gpt-window, .pwa-install-btn, .push-btn, .toast, .sms-popup { -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 
-        .chat-float-btn, .chat-window, .pwa-install-btn, .push-btn, .toast, .sms-toast {
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-
-        .card {
-            max-width: 960px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border-radius: 48px;
-            box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-            padding: 44px 48px 40px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
+        .card { max-width: 960px; width: 100%; background: rgba(255, 255, 255, 0.85); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-radius: 48px; box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.5) inset; padding: 44px 48px 40px; border: 1px solid rgba(255, 255, 255, 0.4); }
 
         .accent-stripe { height: 5px; width: 100px; background: linear-gradient(90deg, #3a6b8f, #6a9ec4, #3a6b8f); border-radius: 20px; margin-bottom: 24px; }
 
         .accessibility-toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; padding: 8px 0 12px; border-bottom: 1px dashed rgba(160, 190, 210, 0.3); align-items: center; }
         .accessibility-toolbar .divider { color: #b0c8d8; font-size: 1.5rem; opacity: 0.4; user-select: none; }
-
         .access-btn { padding: 6px 18px; border-radius: 30px; border: 2px solid #3a6b8f; background: transparent; color: #1a3d54; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
         .access-btn:hover { background: rgba(58, 107, 143, 0.1); }
         .access-btn.active { background: #3a6b8f; color: white; }
 
         .quick-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; padding: 12px 0; border-bottom: 2px solid rgba(160, 190, 210, 0.25); }
-
         .quick-nav a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 60px; background: rgba(58, 107, 143, 0.08); color: #1a3d54; font-size: 0.8rem; font-weight: 500; text-decoration: none; border: 1px solid rgba(58, 107, 143, 0.15); transition: all 0.2s ease; cursor: pointer; white-space: nowrap; }
         .quick-nav a:hover { background: rgba(58, 107, 143, 0.18); border-color: #3a6b8f; transform: translateY(-2px); }
         .quick-nav a.phone-btn { background: rgba(58, 107, 143, 0.15); border-color: #3a6b8f; font-weight: 600; }
 
         .header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-
         .status-badge { display: inline-block; background: #1e3a4f; color: #f0f4f8; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.8px; padding: 6px 20px 5px; border-radius: 60px; text-transform: uppercase; }
 
         h1.owner-name { font-size: 2.6rem; font-weight: 600; letter-spacing: -0.02em; color: #1a2c3b; line-height: 1.15; margin-top: 10px; }
         .owner-name span { font-weight: 300; color: #4d6a7e; }
-
         .subhead { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 12px 0 18px; }
-
         .title-role { font-size: 1.1rem; font-weight: 400; color: #2a4b62; background: #e5eef6; padding: 4px 24px 5px; border-radius: 60px; border: 1px solid #cbdce7; }
-
         .tagline { font-size: 0.9rem; color: #4a6d84; background: rgba(225, 238, 248, 0.6); padding: 4px 20px; border-radius: 40px; border: 1px solid #cbdce7; }
 
         .about-block, .team-block, .services, .faq-block, .account-block, .reviews-block { margin: 28px 0 20px; padding: 28px 30px; border-radius: 40px; background: rgba(240, 246, 250, 0.5); border: 1px solid rgba(160, 190, 210, 0.2); scroll-margin-top: 80px; }
 
         .about-title, .team-title, .services-title, .faq-title, .account-title, .reviews-title, .subscribe-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.2px; color: #3a6a84; font-weight: 600; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
-
         .about-title::after, .team-title::after, .services-title::after, .faq-title::after, .account-title::after, .reviews-title::after, .subscribe-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, #b0c8d8, transparent); }
 
         .about-text { color: #142f42; font-size: 1rem; line-height: 1.8; }
@@ -151,7 +144,6 @@
         .experience-block .exp-badge { background: #3a6b8f; color: white; font-weight: 600; padding: 6px 22px; border-radius: 40px; font-size: 0.95rem; margin-left: auto; }
 
         .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-
         .team-card { background: rgba(255, 255, 255, 0.6); border-radius: 28px; padding: 22px 20px; text-align: center; border: 1px solid rgba(160, 190, 210, 0.15); transition: all 0.25s ease; }
         .team-card:hover { background: rgba(255, 255, 255, 0.85); border-color: #6f95b5; transform: translateY(-4px); }
         .team-avatar { font-size: 2.6rem; line-height: 1; margin-bottom: 12px; }
@@ -163,11 +155,7 @@
         .role-support-badge { background: rgba(42, 107, 74, 0.15); color: #2a6b4a; }
         .team-desc { font-size: 0.85rem; color: #4a6d84; line-height: 1.6; }
 
-        .team-note { margin-top: 20px; padding: 14px 22px; border-radius: 60px; background: linear-gradient(135deg, rgba(58, 107, 143, 0.06), rgba(106, 158, 196, 0.03)); border: 1px solid rgba(58, 107, 143, 0.1); display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: #214b62; line-height: 1.5; }
-        .team-note span:first-child { font-size: 1.4rem; }
-
         .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-
         .service-btn { background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(180, 200, 215, 0.4); border-radius: 60px; padding: 10px 14px; font-size: 0.85rem; font-weight: 500; color: #1a384b; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.18s ease; text-align: left; width: 100%; min-height: 48px; }
         .service-btn:hover { background: #eaf3fb; border-color: #6f95b5; }
         .service-btn.active { background: #d4e3ed; border-color: #3a6b8f; }
@@ -189,7 +177,6 @@
         .schedule-title, .guarantee-title { font-weight: 600; color: #1a3d54; font-size: 1.1rem; }
         .schedule-text, .guarantee-text { color: #214b62; font-size: 0.95rem; line-height: 1.6; }
         .schedule-text strong, .guarantee-text strong { color: #1a3d54; }
-
         .emergency-block { display: flex; align-items: center; gap: 12px; background: rgba(58, 107, 143, 0.06); padding: 10px 20px; border-radius: 60px; border: 1px solid rgba(58, 107, 143, 0.12); }
         .emergency-icon { font-size: 1.6rem; }
         .emergency-title { font-weight: 600; color: #b33a3a; font-size: 0.9rem; }
@@ -217,51 +204,23 @@
         .account-step.active { display: block; }
         .account-step-title { font-weight: 600; color: #1a3d54; font-size: 1.05rem; margin-bottom: 14px; }
         .account-step-hint { font-size: 0.88rem; color: #5a7d94; margin-bottom: 16px; line-height: 1.5; }
-
         .account-input-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-
         .account-input-row input, .account-input-row select { flex: 1; min-width: 160px; padding: 13px 22px; border-radius: 40px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.95rem; background: rgba(255, 255, 255, 0.7); color: #142f42; }
         .account-input-row input:focus, .account-input-row select:focus { border-color: #3a6b8f; }
-
         .account-input-row button { padding: 13px 30px; border-radius: 40px; border: none; background: #3a6b8f; color: white; font-size: 0.95rem; font-weight: 500; cursor: pointer; white-space: nowrap; }
         .account-input-row button:hover { background: #2a5a7a; }
         .account-input-row .btn-secondary { background: #d4e2ed; color: #1a3d54; }
         .account-input-row .btn-secondary:hover { background: #c0d4e2; }
 
-        /* Плашка с кодом */
-        .sms-code-display {
-            background: linear-gradient(135deg, #f5b342, #e8a830);
-            color: #1a2c3b;
-            padding: 16px 22px;
-            border-radius: 24px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: none;
-            align-items: center;
-            gap: 14px;
-            box-shadow: 0 8px 20px -8px rgba(245, 179, 66, 0.5);
-        }
-
+        .sms-code-display { background: linear-gradient(135deg, #f5b342, #e8a830); color: #1a2c3b; padding: 16px 22px; border-radius: 24px; font-size: 1rem; font-weight: 600; margin-bottom: 16px; display: none; align-items: center; gap: 14px; box-shadow: 0 8px 20px -8px rgba(245, 179, 66, 0.5); }
         .sms-code-display.show { display: flex; }
         .sms-code-display .sms-code-icon { font-size: 1.8rem; }
-        .sms-code-display .sms-code-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: 4px;
-            color: #1a2c3b;
-            background: white;
-            padding: 6px 18px;
-            border-radius: 16px;
-            font-family: 'Courier New', monospace;
-        }
+        .sms-code-display .sms-code-value { font-size: 1.8rem; font-weight: 800; letter-spacing: 4px; color: #1a2c3b; background: white; padding: 6px 18px; border-radius: 16px; font-family: 'Courier New', monospace; }
 
         .account-panel { display: none; }
         .account-panel.show { display: block; }
-
         .account-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(160, 190, 210, 0.2); }
         .account-user { font-weight: 600; color: #1a3d54; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
         .account-logout { padding: 6px 18px; border-radius: 30px; border: 1px solid rgba(179, 58, 58, 0.3); background: rgba(179, 58, 58, 0.06); color: #b33a3a; font-size: 0.85rem; cursor: pointer; }
         .account-logout:hover { background: rgba(179, 58, 58, 0.15); }
 
@@ -272,30 +231,29 @@
         .role-client { background: rgba(120, 120, 120, 0.15); color: #555; }
 
         .order-form { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; padding: 18px 20px; background: rgba(255, 255, 255, 0.5); border-radius: 28px; border: 1px solid rgba(160, 190, 210, 0.15); }
-        .order-form input, .order-form select { flex: 1; min-width: 140px; padding: 11px 18px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.9rem; background: rgba(255, 255, 255, 0.8); color: #142f42; }
+        .order-form input, .order-form select, .order-form textarea { flex: 1; min-width: 140px; padding: 11px 18px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.9rem; background: rgba(255, 255, 255, 0.8); color: #142f42; font-family: inherit; }
+        .order-form textarea { resize: vertical; min-height: 60px; width: 100%; }
         .order-form button { padding: 11px 26px; border-radius: 30px; border: none; background: #3a6b8f; color: white; font-size: 0.9rem; font-weight: 500; cursor: pointer; }
         .order-form button:hover { background: #2a5a7a; }
 
         .orders-title { font-weight: 600; color: #1a3d54; font-size: 1rem; margin-bottom: 12px; margin-top: 16px; }
-
         .order-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 20px; border-radius: 20px; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(160, 190, 210, 0.15); margin-bottom: 10px; }
+        .order-item.unread { background: rgba(245, 179, 66, 0.15) !important; border-left: 4px solid #f5b342 !important; }
         .order-info { flex: 1; }
         .order-service { font-weight: 600; color: #1a3d54; font-size: 0.95rem; }
         .order-date { font-size: 0.78rem; color: #6b8ba2; margin-top: 2px; }
+        .order-reason { font-size: 0.82rem; color: #2a4b62; margin-top: 4px; font-style: italic; }
 
         .status-select { padding: 5px 12px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.4); font-size: 0.78rem; background: white; cursor: pointer; color: #1a3d54; font-weight: 600; }
 
         .chat-container { display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto; padding: 16px 20px; background: rgba(255, 255, 255, 0.6); border-radius: 28px; border: 1px solid rgba(160, 190, 210, 0.2); margin-bottom: 14px; min-height: 100px; }
-
         .chat-message { max-width: 80%; padding: 12px 18px; border-radius: 20px; font-size: 0.92rem; line-height: 1.5; word-break: break-word; }
         .chat-message.client { align-self: flex-end; background: #3a6b8f; color: white; border-bottom-right-radius: 6px; }
         .chat-message.support { align-self: flex-start; background: rgba(58, 107, 143, 0.1); color: #1a3d54; border-bottom-left-radius: 6px; }
         .chat-message .chat-time { display: block; font-size: 0.7rem; opacity: 0.7; margin-top: 4px; }
         .chat-message.client .chat-time { color: #c8dce5; }
         .chat-message.support .chat-time { color: #5a7d94; }
-
         .chat-empty { text-align: center; color: #6b8ba2; font-style: italic; font-size: 0.9rem; padding: 20px 0; }
-
         .chat-input-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
         .chat-input-row input { flex: 1; min-width: 200px; padding: 13px 22px; border-radius: 40px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.95rem; background: rgba(255, 255, 255, 0.7); color: #142f42; }
         .chat-input-row input:focus { border-color: #3a6b8f; }
@@ -303,41 +261,60 @@
         .chat-input-row button:hover { background: #2a5a7a; }
 
         .chat-dialogs-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-
         .chat-dialog-item { padding: 14px 20px; border-radius: 20px; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(160, 190, 210, 0.15); cursor: pointer; transition: all 0.2s ease; }
         .chat-dialog-item:hover { background: rgba(255, 255, 255, 0.8); border-color: #6f95b5; }
         .chat-dialog-item.active { background: #d4e3ed; border-color: #3a6b8f; }
+        .chat-dialog-item.unread { background: rgba(245, 179, 66, 0.15) !important; border-left: 4px solid #f5b342 !important; }
         .chat-dialog-name { font-weight: 600; color: #1a3d54; font-size: 0.95rem; }
         .chat-dialog-last { font-size: 0.8rem; color: #6b8ba2; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         .chat-float-btn { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #3a6b8f, #4a7a9a); color: white; border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(58, 107, 143, 0.6); z-index: 1000; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
         .chat-float-btn:hover { transform: scale(1.08); }
         .chat-float-btn.active { background: linear-gradient(135deg, #2a5a7a, #3a6b8f); transform: rotate(90deg); }
-
         .chat-float-badge { position: absolute; top: -4px; right: -4px; background: #e74c3c; color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 0.75rem; font-weight: 700; display: none; align-items: center; justify-content: center; border: 2px solid white; }
         .chat-float-badge.show { display: flex; }
 
         .chat-window { position: fixed; bottom: 100px; right: 24px; width: 380px; max-width: calc(100vw - 48px); height: 520px; max-height: calc(100vh - 140px); max-height: calc(100dvh - 140px); background: white; border-radius: 28px; box-shadow: 0 24px 64px -16px rgba(0, 20, 40, 0.4); z-index: 1001; display: none; flex-direction: column; overflow: hidden; border: 1px solid rgba(160, 190, 210, 0.2); }
         .chat-window.open { display: flex; }
-
         .chat-window-header { background: linear-gradient(135deg, #3a6b8f, #4a7a9a); color: white; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
         .chat-window-title { display: flex; align-items: center; gap: 12px; }
         .chat-window-close { background: rgba(255, 255, 255, 0.15); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 1rem; cursor: pointer; }
         .chat-window-close:hover { background: rgba(255, 255, 255, 0.3); }
-
         .chat-window-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-
         .chat-login-prompt { padding: 40px 30px; text-align: center; color: #1a3d54; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .chat-login-btn { padding: 12px 32px; border-radius: 40px; border: none; background: #3a6b8f; color: white; font-size: 0.95rem; font-weight: 600; cursor: pointer; }
         .chat-login-btn:hover { background: #2a5a7a; }
-
         .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; background: #f8fafc; }
-
         .chat-window-input { padding: 14px 18px; background: white; border-top: 1px solid rgba(160, 190, 210, 0.2); display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
         .chat-window-input input { flex: 1; padding: 12px 18px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.9rem; color: #142f42; background: #f8fafc; }
         .chat-window-input input:focus { border-color: #3a6b8f; background: white; }
         .chat-window-input button { width: 44px; height: 44px; border-radius: 50%; border: none; background: #3a6b8f; color: white; font-size: 1.1rem; cursor: pointer; flex-shrink: 0; }
         .chat-window-input button:hover { background: #2a5a7a; }
+
+        .gpt-float-btn { position: fixed; bottom: 24px; right: 100px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #7a4dc4, #9b6ddc); color: white; border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(122, 77, 196, 0.6); z-index: 1000; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .gpt-float-btn:hover { transform: scale(1.08); }
+        .gpt-float-btn.active { background: linear-gradient(135deg, #5a2d94, #7a4dc4); transform: rotate(90deg); }
+
+        .gpt-window { position: fixed; bottom: 100px; right: 100px; width: 400px; max-width: calc(100vw - 48px); height: 550px; max-height: calc(100vh - 140px); max-height: calc(100dvh - 140px); background: white; border-radius: 28px; box-shadow: 0 24px 64px -16px rgba(0, 20, 40, 0.4); z-index: 1001; display: none; flex-direction: column; overflow: hidden; border: 1px solid rgba(160, 190, 210, 0.2); }
+        .gpt-window.open { display: flex; }
+        .gpt-window-header { background: linear-gradient(135deg, #7a4dc4, #9b6ddc); color: white; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        .gpt-window-title { display: flex; align-items: center; gap: 12px; }
+        .gpt-window-close { background: rgba(255, 255, 255, 0.15); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 1rem; cursor: pointer; }
+        .gpt-window-close:hover { background: rgba(255, 255, 255, 0.3); }
+        .gpt-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; background: #f8fafc; }
+        .gpt-message { max-width: 85%; padding: 12px 18px; border-radius: 20px; font-size: 0.92rem; line-height: 1.5; word-break: break-word; }
+        .gpt-message.bot { align-self: flex-start; background: rgba(122, 77, 196, 0.1); color: #1a3d54; border-bottom-left-radius: 6px; }
+        .gpt-message.user { align-self: flex-end; background: #7a4dc4; color: white; border-bottom-right-radius: 6px; }
+        .gpt-quick-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .gpt-quick-btns button { padding: 6px 12px; border-radius: 30px; border: 1px solid rgba(122, 77, 196, 0.3); background: white; color: #7a4dc4; font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
+        .gpt-quick-btns button:hover { background: rgba(122, 77, 196, 0.1); }
+        .gpt-input { padding: 14px 18px; background: white; border-top: 1px solid rgba(160, 190, 210, 0.2); display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+        .gpt-input input { flex: 1; padding: 12px 18px; border-radius: 30px; border: 1px solid rgba(160, 190, 210, 0.3); font-size: 0.9rem; color: #142f42; background: #f8fafc; }
+        .gpt-input input:focus { border-color: #7a4dc4; background: white; }
+        .gpt-input button { width: 44px; height: 44px; border-radius: 50%; border: none; background: #7a4dc4; color: white; font-size: 1.1rem; cursor: pointer; flex-shrink: 0; }
+        .gpt-input button:hover { background: #5a2d94; }
+
+        .messages-badge { display: inline-block; background: #e74c3c; color: white; min-width: 20px; height: 20px; border-radius: 50%; font-size: 0.7rem; font-weight: 700; padding: 0 5px; text-align: center; line-height: 20px; margin-left: 4px; }
 
         .review-form { background: rgba(255, 255, 255, 0.6); border-radius: 32px; padding: 24px 28px; margin-bottom: 24px; border: 1px solid rgba(160, 190, 210, 0.2); }
         .review-form .form-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
@@ -345,12 +322,10 @@
         .review-form .form-row textarea { resize: vertical; min-height: 80px; }
         .review-form .form-row .code-input { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .review-form .form-row .code-input input { flex: 1; min-width: 120px; }
-
         .review-form .btn { padding: 10px 28px; border-radius: 60px; border: none; font-size: 0.95rem; font-weight: 500; cursor: pointer; background: #3a6b8f; color: white; }
         .review-form .btn:hover { background: #2a5a7a; }
         .review-form .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .review-form .btn-secondary { background: #d4e2ed; color: #1a3d54; }
-
         .review-form .form-status { font-size: 0.9rem; color: #2a6b4a; margin-top: 10px; padding: 10px 16px; border-radius: 20px; background: rgba(42, 107, 74, 0.08); display: none; }
         .review-form .form-status.error { color: #b33a3a; background: rgba(179, 58, 58, 0.08); }
         .review-form .form-status.show { display: block; }
@@ -384,33 +359,14 @@
         .footer-meta .ip-tag { background: #d4e2ed; padding: 4px 16px; border-radius: 40px; color: #123a52; font-weight: 500; }
 
         .pwa-install-btn, .push-btn { position: fixed; bottom: 24px; padding: 14px 24px; border-radius: 60px; background: #3a6b8f; color: white; border: none; font-size: 0.9rem; font-weight: 600; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(58, 107, 143, 0.5); display: none; align-items: center; gap: 10px; z-index: 999; }
-        .pwa-install-btn { right: 100px; }
+        .pwa-install-btn { right: 176px; }
         .push-btn { left: 24px; }
         .pwa-install-btn.show, .push-btn.show { display: flex; }
 
         .toast { position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-100px); background: #1e3a4f; color: white; padding: 14px 28px; border-radius: 60px; font-size: 0.9rem; font-weight: 500; box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4); z-index: 9999; transition: transform 0.4s ease; max-width: 90%; text-align: center; }
         .toast.show { transform: translateX(-50%) translateY(0); }
 
-        /* Всплывающее окно с SMS-кодом */
-        .sms-popup {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-200px);
-            background: linear-gradient(135deg, #f5b342, #e8a830);
-            color: #1a2c3b;
-            padding: 20px 32px;
-            border-radius: 28px;
-            box-shadow: 0 24px 60px -12px rgba(245, 179, 66, 0.6);
-            z-index: 9998;
-            transition: transform 0.5s ease;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            max-width: 90%;
-            border: 3px solid white;
-        }
-
+        .sms-popup { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-200px); background: linear-gradient(135deg, #f5b342, #e8a830); color: #1a2c3b; padding: 20px 32px; border-radius: 28px; box-shadow: 0 24px 60px -12px rgba(245, 179, 66, 0.6); z-index: 9998; transition: transform 0.5s ease; display: flex; align-items: center; gap: 16px; max-width: 90%; border: 3px solid white; }
         .sms-popup.show { transform: translateX(-50%) translateY(0); }
         .sms-popup .sms-popup-icon { font-size: 2rem; }
         .sms-popup .sms-popup-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.7; font-weight: 600; }
@@ -451,7 +407,7 @@
         body.dark-theme .emergency-24h { color: #b0c8d8 !important; }
         body.dark-theme .comm-label span { background: #2a4a5f; color: #b0d0e0; }
         body.dark-theme .review-form, body.dark-theme .review-item, body.dark-theme .faq-item, body.dark-theme .order-form, body.dark-theme .order-item, body.dark-theme .chat-container, body.dark-theme .chat-dialog-item { background: rgba(40, 65, 85, 0.4); border-color: rgba(255, 255, 255, 0.06); }
-        body.dark-theme .review-form .form-row input, body.dark-theme .review-form .form-row textarea, body.dark-theme .account-input-row input, body.dark-theme .order-form input, body.dark-theme .order-form select, body.dark-theme .subscribe-form input, body.dark-theme .chat-input-row input { background: rgba(20, 40, 55, 0.7); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
+        body.dark-theme .review-form .form-row input, body.dark-theme .review-form .form-row textarea, body.dark-theme .account-input-row input, body.dark-theme .order-form input, body.dark-theme .order-form select, body.dark-theme .order-form textarea, body.dark-theme .subscribe-form input, body.dark-theme .chat-input-row input { background: rgba(20, 40, 55, 0.7); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
         body.dark-theme .review-form .btn, body.dark-theme .account-input-row button, body.dark-theme .order-form button, body.dark-theme .subscribe-form button, body.dark-theme .chat-input-row button { background: #4a7a9a; color: white; }
         body.dark-theme .review-form .btn-secondary { background: #2a4a5f; color: #b0d0e0; }
         body.dark-theme .review-item .review-name, body.dark-theme .order-service, body.dark-theme .account-user, body.dark-theme .orders-title, body.dark-theme .chat-dialog-name { color: #c8dce5; }
@@ -477,14 +433,8 @@
         body.dark-theme .account-step-hint { color: #8ab0c5; }
         body.dark-theme .status-select { background: #2a4a5f; color: #b0d0e0; border-color: rgba(255,255,255,0.1); }
         body.dark-theme .team-card { background: rgba(40, 65, 85, 0.4); border-color: rgba(255, 255, 255, 0.06); }
-        body.dark-theme .team-card:hover { background: rgba(50, 80, 105, 0.5); border-color: #5a8aaa; }
         body.dark-theme .team-name { color: #c8dce5; }
         body.dark-theme .team-desc { color: #8ab0c5; }
-        body.dark-theme .team-note { background: rgba(40, 65, 85, 0.4); border-color: rgba(255, 255, 255, 0.06); color: #b0c8d8; }
-        body.dark-theme .role-director-badge { background: rgba(245, 179, 66, 0.15); color: #f5c46a; }
-        body.dark-theme .role-admin-badge { background: rgba(90, 140, 170, 0.2); color: #7aabca; }
-        body.dark-theme .role-master-badge { background: rgba(90, 140, 170, 0.15); color: #7aabca; }
-        body.dark-theme .role-support-badge { background: rgba(106, 191, 138, 0.15); color: #6abf8a; }
         body.dark-theme .chat-message.client { background: #4a7a9a; color: white; }
         body.dark-theme .chat-message.support { background: rgba(90, 140, 170, 0.15); color: #c8dce5; }
         body.dark-theme .chat-window { background: rgba(30, 45, 55, 0.98); border-color: rgba(255, 255, 255, 0.08); }
@@ -492,9 +442,13 @@
         body.dark-theme .chat-messages { background: rgba(20, 35, 45, 0.5); }
         body.dark-theme .chat-window-input { background: rgba(30, 45, 55, 0.98); border-top-color: rgba(255, 255, 255, 0.08); }
         body.dark-theme .chat-window-input input { background: rgba(20, 40, 55, 0.7); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
-        body.dark-theme .chat-login-prompt { color: #c8dce5; }
         body.dark-theme .sms-code-display { background: linear-gradient(135deg, #c8993a, #b88728); color: #fff; }
         body.dark-theme .sms-code-display .sms-code-value { background: rgba(255,255,255,0.15); color: #fff; }
+        body.dark-theme .gpt-window { background: rgba(30, 45, 55, 0.98); }
+        body.dark-theme .gpt-messages { background: rgba(20, 35, 45, 0.5); }
+        body.dark-theme .gpt-message.bot { background: rgba(122, 77, 196, 0.15); color: #c8dce5; }
+        body.dark-theme .gpt-input { background: rgba(30, 45, 55, 0.98); border-top-color: rgba(255, 255, 255, 0.08); }
+        body.dark-theme .gpt-input input { background: rgba(20, 40, 55, 0.7); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
 
         @media (max-width: 768px) {
             .service-grid { grid-template-columns: repeat(2, 1fr); }
@@ -521,10 +475,10 @@
             .account-input-row { flex-direction: column; }
             .account-input-row input, .account-input-row button, .account-input-row select { width: 100%; }
             .order-form { flex-direction: column; }
-            .order-form input, .order-form select, .order-form button { width: 100%; }
+            .order-form input, .order-form select, .order-form textarea, .order-form button { width: 100%; }
             .chat-input-row { flex-direction: column; }
             .chat-input-row input, .chat-input-row button { width: 100%; }
-            .pwa-install-btn { bottom: 16px; right: 88px; padding: 10px 16px; font-size: 0.78rem; }
+            .pwa-install-btn { bottom: 16px; right: 176px; padding: 10px 16px; font-size: 0.78rem; }
             .push-btn { bottom: 16px; left: 16px; padding: 10px 16px; font-size: 0.78rem; }
             .sms-popup { top: 60px; padding: 16px 24px; }
             .sms-popup .sms-popup-code { font-size: 1.5rem; letter-spacing: 4px; }
@@ -534,7 +488,9 @@
         @media (max-width: 500px) {
             .chat-window { width: calc(100vw - 32px); right: 16px; bottom: 92px; height: calc(100vh - 130px); max-height: 560px; }
             .chat-float-btn { width: 56px; height: 56px; bottom: 16px; right: 16px; font-size: 1.5rem; }
-            .pwa-install-btn { right: 80px; }
+            .gpt-float-btn { width: 56px; height: 56px; bottom: 88px; right: 16px; font-size: 1.5rem; }
+            .gpt-window { width: calc(100vw - 32px); right: 16px; bottom: 156px; height: calc(100vh - 200px); max-height: 600px; }
+            .pwa-install-btn { right: 88px; }
         }
 
         @media (max-width: 450px) {
@@ -561,7 +517,6 @@
         @-moz-document url-prefix() {
             .card { background: #ffffff; }
             body.dark-theme .card { background: #1e2d37; }
-            select { background-image: none; }
         }
     </style>
 </head>
@@ -585,7 +540,7 @@
         <a href="#guarantee-block"><span class="nav-icon">🛡️</span> Гарантия</a>
         <a href="#faq-block"><span class="nav-icon">❓</span> FAQ</a>
         <a href="#client-block"><span class="nav-icon">👤</span> Кабинет клиента</a>
-        <a href="#account-block"><span class="nav-icon">👔</span> Кабинет сотрудника</a>
+        <a href="#account-block"><span class="nav-icon">👔</span> Кабинет сотрудника<span class="messages-badge" id="messagesBadge" style="display:none;">0</span></a>
         <a href="#reviews-block"><span class="nav-icon">⭐</span> Отзывы</a>
         <a href="#contacts-block"><span class="nav-icon">📞</span> Контакты</a>
         <a href="tel:+79026469244" class="phone-btn">
@@ -606,6 +561,7 @@
         <span class="tagline">▸ сантехника · отопление · кондиционирование · Пермь</span>
     </div>
 
+    <!-- ===== О КОМПАНИИ ===== -->
     <div class="about-block" id="about-block">
         <div class="about-title">🏢 О компании</div>
         <div class="about-text">
@@ -617,13 +573,15 @@
                 <span class="exp-badge">с 21 февраля 2017 года</span>
             </div>
 
-            <p>За весь период работы в компании сформировался коллектив опытных и высококвалифицированных сотрудников, представляющих собой сплочённую команду профессионалов, способную решать задачи любой сложности.</p>
+            <p>За весь период работы в компании сформировался коллектив опытных и высококвалифицированных сотрудников, представляющих собой сплочённую команду профессионалов, способную решать задачи любой сложности, имеющих большой опыт в сфере обслуживания зданий и ориентированных на достижение самых высоких результатов.</p>
             <p><strong>ИП Майборода Евгений Витальевич</strong> предлагает потенциальным заказчикам выполнение полного комплекса услуг по обслуживанию ТСЖ, ТСН, ЖСК, капитальному ремонту инженерных систем и электрических коммуникаций зданий и сооружений промышленного и гражданского назначения, частных домов.</p>
         </div>
     </div>
 
+    <!-- ===== КОМАНДА ===== -->
     <div class="team-block" id="team-block">
         <h2 class="team-title">👥 Наша команда</h2>
+
         <div class="team-grid">
             <div class="team-card">
                 <div class="team-avatar">👨‍💼</div>
@@ -631,30 +589,35 @@
                 <div class="team-role role-director-badge">Директор</div>
                 <div class="team-desc">Основатель компании. Опыт в сфере ЖКХ и инженерных систем с 2017 года.</div>
             </div>
+
             <div class="team-card">
                 <div class="team-avatar">👨‍💻</div>
                 <div class="team-name">Максим</div>
                 <div class="team-role role-admin-badge">Администратор сайта, создатель сайта</div>
                 <div class="team-desc">Отвечает за работу сайта, заявки, поддержку клиентов и развитие компании.</div>
             </div>
+
             <div class="team-card">
                 <div class="team-avatar">🔧</div>
                 <div class="team-name">Сантехник</div>
                 <div class="team-role role-master-badge">Сантехнические работы</div>
                 <div class="team-desc">Монтаж и ремонт систем водоснабжения, канализации, отопления.</div>
             </div>
+
             <div class="team-card">
                 <div class="team-avatar">⚡</div>
                 <div class="team-name">Электрик</div>
                 <div class="team-role role-master-badge">Электромонтаж</div>
                 <div class="team-desc">Монтаж и ремонт электрических сетей, щитов, освещения.</div>
             </div>
+
             <div class="team-card">
                 <div class="team-avatar">🔥</div>
                 <div class="team-name">Сварщик</div>
                 <div class="team-role role-master-badge">Сварочные работы</div>
                 <div class="team-desc">Сварка трубопроводов, металлоконструкций, инженерных систем.</div>
             </div>
+
             <div class="team-card">
                 <div class="team-avatar">💬</div>
                 <div class="team-name">Поддержка</div>
@@ -664,40 +627,48 @@
         </div>
     </div>
 
+    <!-- ===== УСЛУГИ ===== -->
     <div class="services" id="services-block">
         <h2 class="services-title">Чем занимается</h2>
         <div class="service-grid" id="serviceGrid">
-            <button class="service-btn" data-detail="<strong>🔧 Сантехнические работы</strong> — всё, что связано с водой и трубами. Прокладываем новые трубы, заменяем старые, устанавливаем раковины, унитазы, ванны, душевые кабины, смесители.">
+            <button class="service-btn" data-detail="<strong>🔧 Сантехнические работы</strong> — всё, что связано с водой и трубами. Прокладываем новые трубы, заменяем старые, устанавливаем раковины, унитазы, ванны, душевые кабины, смесители. Работаем с металлом, пластиком, металлопластиком.">
                 <span class="service-icon">🔧</span>
                 <span class="btn-text">Сантехнические работы</span>
             </button>
-            <button class="service-btn" data-detail="<strong>🔥 Отопительные системы</strong> — то, что греет ваш дом зимой. Проектируем и монтируем радиаторное отопление, тёплые полы, котельные.">
+
+            <button class="service-btn" data-detail="<strong>🔥 Отопительные системы</strong> — то, что греет ваш дом зимой. Проектируем и монтируем радиаторное отопление, тёплые полы, котельные. Подбираем оборудование под ваш бюджет и площадь помещения.">
                 <span class="service-icon">🔥</span>
                 <span class="btn-text">Отопительные системы</span>
             </button>
-            <button class="service-btn" data-detail="<strong>❄️ Кондиционирование и вентиляция</strong> — свежий воздух и комфортная температура. Устанавливаем сплит-системы, мультизональные системы, приточную вентиляцию.">
+
+            <button class="service-btn" data-detail="<strong>❄️ Кондиционирование и вентиляция</strong> — свежий воздух и комфортная температура. Устанавливаем сплит-системы, мультизональные системы, приточную вентиляцию, канальные кондиционеры.">
                 <span class="service-icon">❄️</span>
                 <span class="btn-text">Кондиционирование</span>
             </button>
+
             <button class="service-btn" data-detail="<strong>💧 Водоснабжение и канализация</strong> — подача чистой воды и отвод грязной. Монтируем внутренние и наружные сети. Устанавливаем насосные станции, фильтры, септики.">
                 <span class="service-icon">💧</span>
                 <span class="btn-text">Водоснабжение</span>
             </button>
+
             <button class="service-btn" data-detail="<strong>🛠️ Ремонт и обслуживание</strong> — диагностика, ремонт котлов, насосов, кондиционеров. Прочистка засоров, плановое ТО, аварийные выезды.">
                 <span class="service-icon">🛠️</span>
                 <span class="btn-text">Ремонт и сервис</span>
             </button>
-            <button class="service-btn" data-detail="<strong>📐 Проектирование инженерных сетей</strong> — чертежи и расчёты до монтажа. Схемы разводки труб, тепловые расчёты, 3D-модели.">
+
+            <button class="service-btn" data-detail="<strong>📐 Проектирование инженерных сетей</strong> — чертежи и расчёты до монтажа. Схемы разводки труб, тепловые расчёты, 3D-модели. Согласование с коммунальными службами.">
                 <span class="service-icon">📐</span>
                 <span class="btn-text">Проектирование</span>
             </button>
         </div>
+
         <div class="service-detail" id="serviceDetail">
             <span class="detail-icon">💬</span>
             <span class="detail-text detail-empty">Нажмите на любую услугу, чтобы узнать подробнее</span>
         </div>
     </div>
 
+    <!-- ===== РЕЖИМ РАБОТЫ ===== -->
     <div class="work-schedule-block" id="schedule-block">
         <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
             <span class="schedule-icon">🕐</span>
@@ -718,6 +689,7 @@
         </div>
     </div>
 
+    <!-- ===== ГАРАНТИЯ ===== -->
     <div class="guarantee-block" id="guarantee-block">
         <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
             <span class="guarantee-icon">🛡️</span>
@@ -731,16 +703,18 @@
         </div>
     </div>
 
+    <!-- ===== ТСЖ / ТСН / ЖСК ===== -->
     <div class="community-block" id="community-block">
         <div class="comm-label">
             <span>🏢</span> Обслуживаем
             <span>ТСЖ</span> <span>ТСН</span> <span>ЖСК</span>
         </div>
         <div class="comm-desc">
-            <strong>ИП Майборода Евгений Витальевич</strong> — работаем с товариществами собственников жилья, ТСН, ЖСК и другими объединениями.
+            <strong>ИП Майборода Евгений Витальевич</strong> — работаем с товариществами собственников жилья, ТСН, ЖСК и другими объединениями. Выполняем монтаж, замену и ремонт систем отопления, водоснабжения, канализации в многоквартирных домах.
         </div>
     </div>
 
+    <!-- ===== FAQ ===== -->
     <div class="faq-block" id="faq-block">
         <h2 class="faq-title">❓ Частые вопросы</h2>
 
@@ -749,7 +723,7 @@
                 <span>Сколько стоит выезд мастера?</span>
                 <span class="faq-arrow">▼</span>
             </div>
-            <div class="faq-answer">Выезд мастера для диагностики и оценки работ — <strong>бесплатно</strong> при заказе услуги.</div>
+            <div class="faq-answer">Выезд мастера для диагностики и оценки работ — <strong>бесплатно</strong> при заказе услуги. Если вы отказываетесь от работ, выезд оплачивается по тарифу.</div>
         </div>
 
         <div class="faq-item">
@@ -773,7 +747,7 @@
                 <span>Работаете ли вы с юридическими лицами?</span>
                 <span class="faq-arrow">▼</span>
             </div>
-            <div class="faq-answer">Да, мы работаем с <strong>ТСЖ, ТСН, ЖСК, управляющими компаниями</strong>.</div>
+            <div class="faq-answer">Да, мы работаем с <strong>ТСЖ, ТСН, ЖСК, управляющими компаниями</strong>. Предоставляем все закрывающие документы.</div>
         </div>
 
         <div class="faq-item">
@@ -781,10 +755,11 @@
                 <span>Вы работаете только в Перми или по краю тоже?</span>
                 <span class="faq-arrow">▼</span>
             </div>
-            <div class="faq-answer">Работаем <strong>в Перми и по всему Пермскому краю</strong>.</div>
+            <div class="faq-answer">Работаем <strong>в Перми и по всему Пермскому краю</strong>. Выезд за город обсуждается индивидуально.</div>
         </div>
     </div>
 
+    <!-- ===== QR-КОД ===== -->
     <div class="qr-block" id="qr-block">
         <div class="qr-info">
             <div class="qr-title">📱 Сохраните наш сайт</div>
@@ -795,6 +770,7 @@
         </div>
     </div>
 
+    <!-- ===== КАБИНЕТ КЛИЕНТА ===== -->
     <div class="account-block" id="client-block">
         <h2 class="account-title">👤 Кабинет клиента</h2>
 
@@ -810,7 +786,7 @@
         <div class="account-step" id="clientStepCode">
             <div class="account-step-title">Введите код из SMS</div>
             <div class="account-step-hint">Код отправлен на номер <strong id="clientPhoneDisplay"></strong></div>
-            <div class="sms-code-display show" id="clientSmsDisplay">
+            <div class="sms-code-display" id="clientSmsDisplay">
                 <span class="sms-code-icon">📱</span>
                 <div>
                     <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.5px;opacity:0.8;">Ваш код</div>
@@ -826,7 +802,7 @@
 
         <div class="account-step" id="clientStepName">
             <div class="account-step-title">Как к вам обращаться?</div>
-            <div class="account-step-hint">Введите ваше имя — оно будет отображаться в кабинете.</div>
+            <div class="account-step-hint">Введите ваше имя.</div>
             <div class="account-input-row">
                 <input type="text" id="clientName" placeholder="Ваше имя" autocomplete="name">
                 <button onclick="clientCompleteRegistration()">Готово</button>
@@ -851,6 +827,7 @@
                 </select>
                 <input type="text" id="clientOrderAddress" placeholder="Адрес объекта">
                 <input type="date" id="clientOrderDate">
+                <textarea id="clientOrderReason" placeholder="Опишите причину обращения..."></textarea>
                 <button onclick="clientCreateOrder()">Создать заявку</button>
             </div>
 
@@ -868,15 +845,16 @@
         </div>
     </div>
 
+    <!-- ===== КАБИНЕТ СОТРУДНИКА ===== -->
     <div class="account-block" id="account-block">
         <h2 class="account-title">👔 Кабинет сотрудника</h2>
 
         <div class="account-step active" id="stepStaffLogin">
             <div class="account-step-title">Вход для сотрудников</div>
-            <div class="account-step-hint">Введите свой телефон и пароль.</div>
+            <div class="account-step-hint">Введите телефон и пароль.</div>
             <div class="account-input-row">
                 <input type="tel" id="staffPhone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
-                <input type="password" id="staffPassword" placeholder="Ваш пароль" autocomplete="current-password">
+                <input type="password" id="staffPassword" placeholder="Пароль" autocomplete="current-password">
                 <button onclick="staffLoginStep1()">Войти</button>
                 <button class="btn-secondary" onclick="showStaffRegister()">Регистрация</button>
             </div>
@@ -884,11 +862,11 @@
 
         <div class="account-step" id="stepStaffRegister">
             <div class="account-step-title">Регистрация сотрудника</div>
-            <div class="account-step-hint">Заполните данные. После регистрации потребуется подтверждение администратора.</div>
+            <div class="account-step-hint">После регистрации потребуется подтверждение администратора.</div>
             <div class="account-input-row">
-                <input type="text" id="regStaffName" placeholder="Ваше имя" autocomplete="name">
-                <input type="tel" id="regStaffPhone" placeholder="Телефон" autocomplete="tel">
-                <input type="password" id="regStaffPassword" placeholder="Придумайте пароль" autocomplete="new-password">
+                <input type="text" id="regStaffName" placeholder="Ваше имя">
+                <input type="tel" id="regStaffPhone" placeholder="Телефон">
+                <input type="password" id="regStaffPassword" placeholder="Придумайте пароль">
                 <select id="regStaffRole">
                     <option value="plumber">🔧 Сантехник</option>
                     <option value="electrician">⚡ Электрик</option>
@@ -904,7 +882,7 @@
             <div class="account-step-title">🔐 Подтверждение администратора</div>
             <div class="account-step-hint">Введите пароль администратора сайта.</div>
             <div class="account-input-row">
-                <input type="password" id="adminConfirmPassword" placeholder="Пароль администратора" autocomplete="current-password">
+                <input type="password" id="adminConfirmPassword" placeholder="Пароль администратора">
                 <button onclick="staffLoginStep2()">Подтвердить</button>
                 <button class="btn-secondary" onclick="backToStaffLogin()">Назад</button>
             </div>
@@ -932,6 +910,12 @@
                     <button onclick="addStaff()">Добавить</button>
                 </div>
                 <div id="staffList"></div>
+
+                <div style="margin-top: 24px;">
+                    <div class="orders-title">🔔 Новые сообщения (<span id="newMessagesCount">0</span>)</div>
+                    <div id="newMessagesList"></div>
+                    <button class="account-logout" onclick="markAllMessagesRead()" style="margin-top: 10px;">✅ Отметить все прочитанными</button>
+                </div>
 
                 <div style="margin-top: 24px;">
                     <div class="orders-title">📱 SMS-коды клиентов (лог)</div>
@@ -966,6 +950,7 @@
         </div>
     </div>
 
+    <!-- ===== ПОДПИСКА ===== -->
     <div class="subscribe-block" id="subscribe-block">
         <h2 class="subscribe-title">📧 Подписка на новости и акции</h2>
         <div class="subscribe-form">
@@ -975,24 +960,25 @@
         <div class="subscribe-status" id="subscribeStatus"></div>
     </div>
 
+    <!-- ===== ОТЗЫВЫ ===== -->
     <div class="reviews-block" id="reviews-block">
         <h2 class="reviews-title">⭐ Отзывы клиентов</h2>
 
         <div class="review-form" id="reviewForm">
             <div class="form-row">
-                <input type="text" id="reviewName" placeholder="Ваше имя" required autocomplete="name">
-                <input type="tel" id="reviewPhone" placeholder="Номер телефона" required autocomplete="tel">
+                <input type="text" id="reviewName" placeholder="Ваше имя" required>
+                <input type="tel" id="reviewPhone" placeholder="Номер телефона" required>
             </div>
             <div class="form-row">
                 <input type="number" id="reviewRating" placeholder="Оценка (1-5)" min="1" max="5" required>
-                <input type="text" id="reviewCity" placeholder="Город" autocomplete="address-level2">
+                <input type="text" id="reviewCity" placeholder="Город">
             </div>
             <div class="form-row">
                 <textarea id="reviewText" placeholder="Ваш отзыв..." required></textarea>
             </div>
             <div class="form-row">
                 <div class="code-input">
-                    <input type="text" id="reviewCode" placeholder="Код из SMS" style="min-width: 120px;" inputmode="numeric" autocomplete="one-time-code">
+                    <input type="text" id="reviewCode" placeholder="Код из SMS" style="min-width: 120px;" inputmode="numeric">
                     <button class="btn btn-secondary" id="sendCodeBtn">📩 Получить код</button>
                     <button class="btn" id="submitReviewBtn" disabled>✅ Оставить отзыв</button>
                 </div>
@@ -1005,6 +991,7 @@
         </div>
     </div>
 
+    <!-- ===== КОНТАКТЫ ===== -->
     <div class="contacts" id="contacts-block">
         <div class="contact-row">
             <div class="contact-icon">✉</div>
@@ -1037,11 +1024,10 @@
     </div>
 </div>
 
-<button class="chat-float-btn" id="chatFloatBtn" onclick="toggleChatWindow()">
-    💬
-    <span class="chat-float-badge" id="chatFloatBadge"></span>
-</button>
+<!-- Кнопка чата поддержки -->
+<button class="chat-float-btn" id="chatFloatBtn" onclick="toggleChatWindow()">💬</button>
 
+<!-- Окно чата поддержки -->
 <div class="chat-window" id="chatWindow">
     <div class="chat-window-header">
         <div class="chat-window-title">
@@ -1053,7 +1039,6 @@
         </div>
         <button class="chat-window-close" onclick="toggleChatWindow()">✕</button>
     </div>
-
     <div class="chat-window-body" id="chatNeedLogin">
         <div class="chat-login-prompt">
             <div style="font-size:2rem;margin-bottom:12px;">🔒</div>
@@ -1062,7 +1047,6 @@
             <button class="chat-login-btn" onclick="closeChatAndGoToLogin()">Войти в кабинет</button>
         </div>
     </div>
-
     <div class="chat-window-body" id="chatAuthorized" style="display:none;">
         <div class="chat-messages" id="chatWindowMessages"></div>
         <div class="chat-window-input">
@@ -1072,11 +1056,44 @@
     </div>
 </div>
 
+<!-- Кнопка GPT-бота -->
+<button class="gpt-float-btn" id="gptFloatBtn" onclick="toggleGptChat()">🤖</button>
+
+<!-- Окно GPT-бота -->
+<div class="gpt-window" id="gptWindow">
+    <div class="gpt-window-header">
+        <div class="gpt-window-title">
+            <span style="font-size:1.4rem;">🤖</span>
+            <div>
+                <div style="font-weight:600;">Мастер-консультант</div>
+                <div style="font-size:0.72rem;opacity:0.85;">Отвечу на вопросы по сантехнике</div>
+            </div>
+        </div>
+        <button class="gpt-window-close" onclick="toggleGptChat()">✕</button>
+    </div>
+    <div class="gpt-messages" id="gptMessages">
+        <div class="gpt-message bot">
+            👋 Здравствуйте! Я — виртуальный мастер-консультант.<br><br>
+            Задайте вопрос по сантехнике, отоплению или кондиционированию:
+            <div class="gpt-quick-btns">
+                <button onclick="askGpt('Почему течёт кран?')">Почему течёт кран?</button>
+                <button onclick="askGpt('Как выбрать котёл?')">Как выбрать котёл?</button>
+                <button onclick="askGpt('Что делать при засоре?')">Что делать при засоре?</button>
+                <button onclick="askGpt('Сколько стоит вызов?')">Сколько стоит вызов?</button>
+                <button onclick="askGpt('Как подготовиться к зиме?')">Как подготовиться к зиме?</button>
+            </div>
+        </div>
+    </div>
+    <div class="gpt-input">
+        <input type="text" id="gptInput" placeholder="Ваш вопрос..." onkeypress="if(event.key==='Enter') sendGptMessage()">
+        <button onclick="sendGptMessage()">📩</button>
+    </div>
+</div>
+
 <button class="pwa-install-btn" id="pwaInstallBtn" onclick="installPWA()">📲 Установить</button>
 <button class="push-btn" id="pushBtn" onclick="enablePush()">🔔 Уведомления</button>
 
 <div class="toast" id="toast"></div>
-
 <script>
     // ============================================================
     // ===== КРОССБРАУЗЕРНАЯ ОБЁРТКА =====
@@ -1238,7 +1255,7 @@
     })();
 
     // ============================================================
-    // ===== ЛОГ SMS-КОДОВ (для админа) =====
+    // ===== ЛОГ SMS-КОДОВ =====
     // ============================================================
     function logSmsCode(phone, code, type) {
         var log = [];
@@ -1347,13 +1364,9 @@
         document.getElementById('clientSmsCodeValue').textContent = clientSmsCode;
         console.log('[SMS] Код для ' + phone + ': ' + clientSmsCode);
 
-        // Лог для админа
         if (typeof logSmsCode === 'function') logSmsCode(phone, clientSmsCode, 'client');
 
-        // Всплывающее окно с кодом
         showSmsPopup(clientSmsCode);
-
-        // Показываем шаг с кодом
         clientShowStep('clientStepCode');
     }
 
@@ -1426,9 +1439,11 @@
         var service = document.getElementById('clientOrderService').value;
         var address = document.getElementById('clientOrderAddress').value.trim();
         var date = document.getElementById('clientOrderDate').value;
+        var reason = document.getElementById('clientOrderReason').value.trim();
 
         if (!service) { showToast('❌ Выберите услугу'); return; }
         if (!address) { showToast('❌ Введите адрес'); return; }
+        if (!reason) { showToast('❌ Опишите причину обращения'); return; }
 
         var orders = [];
         try { orders = JSON.parse(localStorage.getItem(getClientOrdersKey()) || '[]'); } catch(e) {}
@@ -1437,6 +1452,7 @@
             id: Date.now(),
             service: service, address: address,
             date: date || new Date().toLocaleDateString('ru-RU'),
+            reason: reason,
             status: 'new',
             created: new Date().toLocaleString('ru-RU')
         });
@@ -1445,6 +1461,7 @@
         document.getElementById('clientOrderService').value = '';
         document.getElementById('clientOrderAddress').value = '';
         document.getElementById('clientOrderDate').value = '';
+        document.getElementById('clientOrderReason').value = '';
 
         renderClientOrders();
         showToast('✅ Заявка создана!');
@@ -1474,6 +1491,7 @@
                 '<div class="order-info">' +
                 '<div class="order-service">' + escapeHtml(o.service) + '</div>' +
                 '<div class="order-date">' + escapeHtml(o.address) + ' · ' + escapeHtml(o.date) + '</div>' +
+                (o.reason ? '<div class="order-reason">💬 ' + escapeHtml(o.reason) + '</div>' : '') +
                 '</div>' +
                 '<span style="padding:5px 16px;border-radius:30px;font-size:0.78rem;font-weight:600;">' + st.text + '</span>' +
                 '</div>';
@@ -1692,6 +1710,7 @@
             renderStaffList();
             renderAllOrders();
             renderSmsLog();
+            renderNewMessages();
         } else if (currentStaff.role === 'plumber' || currentStaff.role === 'electrician' || currentStaff.role === 'welder') {
             document.getElementById('plumberPanel').style.display = 'block';
             renderPlumberOrders();
@@ -1794,6 +1813,7 @@
                 '<div class="order-info">' +
                 '<div class="order-service">' + escapeHtml(o.service) + '</div>' +
                 '<div class="order-date">' + escapeHtml(o.address) + ' · ' + escapeHtml(o.date) + ' · ' + escapeHtml(o.clientPhone) + '</div>' +
+                (o.reason ? '<div class="order-reason">💬 ' + escapeHtml(o.reason) + '</div>' : '') +
                 '</div>' +
                 '<select class="status-select" onchange="changeOrderStatus(\'' + escapeHtml(o.clientPhone) + '\', ' + o.id + ', this.value)">' +
                 '<option value="new" ' + (o.status === 'new' ? 'selected' : '') + '>🟡 Новая</option>' +
@@ -1851,6 +1871,7 @@
                 '<div class="order-info">' +
                 '<div class="order-service">' + escapeHtml(o.service) + '</div>' +
                 '<div class="order-date">' + escapeHtml(o.address) + ' · ' + escapeHtml(o.date) + '</div>' +
+                (o.reason ? '<div class="order-reason">💬 ' + escapeHtml(o.reason) + '</div>' : '') +
                 '</div>' +
                 '<select class="status-select" onchange="changeOrderStatus(\'' + escapeHtml(o.clientPhone) + '\', ' + o.id + ', this.value)">' +
                 '<option value="new" ' + (o.status === 'new' ? 'selected' : '') + '>🟡 Новая</option>' +
@@ -1862,6 +1883,9 @@
         list.innerHTML = html;
     }
 
+    // ============================================================
+    // ===== ЧАТ ПОДДЕРЖКИ (сотрудник) =====
+    // ============================================================
     function getAllDialogs() {
         var dialogs = [];
         for (var i = 0; i < localStorage.length; i++) {
@@ -1963,6 +1987,91 @@
     }
 
     // ============================================================
+    // ===== УВЕДОМЛЕНИЯ О НОВЫХ СООБЩЕНИЯХ =====
+    // ============================================================
+    function getUnreadMessages() {
+        var unread = [];
+        var readKey = 'read_chats_' + (currentStaff ? currentStaff.phone : 'guest');
+        var readList = [];
+        try { readList = JSON.parse(localStorage.getItem(readKey) || '[]'); } catch(e) {}
+
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (key && key.indexOf('chat_') === 0) {
+                try {
+                    var messages = JSON.parse(localStorage.getItem(key));
+                    if (messages.length === 0) continue;
+                    var phone = key.replace('chat_', '');
+                    var lastMsg = messages[messages.length - 1];
+                    if (lastMsg.from === 'client' && readList.indexOf(phone) === -1) {
+                        unread.push({
+                            phone: phone,
+                            clientName: lastMsg.clientName || 'Клиент',
+                            lastText: lastMsg.text,
+                            time: lastMsg.time || '',
+                            date: lastMsg.date || '',
+                            count: messages.length
+                        });
+                    }
+                } catch(e) {}
+            }
+        }
+        return unread;
+    }
+
+    function renderNewMessages() {
+        var list = document.getElementById('newMessagesList');
+        var countEl = document.getElementById('newMessagesCount');
+        if (!list || !countEl) return;
+
+        var unread = getUnreadMessages();
+        countEl.textContent = unread.length;
+
+        if (unread.length === 0) {
+            list.innerHTML = '<div class="no-reviews">Нет новых сообщений</div>';
+            return;
+        }
+
+        var html = '';
+        for (var i = 0; i < unread.length; i++) {
+            var m = unread[i];
+            html += '<div class="order-item unread" onclick="openSupportDialog(\'' + escapeHtml(m.phone) + '\')" style="cursor:pointer;">' +
+                '<div class="order-info">' +
+                '<div class="order-service">👤 ' + escapeHtml(m.clientName) + ' (' + escapeHtml(m.phone) + ')</div>' +
+                '<div class="order-date">💬 ' + escapeHtml(m.lastText) + '</div>' +
+                '<div class="order-date">' + escapeHtml(m.date) + ' ' + escapeHtml(m.time) + '</div>' +
+                '</div>' +
+                '<span style="background:#e74c3c;color:white;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;">НОВОЕ</span>' +
+                '</div>';
+        }
+        list.innerHTML = html;
+    }
+
+    function markAllMessagesRead() {
+        var readKey = 'read_chats_' + (currentStaff ? currentStaff.phone : 'guest');
+        var phones = [];
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (key && key.indexOf('chat_') === 0) {
+                phones.push(key.replace('chat_', ''));
+            }
+        }
+        try { localStorage.setItem(readKey, JSON.stringify(phones)); } catch(e) {}
+        renderNewMessages();
+        showToast('✅ Все сообщения отмечены прочитанными');
+    }
+
+    function markDialogRead(phone) {
+        var readKey = 'read_chats_' + (currentStaff ? currentStaff.phone : 'guest');
+        var readList = [];
+        try { readList = JSON.parse(localStorage.getItem(readKey) || '[]'); } catch(e) {}
+        if (readList.indexOf(phone) === -1) {
+            readList.push(phone);
+            try { localStorage.setItem(readKey, JSON.stringify(readList)); } catch(e) {}
+        }
+    }
+
+    // ============================================================
     // ===== ПЛАВАЮЩАЯ КНОПКА ЧАТА =====
     // ============================================================
     var chatWindowOpen = false;
@@ -1975,7 +2084,7 @@
         if (chatWindowOpen) {
             win.classList.add('open');
             btn.classList.add('active');
-            btn.innerHTML = '✕<span class="chat-float-badge" id="chatFloatBadge"></span>';
+            btn.innerHTML = '✕';
             updateChatWindow();
             setTimeout(function() {
                 var input = document.getElementById('chatWindowInput');
@@ -1984,7 +2093,7 @@
         } else {
             win.classList.remove('open');
             btn.classList.remove('active');
-            btn.innerHTML = '💬<span class="chat-float-badge" id="chatFloatBadge"></span>';
+            btn.innerHTML = '💬';
         }
     }
 
@@ -2064,6 +2173,92 @@
     }
 
     // ============================================================
+    // ===== GPT-БОТ ПО САНТЕХНИКЕ =====
+    // ============================================================
+    var GPT_KNOWLEDGE = [
+        { keywords: ['течёт', 'течет', 'капает', 'кран', 'протечка', 'протекает'], answer: '🔧 <strong>Почему течёт кран:</strong><br><br>1️⃣ Перекройте воду<br>2️⃣ Причины: износ прокладки, картриджа, уплотнителя<br>3️⃣ Небольшая протечка — замена прокладки (30 мин)<br>4️⃣ Сильная — нужен мастер<br><br>💰 Стоимость: от 500 ₽ + выезд<br>📞 Звоните: 8 902 646 92 44' },
+        { keywords: ['котёл', 'котел', 'выбрать', 'отопление'], answer: '🔥 <strong>Как выбрать котёл:</strong><br><br>🏠 Для квартиры — газовый двухконтурный (Baxi, Vaillant)<br>🏡 Для дома до 100 м² — одноконтурный 12–16 кВт + бойлер<br>🏰 Для дома 100–200 м² — 20–24 кВт<br>🏭 Для дома 200+ м² — 28–35 кВт<br><br>📞 Поможем подобрать: 8 902 646 92 44' },
+        { keywords: ['засор', 'засорилась', 'канализация', 'не уходит'], answer: '💧 <strong>Что делать при засоре:</strong><br><br>1️⃣ Сантехнический трос (30–50 см)<br>2️⃣ Кипяток с содой и уксусом<br>3️⃣ Химия: «Крот», «Тиррет»<br>4️⃣ Если не помогло — мастер<br><br>⚠️ Не используйте кипяток для пластиковых труб!<br>💰 Прочистка: от 800 ₽<br>📞 8 902 646 92 44' },
+        { keywords: ['стоимость', 'цена', 'стоит', 'сколько'], answer: '💰 <strong>Стоимость услуг:</strong><br><br>🔧 Вызов мастера — <strong>бесплатно</strong> при заказе<br>🔧 Замена смесителя — от 800 ₽<br>🔧 Установка унитаза — от 1500 ₽<br>🔥 Монтаж радиатора — от 2500 ₽<br>❄️ Установка кондиционера — от 3500 ₽<br>💧 Прочистка канализации — от 800 ₽<br><br>📞 8 902 646 92 44' },
+        { keywords: ['зима', 'зиме', 'подготовиться', 'мороз'], answer: '❄️ <strong>Подготовка к зиме:</strong><br><br>1️⃣ Проверьте отопление до морозов<br>2️⃣ Слейте воду из наружных труб<br>3️⃣ Утеплите трубы<br>4️⃣ Проверьте котёл<br>5️⃣ Греющий кабель на уязвимые участки<br><br>📞 Аварийная служба 24/7: 8 902 646 92 44' },
+        { keywords: ['унитаз', 'смеситель', 'раковина', 'ванна'], answer: '🔧 <strong>Установка сантехники:</strong><br><br>🚽 Унитаз — 1500–3500 ₽<br>🚿 Смеситель — 800–1500 ₽<br>🛁 Ванна — 3000–6000 ₽<br>🚿 Душевая кабина — 4000–8000 ₽<br><br>🛡️ Гарантия 3 года<br>📞 8 902 646 92 44' },
+        { keywords: ['кондиционер', 'сплит'], answer: '❄️ <strong>Установка кондиционера:</strong><br><br>📐 Стандартный монтаж — от 3500 ₽<br>⏱️ Время: 3–5 часов<br>🛡️ Гарантия: 3 года<br><br>💡 Рекомендуем: март–май (скидки)<br>📞 8 902 646 92 44' },
+        { keywords: ['водоснабжение', 'скважина', 'насос', 'фильтр'], answer: '💧 <strong>Водоснабжение:</strong><br><br>🔹 Монтаж труб — от 500 ₽/м<br>🔹 Установка насоса — от 3000 ₽<br>🔹 Фильтр — от 2000 ₽<br>🔹 Септик — от 30 000 ₽<br><br>📞 8 902 646 92 44' },
+        { keywords: ['гарантия'], answer: '🛡️ <strong>Гарантия 3 года</strong><br><br>✅ На все виды работ<br>✅ На материалы<br>✅ Бесплатный выезд при гарантийном случае<br>📝 Договор<br>📞 8 902 646 92 44' },
+        { keywords: ['пермь', 'край', 'район', 'выезд'], answer: '📍 <strong>Работаем в Перми и Пермском крае:</strong><br><br>✅ Все районы Перми<br>✅ Краснокамск, Березники, Соликамск, Чайковский, Кунгур, Лысьва<br><br>🚗 Выезд за город — от 30 ₽/км<br>📞 8 902 646 92 44' },
+        { keywords: ['аварий', 'срочно', '24/7', 'ночь'], answer: '🚨 <strong>Аварийная служба 24/7</strong><br><br>✅ Выезд в течение часа<br>✅ Ночью, в выходные и праздники<br>✅ Протечки, засоры, поломки котлов<br><br>📞 8 902 646 92 44' },
+        { keywords: ['привет', 'здравствуйте', 'добрый'], answer: '👋 Здравствуйте! Я мастер-консультант.<br><br>Спросите о:<br>🔧 сантехнике<br>🔥 отоплении<br>❄️ кондиционировании<br>💰 ценах<br><br>Или выберите готовый вопрос ниже.' },
+        { keywords: ['спасибо', 'благодар'], answer: '🙏 Пожалуйста! Рад был помочь.<br><br>Если нужен мастер — звоните: <strong>8 902 646 92 44</strong>' },
+        { keywords: ['тсж', 'тсн', 'жск', 'юрлицо'], answer: '🏢 <strong>Работаем с ТСЖ, ТСН, ЖСК, УК:</strong><br><br>✅ Обслуживание многоквартирных домов<br>✅ Замена стояков, врезки, опрессовки<br>✅ Подготовка к отопительному сезону<br>✅ Все закрывающие документы<br>📞 8 902 646 92 44' }
+    ];
+
+    var gptChatOpen = false;
+
+    function toggleGptChat() {
+        var win = document.getElementById('gptWindow');
+        var btn = document.getElementById('gptFloatBtn');
+        gptChatOpen = !gptChatOpen;
+
+        if (gptChatOpen) {
+            win.classList.add('open');
+            btn.classList.add('active');
+            btn.innerHTML = '✕';
+            setTimeout(function() {
+                var input = document.getElementById('gptInput');
+                if (input) input.focus();
+            }, 300);
+        } else {
+            win.classList.remove('open');
+            btn.classList.remove('active');
+            btn.innerHTML = '🤖';
+        }
+    }
+
+    function sendGptMessage() {
+        var input = document.getElementById('gptInput');
+        var text = input.value.trim();
+        if (!text) return;
+
+        addGptMessage('user', text);
+        input.value = '';
+
+        setTimeout(function() {
+            var answer = findGptAnswer(text);
+            addGptMessage('bot', answer);
+        }, 500);
+    }
+
+    function askGpt(question) {
+        addGptMessage('user', question);
+        setTimeout(function() {
+            var answer = findGptAnswer(question);
+            addGptMessage('bot', answer);
+        }, 500);
+    }
+
+    function addGptMessage(type, html) {
+        var container = document.getElementById('gptMessages');
+        var div = document.createElement('div');
+        div.className = 'gpt-message ' + type;
+        div.innerHTML = html;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function findGptAnswer(question) {
+        var q = question.toLowerCase();
+        for (var i = 0; i < GPT_KNOWLEDGE.length; i++) {
+            var item = GPT_KNOWLEDGE[i];
+            for (var j = 0; j < item.keywords.length; j++) {
+                if (q.indexOf(item.keywords[j]) !== -1) {
+                    return item.answer;
+                }
+            }
+        }
+        return '🤔 Хм, я не совсем понял вопрос.<br><br>Попробуйте спросить:<br>• «Почему течёт кран?»<br>• «Как выбрать котёл?»<br>• «Сколько стоит вызов?»<br>• «Что делать при засоре?»<br><br>Или позвоните: <strong>8 902 646 92 44</strong>';
+    }
+
+    // ============================================================
     // ===== PWA / PUSH =====
     // ============================================================
     var deferredPrompt = null;
@@ -2089,7 +2284,7 @@
 
     if ('serviceWorker' in navigator) {
         try {
-            navigator.serviceWorker.register('data:text/javascript,self.addEventListener("fetch",()=>{});').catch(function() {});
+            navigator.serviceWorker.register('/OneSignalSDKWorker.js').catch(function() {});
         } catch(e) {}
     }
 
@@ -2192,10 +2387,7 @@
             submitReviewBtn.disabled = false;
             showStatus('📱 Ваш код: ' + generatedCode);
             console.log('[SMS] Код: ' + generatedCode);
-
-            // Всплывающее окно с кодом
             showSmsPopup(generatedCode);
-
             if (typeof logSmsCode === 'function') logSmsCode(phone, generatedCode, 'review');
         });
 
@@ -2311,6 +2503,11 @@
     window.clearSmsLog = clearSmsLog;
     window.logSmsCode = logSmsCode;
     window.showSmsPopup = showSmsPopup;
+    window.toggleGptChat = toggleGptChat;
+    window.sendGptMessage = sendGptMessage;
+    window.askGpt = askGpt;
+    window.renderNewMessages = renderNewMessages;
+    window.markAllMessagesRead = markAllMessagesRead;
 </script>
 
 </body>
