@@ -1375,7 +1375,7 @@
         document.getElementById('clientPanel').classList.remove('show');
     }
 
-    function clientBackToPhone() {
+   function clientBackToPhone() {
     document.getElementById('clientCode').value = '';
     clientShowStep('clientStepPhone');
 }
@@ -2558,6 +2558,10 @@
     window.subscribeUser = subscribeUser;
     window.clientSendCode = clientSendCode;
     window.clientVerifyCode = clientVerifyCode;
+    function clientBackToPhone() {
+    document.getElementById('clientCode').value = '';
+    clientShowStep('clientStepPhone');
+}
     window.clientBackToPhone = clientBackToPhone;
     window.clientCompleteRegistration = clientCompleteRegistration;
     window.clientLogout = clientLogout;
