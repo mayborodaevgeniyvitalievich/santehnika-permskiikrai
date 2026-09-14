@@ -1232,9 +1232,10 @@
     })();
 
     // ============================================================
-    // ===== ONESIGNAL REST API (через прокси) =====
-    // ============================================================
-    var ONESIGNAL_PROXY_URL = ''; // ← сюда URL прокси (Cloudflare Worker)
+// ===== ONESIGNAL REST API =====
+// ============================================================
+var ONESIGNAL_APP_ID = '405f7f9c-5011-44ef-adc4-2e3ad6197423';
+var ONESIGNAL_REST_API_KEY = 'os_v2_app_ibpx7hcqcfco7loefy5nmgluencj6husuieeuiucgimrqhf763rbsvtjqbyflodh6hlwhd63pgqwolpdveyfvzimogffkodrbm3z3qa';
 
     async function sendOneSignalNotification(title, message, filters, data) {
         if (!ONESIGNAL_PROXY_URL) {
