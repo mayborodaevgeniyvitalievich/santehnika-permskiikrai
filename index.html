@@ -1238,23 +1238,44 @@ var ONESIGNAL_APP_ID = '405f7f9c-5011-44ef-adc4-2e3ad6197423';
 var ONESIGNAL_REST_API_KEY = 'os_v2_app_ibpx7hcqcfco7loefy5nmgluencj6husuieeuiucgimrqhf763rbsvtjqbyflodh6hlwhd63pgqwolpdveyfvzimogffkodrbm3z3qa';
 
     async function sendOneSignalNotification(title, message, filters, data) {
-        if (!ONESIGNAL_PROXY_URL) {
-            console.log('[OneSignal] Прокси не настроен, локально:', title, '|', message);
-            showLocalNotification(title, message);
-            return false;
+    if (!ONESIGNAL_REST_API_KEY || ONESIGNAL_REST_API_KEY === 'ВСТАВЬ_СЮДА_НОВЫЙ_КЛЮЧ') {
+        console.warn('[OneSignal] REST API Key не настроен');
+        showLocalNotification(title, message);
+        return false;
+    }
+
+    try {
+        var response = await fetch('https://onesignal.com/api/v1/notifications', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + ONESIGNAL_REST_API_KEY
+            },
+            body: JSON.stringify({
+                app_id: ONESIGNAL_APP_ID,
+                headings: { ru: title, en: title },
+                contents: { ru: message, en: message },
+                filters: filters,
+                data: data || {}
+            })
+        });
+
+        var result = await response.json();
+        console.log('[OneSignal] Ответ:', result);
+
+        if (result.errors) {
+            console.error('[OneSignal] Ошибка:', result.errors);
+            showToast('⚠️ Ошибка пуша: ' + JSON.stringify(result.errors));
+        } else {
+            console.log('[OneSignal] ✅ Пуш отправлен! Recipients:', result.recipients);
         }
-        try {
-            var response = await fetch(ONESIGNAL_PROXY_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    app_id: '405f7f9c-5011-44ef-adc4-2e3ad6197423',
-                    headings: { ru: title, en: title },
-                    contents: { ru: message, en: message },
-                    filters: filters,
-                    data: data || {}
-                })
-            });
+        return result;
+    } catch(e) {
+        console.error('[OneSignal] Ошибка fetch:', e);
+        showLocalNotification(title, message);
+        return false;
+    }
+}
             var result = await response.json();
             console.log('[OneSignal] Пуш отправлен:', result);
             return true;
