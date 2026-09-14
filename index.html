@@ -52,49 +52,37 @@
     </script>
 
     <!-- OneSignal Push -->
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    try {
-      await OneSignal.init({
-        appId: "405f7f9c-5011-44ef-adc4-2e3ad6197423",
-        serviceWorkerPath: "/OneSignalSDKWorker.js",
-        serviceWorkerUpdaterPath: "/OneSignalSDKUpdaterWorker.js",
-        serviceWorkerParam: { scope: "/" },
-        allowLocalhostAsSecureOrigin: true,
-        notifyButton: { enable: false }
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        try {
+          await OneSignal.init({
+            appId: "405f7f9c-5011-44ef-adc4-2e3ad6197423",
+            serviceWorkerPath: "/OneSignalSDKWorker.js",
+            serviceWorkerUpdaterPath: "/OneSignalSDKUpdaterWorker.js",
+            serviceWorkerParam: { scope: "/" },
+            allowLocalhostAsSecureOrigin: true,
+            notifyButton: { enable: false }
+          });
+          console.log("[OneSignal] Инициализирован");
+          window.oneSignalReady = true;
+
+          // Если вошёл админ — ставим тег
+          try {
+            var savedStaff = JSON.parse(localStorage.getItem('currentStaff') || 'null');
+            if (savedStaff && savedStaff.role === 'admin') {
+              await OneSignal.User.addTag('role', 'admin');
+              await OneSignal.User.addTag('phone', savedStaff.phone);
+              console.log('[OneSignal] Тег admin установлен');
+            }
+          } catch(e) {}
+        } catch(e) {
+          console.error("[OneSignal] Ошибка:", e);
+          window.oneSignalReady = false;
+        }
       });
-      console.log("[OneSignal] Инициализирован");
-      window.oneSignalReady = true;
-    } catch(e) {
-      console.error("[OneSignal] Ошибка:", e);
-      window.oneSignalReady = false;
-    }
-  });
-</script>
-
-<!-- Firebase Phone Auth -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyDw0OcegP9oAolncf6l4rharekvwltEllU",
-    authDomain: "provoda-37cab.firebaseapp.com",
-    projectId: "provoda-37cab",
-    storageBucket: "provoda-37cab.firebasestorage.app",
-    messagingSenderId: "872195471252",
-    appId: "1:872195471252:web:2728b5e6afef09386a4181"
-  };
-
-  if (typeof firebase !== 'undefined' && !firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-    console.log("[Firebase] Инициализирован");
-    window.firebaseReady = true;
-  } else {
-    window.firebaseReady = false;
-  }
-</script>
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
@@ -150,7 +138,7 @@
         .title-role { font-size: 1.1rem; font-weight: 400; color: #2a4b62; background: #e5eef6; padding: 4px 24px 5px; border-radius: 60px; border: 1px solid #cbdce7; }
         .tagline { font-size: 0.9rem; color: #4a6d84; background: rgba(225, 238, 248, 0.6); padding: 4px 20px; border-radius: 40px; border: 1px solid #cbdce7; }
 
-        .about-block, .team-block, .services, .faq-block, .account-block, .reviews-block { margin: 28px 0 20px; padding: 28px 30px; border-radius: 40px; background: rgba(240, 246, 250, 0.5); border: 1px solid rgba(160, 190, 210, 0.2); scroll-margin-top: 80px; }
+        .about-block, .team-block, .services, .faq-block, .account-block, .reviews-block, .break-block { margin: 28px 0 20px; padding: 28px 30px; border-radius: 40px; background: rgba(240, 246, 250, 0.5); border: 1px solid rgba(160, 190, 210, 0.2); scroll-margin-top: 80px; }
 
         .about-title, .team-title, .services-title, .faq-title, .account-title, .reviews-title, .subscribe-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.2px; color: #3a6a84; font-weight: 600; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
         .about-title::after, .team-title::after, .services-title::after, .faq-title::after, .account-title::after, .reviews-title::after, .subscribe-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, #b0c8d8, transparent); }
@@ -414,7 +402,7 @@
         body.dark-theme .tagline { color: #8ab0c5; background: rgba(42, 66, 85, 0.5); border-color: #3a5a6f; }
         body.dark-theme .accent-stripe { background: linear-gradient(90deg, #5a8aaa, #8abada, #5a8aaa); }
         body.dark-theme .quick-nav a { background: rgba(90, 140, 170, 0.12); color: #c0d8e5; border-color: rgba(90, 140, 170, 0.15); }
-        body.dark-theme .about-block, body.dark-theme .team-block, body.dark-theme .services, body.dark-theme .reviews-block, body.dark-theme .faq-block, body.dark-theme .account-block { background: rgba(30, 50, 65, 0.4); border-color: rgba(255, 255, 255, 0.06); }
+        body.dark-theme .about-block, body.dark-theme .team-block, body.dark-theme .services, body.dark-theme .reviews-block, body.dark-theme .faq-block, body.dark-theme .account-block, body.dark-theme .break-block { background: rgba(30, 50, 65, 0.4); border-color: rgba(255, 255, 255, 0.06); }
         body.dark-theme .about-text, body.dark-theme .detail-text, body.dark-theme .review-item .review-text, body.dark-theme .faq-answer, body.dark-theme .order-service { color: #c8dce5; }
         body.dark-theme .about-text strong, body.dark-theme .detail-text strong, body.dark-theme .about-title, body.dark-theme .team-title, body.dark-theme .services-title, body.dark-theme .reviews-title, body.dark-theme .faq-title, body.dark-theme .account-title { color: #7aabca; }
         body.dark-theme .service-btn { background: rgba(40, 65, 80, 0.6); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
@@ -471,6 +459,15 @@
         body.dark-theme .gpt-message.bot { background: rgba(122, 77, 196, 0.15); color: #c8dce5; }
         body.dark-theme .gpt-input { background: rgba(30, 45, 55, 0.98); border-top-color: rgba(255, 255, 255, 0.08); }
         body.dark-theme .gpt-input input { background: rgba(20, 40, 55, 0.7); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
+
+        /* Камера */
+        #cameraContainer video { transform: scaleX(-1); }
+        #cameraContainer button:active { transform: translateX(-50%) scale(0.9) !important; }
+        .admin-notify { animation: pulse 1.5s infinite; }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 179, 66, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(245, 179, 66, 0); }
+        }
 
         @media (max-width: 768px) {
             .service-grid { grid-template-columns: repeat(2, 1fr); }
@@ -558,6 +555,7 @@
         <a href="#about-block"><span class="nav-icon">🏢</span> О компании</a>
         <a href="#team-block"><span class="nav-icon">👥</span> Команда</a>
         <a href="#services-block"><span class="nav-icon">🔧</span> Услуги</a>
+        <a href="#break-block"><span class="nav-icon">📸</span> Определить поломку</a>
         <a href="#schedule-block"><span class="nav-icon">🕐</span> Режим работы</a>
         <a href="#guarantee-block"><span class="nav-icon">🛡️</span> Гарантия</a>
         <a href="#faq-block"><span class="nav-icon">❓</span> FAQ</a>
@@ -687,6 +685,46 @@
         <div class="service-detail" id="serviceDetail">
             <span class="detail-icon">💬</span>
             <span class="detail-text detail-empty">Нажмите на любую услугу, чтобы узнать подробнее</span>
+        </div>
+    </div>
+
+    <!-- ===== ОПРЕДЕЛЕНИЕ ПОЛОМКИ ПО КАМЕРЕ ===== -->
+    <div class="break-block" id="break-block">
+        <h2 class="about-title">📸 Определить поломку</h2>
+        <div class="about-text" style="margin-bottom: 16px;">
+            Наведите камеру на место поломки — мы поможем определить её серьёзность.
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px;">
+            <button class="access-btn" onclick="openCamera()" style="padding: 12px 28px; font-size: 1rem;">📷 Открыть камеру</button>
+            <button class="access-btn" onclick="closeCamera()" id="closeCameraBtn" style="display:none; padding: 12px 28px; font-size: 1rem; background:#e74c3c; color:white; border-color:#e74c3c;">✕ Закрыть</button>
+            <span id="cameraStatus" style="color:#5a7d94; font-size:0.9rem;"></span>
+        </div>
+
+        <div id="cameraContainer" style="display:none; position:relative; border-radius: 28px; overflow:hidden; background:#000; max-width: 100%; margin-bottom: 16px;">
+            <video id="cameraVideo" autoplay playsinline muted style="width:100%; max-height:400px; display:block; object-fit:cover;"></video>
+            <button onclick="capturePhoto()" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); width:70px; height:70px; border-radius:50%; border:4px solid white; background:rgba(255,255,255,0.3); cursor:pointer; font-size:1.5rem; color:white;">📸</button>
+        </div>
+
+        <canvas id="cameraCanvas" style="display:none;"></canvas>
+        <img id="capturedPhoto" style="display:none; max-width:100%; border-radius:24px; margin-bottom:16px; box-shadow:0 8px 24px -8px rgba(0,0,0,0.2);" alt="Фото поломки">
+
+        <div id="severityChoice" style="display:none; margin-top: 18px;">
+            <div style="font-weight:600; color:#1a3d54; margin-bottom:12px;">Оцените серьёзность поломки:</div>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <button class="service-btn" onclick="handleBreak('light')" style="flex:1; min-width:140px; justify-content:center;">🟢 Лёгкая — справлюсь сам</button>
+                <button class="service-btn" onclick="handleBreak('medium')" style="flex:1; min-width:140px; justify-content:center;">🟡 Средняя — нужен мастер</button>
+                <button class="service-btn" onclick="handleBreak('heavy')" style="flex:1; min-width:140px; justify-content:center;">🔴 Тяжёлая — авария!</button>
+            </div>
+        </div>
+
+        <div class="repair-info" id="repairInfo" style="display:none; margin-top:16px; padding:16px 22px; background:#f0fdf4; border-left:4px solid #22c55e; border-radius:16px; color:#166534; font-size:0.95rem; line-height:1.6;">
+            <strong>📖 Инструкция по ремонту:</strong>
+            <p id="repairText" style="margin:8px 0 0 0;"></p>
+        </div>
+
+        <div class="admin-notify" id="adminNotify" style="display:none; margin-top:16px; padding:14px 20px; background:#1a2c3b; color:#f5b342; border-radius:16px; font-size:0.9rem; font-weight:600;">
+            📢 <span id="adminText"></span>
         </div>
     </div>
 
@@ -940,6 +978,12 @@
                 </div>
 
                 <div style="margin-top: 24px;">
+                    <div class="orders-title">📸 Лог поломок (по камере)</div>
+                    <div id="breakLogList"></div>
+                    <button class="account-logout" onclick="if(confirm('Очистить лог поломок?')){localStorage.removeItem('break_log');renderBreakLog();showToast('✅ Очищено');}" style="margin-top: 10px;">🗑️ Очистить лог</button>
+                </div>
+
+                <div style="margin-top: 24px;">
                     <div class="orders-title">📱 SMS-коды клиентов (лог)</div>
                     <div id="smsLogList"></div>
                     <button class="account-logout" onclick="clearSmsLog()" style="margin-top: 10px;">🗑️ Очистить лог</button>
@@ -1117,8 +1161,6 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- Firebase reCAPTCHA container -->
-<div id="recaptcha-container"></div>
 <script>
     // ============================================================
     // ===== КРОССБРАУЗЕРНАЯ ОБЁРТКА =====
@@ -1159,7 +1201,7 @@
     // ===== УСЛУГИ =====
     // ============================================================
     (function() {
-        var buttons = document.querySelectorAll('.service-btn');
+        var buttons = document.querySelectorAll('.service-btn[data-detail]');
         var detailBlock = document.getElementById('serviceDetail');
 
         function setDetail(htmlContent, icon) {
@@ -1362,7 +1404,7 @@
     }
 
     // ============================================================
-    // ===== КАБИНЕТ КЛИЕНТА =====
+    // ===== КАБИНЕТ КЛИЕНТА (БЕЗ FIREBASE) =====
     // ============================================================
     var currentClient = null;
     var clientSmsCode = '';
@@ -1375,12 +1417,12 @@
         document.getElementById('clientPanel').classList.remove('show');
     }
 
-   function clientBackToPhone() {
-    document.getElementById('clientCode').value = '';
-    clientShowStep('clientStepPhone');
-}
-    
-        function clientSendCode() {
+    function clientBackToPhone() {
+        document.getElementById('clientCode').value = '';
+        clientShowStep('clientStepPhone');
+    }
+
+    function clientSendCode() {
         var phone = document.getElementById('clientPhone').value.trim();
         if (!phone || phone.length < 10) {
             showToast('❌ Введите корректный номер телефона');
@@ -1393,101 +1435,54 @@
 
         tempClientPhone = phone;
         document.getElementById('clientPhoneDisplay').textContent = phone;
-        document.getElementById('clientSmsCodeValue').textContent = '------';
 
-        if (typeof firebase === 'undefined' || !firebase.apps.length) {
-            showToast('❌ Firebase не загружен. Проверьте интернет.');
-            return;
+        // Генерируем код локально (без Firebase)
+        clientSmsCode = String(Math.floor(100000 + Math.random() * 900000));
+        document.getElementById('clientSmsCodeValue').textContent = clientSmsCode;
+
+        logSmsCode(phone, clientSmsCode, 'client');
+        showSmsPopup(clientSmsCode);
+        showToast('📱 Код: ' + clientSmsCode);
+        clientShowStep('clientStepCode');
+    }
+
+    function clientVerifyCode() {
+        var code = document.getElementById('clientCode').value.trim();
+        if (!code || code.length !== 6) { showToast('❌ Введите 6-значный код'); return; }
+        if (code !== clientSmsCode) { showToast('❌ Неверный код'); return; }
+
+        var clients = {};
+        try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
+
+        if (clients[tempClientPhone]) {
+            currentClient = clients[tempClientPhone];
+            try { localStorage.setItem('currentClient', JSON.stringify(currentClient)); } catch(e) {}
+            renderClientPanel();
+            showToast('✅ Вы вошли');
+        } else {
+            clientShowStep('clientStepName');
         }
-
-        var recaptchaContainer = document.getElementById('recaptcha-container');
-        recaptchaContainer.innerHTML = '';
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-            'size': 'invisible',
-            'callback': function(response) {
-                console.log('[Firebase] reCAPTCHA пройдена');
-            }
-        });
-
-        firebase.auth().signInWithPhoneNumber(phone, window.recaptchaVerifier)
-            .then(function(confirmationResult) {
-                window.confirmationResult = confirmationResult;
-                console.log('[Firebase] SMS отправлена на ' + phone);
-                showToast('📱 SMS отправлена на ' + phone);
-                clientShowStep('clientStepCode');
-            })
-            .catch(function(error) {
-                console.error('[Firebase] Ошибка:', error);
-                var errorMsg = '❌ Ошибка: ' + error.message;
-                if (error.code === 'auth/invalid-phone-number') {
-                    errorMsg = '❌ Неверный формат номера';
-                } else if (error.code === 'auth/too-many-requests') {
-                    errorMsg = '❌ Слишком много попыток. Подождите.';
-                } else if (error.code === 'auth/quota-exceeded') {
-                    errorMsg = '❌ Лимит SMS исчерпан на сегодня.';
-                }
-                showToast(errorMsg);
-            });
     }
 
-        function clientVerifyCode() {
-    var code = document.getElementById('clientCode').value.trim();
-    if (!code || code.length !== 6) { showToast('❌ Введите 6-значный код'); return; }
-
-    if (!window.confirmationResult) {
-        showToast('❌ Сначала получите SMS');
-        return;
-    }
-
-    window.confirmationResult.confirm(code)
-        .then(function(result) {
-            console.log('[Firebase] Код верный');
-            var user = result.user;
-
-            var clients = {};
-            try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
-
-            if (clients[tempClientPhone]) {
-                currentClient = clients[tempClientPhone];
-                currentClient.firebaseUid = user.uid;
-                try { localStorage.setItem('currentClient', JSON.stringify(currentClient)); } catch(e) {}
-                renderClientPanel();
-                showToast('✅ Вы вошли');
-            } else {
-                window.tempFirebaseUid = user.uid;
-                clientShowStep('clientStepName');
-            }
-        })
-        .catch(function(error) {
-            console.error('[Firebase] Ошибка кода:', error);
-            var errorMsg = '❌ Неверный код';
-            if (error.code === 'auth/code-expired') {
-                errorMsg = '❌ Код истёк. Получите новый.';
-            }
-            showToast(errorMsg);
-        });
-}        
-        
     function clientCompleteRegistration() {
-    var name = document.getElementById('clientName').value.trim();
-    if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
+        var name = document.getElementById('clientName').value.trim();
+        if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
 
-    currentClient = {
-        name: name,
-        phone: tempClientPhone,
-        firebaseUid: window.tempFirebaseUid || ''
-    };
-    var clients = {};
-    try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
-    clients[tempClientPhone] = currentClient;
-    try {
-        localStorage.setItem('clients', JSON.stringify(clients));
-        localStorage.setItem('currentClient', JSON.stringify(currentClient));
-    } catch(e) {}
+        currentClient = {
+            name: name,
+            phone: tempClientPhone
+        };
+        var clients = {};
+        try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
+        clients[tempClientPhone] = currentClient;
+        try {
+            localStorage.setItem('clients', JSON.stringify(clients));
+            localStorage.setItem('currentClient', JSON.stringify(currentClient));
+        } catch(e) {}
 
-    renderClientPanel();
-    showToast('✅ Регистрация завершена!');
-}
+        renderClientPanel();
+        showToast('✅ Регистрация завершена!');
+    }
 
     function clientLogout() {
         currentClient = null;
@@ -1741,6 +1736,15 @@
         isRegistering = false;
         try { localStorage.setItem('currentStaff', JSON.stringify(currentStaff)); } catch(e) {}
         renderStaffPanel();
+
+        // Если админ — ставим тег OneSignal
+        if (currentStaff.role === 'admin' && window.oneSignalReady && typeof OneSignal !== 'undefined') {
+            try {
+                OneSignal.User.addTag('role', 'admin');
+                OneSignal.User.addTag('phone', currentStaff.phone);
+                console.log('[OneSignal] Тег admin установлен');
+            } catch(e) {}
+        }
     }
 
     function staffLogout() {
@@ -1790,6 +1794,7 @@
             renderAllOrders();
             renderSmsLog();
             renderNewMessages();
+            renderBreakLog();
         } else if (currentStaff.role === 'plumber' || currentStaff.role === 'electrician' || currentStaff.role === 'welder') {
             document.getElementById('plumberPanel').style.display = 'block';
             renderPlumberOrders();
@@ -2140,16 +2145,6 @@
         showToast('✅ Все сообщения отмечены прочитанными');
     }
 
-    function markDialogRead(phone) {
-        var readKey = 'read_chats_' + (currentStaff ? currentStaff.phone : 'guest');
-        var readList = [];
-        try { readList = JSON.parse(localStorage.getItem(readKey) || '[]'); } catch(e) {}
-        if (readList.indexOf(phone) === -1) {
-            readList.push(phone);
-            try { localStorage.setItem(readKey, JSON.stringify(readList)); } catch(e) {}
-        }
-    }
-
     // ============================================================
     // ===== ПЛАВАЮЩАЯ КНОПКА ЧАТА =====
     // ============================================================
@@ -2335,6 +2330,187 @@
             }
         }
         return '🤔 Хм, я не совсем понял вопрос.<br><br>Попробуйте спросить:<br>• «Почему течёт кран?»<br>• «Как выбрать котёл?»<br>• «Сколько стоит вызов?»<br>• «Что делать при засоре?»<br><br>Или позвоните: <strong>8 902 646 92 44</strong>';
+    }
+
+    // ============================================================
+    // ===== КАМЕРА + ОПРЕДЕЛЕНИЕ ПОЛОМКИ =====
+    // ============================================================
+    var cameraStream = null;
+
+    function openCamera() {
+        var container = document.getElementById('cameraContainer');
+        var video = document.getElementById('cameraVideo');
+        var status = document.getElementById('cameraStatus');
+        var closeBtn = document.getElementById('closeCameraBtn');
+
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            status.textContent = '❌ Камера не поддерживается';
+            status.style.color = '#b33a3a';
+            return;
+        }
+
+        navigator.mediaDevices.getUserMedia({
+            video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } },
+            audio: false
+        })
+        .then(function(stream) {
+            cameraStream = stream;
+            video.srcObject = stream;
+            container.style.display = 'block';
+            closeBtn.style.display = 'inline-block';
+            status.textContent = '📷 Наведите на поломку и нажмите 📸';
+            status.style.color = '#2a6b4a';
+        })
+        .catch(function(err) {
+            console.error('[Camera]', err);
+            status.textContent = '❌ ' + err.message;
+            status.style.color = '#b33a3a';
+            showToast('❌ Разрешите доступ к камере');
+        });
+    }
+
+    function closeCamera() {
+        if (cameraStream) {
+            cameraStream.getTracks().forEach(function(t) { t.stop(); });
+            cameraStream = null;
+        }
+        document.getElementById('cameraContainer').style.display = 'none';
+        document.getElementById('closeCameraBtn').style.display = 'none';
+        document.getElementById('cameraStatus').textContent = '';
+    }
+
+    function capturePhoto() {
+        var video = document.getElementById('cameraVideo');
+        var canvas = document.getElementById('cameraCanvas');
+        var photo = document.getElementById('capturedPhoto');
+
+        if (!video.videoWidth) { showToast('❌ Камера не готова'); return; }
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        photo.src = canvas.toDataURL('image/jpeg', 0.8);
+        photo.style.display = 'block';
+
+        closeCamera();
+        document.getElementById('severityChoice').style.display = 'block';
+        showToast('✅ Фото сделано! Оцените серьёзность');
+    }
+
+    function handleBreak(type) {
+        var repairInfo = document.getElementById('repairInfo');
+        var repairText = document.getElementById('repairText');
+        var adminNotify = document.getElementById('adminNotify');
+        var adminText = document.getElementById('adminText');
+
+        repairInfo.style.display = 'none';
+        adminNotify.style.display = 'none';
+
+        // 🟢 Лёгкая — просто инструкция
+        if (type === 'light') {
+            repairInfo.style.display = 'block';
+            repairText.innerText = 'Перезагрузите устройство, проверьте кабели питания и подключение к сети. Если не помогло — позвоните: 8 902 646 92 44.';
+            showToast('📖 Инструкция показана');
+            return;
+        }
+
+        // 🟡🔴 Средняя/тяжёлая — адрес + уведомление админам
+        var address = prompt('Введите адрес для выезда мастера:');
+        if (!address || address.trim() === '') {
+            showToast('❌ Адрес не указан');
+            return;
+        }
+
+        var time = new Date().toLocaleTimeString('ru-RU');
+        var priority = type === 'heavy' ? '🔴 ТЯЖЁЛАЯ' : '🟡 СРЕДНЯЯ';
+
+        // Сохраняем в лог
+        try {
+            var breakLog = JSON.parse(localStorage.getItem('break_log') || '[]');
+            breakLog.unshift({
+                time: time,
+                type: type,
+                priority: priority,
+                address: address,
+                photo: document.getElementById('capturedPhoto').src || ''
+            });
+            if (breakLog.length > 30) breakLog = breakLog.slice(0, 30);
+            localStorage.setItem('break_log', JSON.stringify(breakLog));
+        } catch(e) {}
+
+        // 📢 Отправка пуша админам через OneSignal
+        sendAdminNotification(priority + ' поломка', 'Адрес: ' + address + ' | Время: ' + time, type);
+
+        // Показываем пользователю
+        adminNotify.style.display = 'block';
+        adminText.innerText = 'Заявка принята! Мастер выехал по адресу: ' + address;
+        showToast('✅ Админы уведомлены!');
+    }
+
+    // ============================================================
+    // ===== ОТПРАВКА ПУША АДМИНАМ ЧЕРЕЗ ONESIGNAL =====
+    // ============================================================
+    function sendAdminNotification(title, message, type) {
+        if (!window.oneSignalReady || typeof OneSignal === 'undefined') {
+            console.warn('[OneSignal] Не готов — уведомление не отправлено');
+            showToast('⚠️ Пуш не отправлен (OneSignal не готов)');
+            return;
+        }
+
+        // OneSignal Web SDK v16 не умеет отправлять пуши другим юзерам напрямую.
+        // Для реальной отправки нужен REST API через бэкенд.
+        // Ниже — показываем локальное уведомление, если текущий юзер — админ.
+
+        try {
+            OneSignal.User.getTags().then(function(tags) {
+                if (tags && tags.role === 'admin') {
+                    OneSignal.Notifications.requestPermission().then(function(perm) {
+                        if (perm) {
+                            new Notification(title, { body: message, icon: '/icon.png' });
+                        }
+                    });
+                }
+            });
+        } catch(e) {}
+
+        console.log('=== [ADMIN NOTIFICATION] ===');
+        console.log(title);
+        console.log(message);
+        console.log('Type:', type);
+        console.log('============================');
+
+        // ⚠️ Для реальной отправки ВСЕМ админам нужен REST API:
+        // POST https://onesignal.com/api/v1/notifications
+        // {
+        //   app_id: "405f7f9c-5011-44ef-adc4-2e3ad6197423",
+        //   filters: [{ field: "tag", key: "role", value: "admin" }],
+        //   headings: { ru: title },
+        //   contents: { ru: message }
+        // }
+        // Это делается через бэкенд (Node.js, PHP, Python).
+    }
+
+    // Рендер лога поломок в админке
+    function renderBreakLog() {
+        var list = document.getElementById('breakLogList');
+        if (!list) return;
+        var log = [];
+        try { log = JSON.parse(localStorage.getItem('break_log') || '[]'); } catch(e) {}
+        if (log.length === 0) {
+            list.innerHTML = '<div class="no-reviews">Поломок пока не зафиксировано</div>';
+            return;
+        }
+        var html = '';
+        for (var i = 0; i < log.length; i++) {
+            var b = log[i];
+            html += '<div class="order-item">' +
+                '<div class="order-info">' +
+                '<div class="order-service">' + escapeHtml(b.priority) + ' поломка</div>' +
+                '<div class="order-date">📍 ' + escapeHtml(b.address) + ' · ' + escapeHtml(b.time) + '</div>' +
+                '</div></div>';
+        }
+        list.innerHTML = html;
     }
 
     // ============================================================
@@ -2558,10 +2734,6 @@
     window.subscribeUser = subscribeUser;
     window.clientSendCode = clientSendCode;
     window.clientVerifyCode = clientVerifyCode;
-    function clientBackToPhone() {
-    document.getElementById('clientCode').value = '';
-    clientShowStep('clientStepPhone');
-}
     window.clientBackToPhone = clientBackToPhone;
     window.clientCompleteRegistration = clientCompleteRegistration;
     window.clientLogout = clientLogout;
@@ -2591,6 +2763,12 @@
     window.askGpt = askGpt;
     window.renderNewMessages = renderNewMessages;
     window.markAllMessagesRead = markAllMessagesRead;
+    window.openCamera = openCamera;
+    window.closeCamera = closeCamera;
+    window.capturePhoto = capturePhoto;
+    window.handleBreak = handleBreak;
+    window.renderBreakLog = renderBreakLog;
+    window.sendAdminNotification = sendAdminNotification;
 </script>
 
 </body>
