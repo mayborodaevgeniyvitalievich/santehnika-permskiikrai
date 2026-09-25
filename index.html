@@ -1276,8 +1276,7 @@ var ONESIGNAL_REST_API_KEY = 'os_v2_app_ibpx7hcqcfco7loefy5nmgluencj6husuieeuiuc
         return false;
     }
 }
-            var result = await response.json();
-            console.log('[OneSignal] Пуш отправлен:', result);
+
             return true;
         } catch(e) {
             console.error('[OneSignal] Ошибка:', e);
