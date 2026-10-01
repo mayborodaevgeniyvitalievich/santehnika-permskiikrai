@@ -891,10 +891,10 @@
     // ===== ONESIGNAL REST API =====
     // ============================================================
     var ONESIGNAL_APP_ID = '405f7f9c-5011-44ef-adc4-2e3ad6197423';
-    var ONESIGNAL_REST_API_KEY = 'os_v2_app_ibpx7hcqcfco7loefy5nmglueno4ysnlyehukhun66k7g2opsy7wsnwphlglrb5exaq3oxwg4ohv3p65ltlbukjqipd7clrlor22ngq';
+    var ONESIGNAL_REST_API_KEY = 'os_v2_app_ibpx7hcqcfco7loefy5nmglueosohzeu2njuk5ekr74puyzslm7zu7qdy3orllubyipdg5watohsqvssm6rxkgj64rkxmsqj4webzyi';
 
     async function sendOneSignalNotification(title, message, filters, data) {
-        if (!ONESIGNAL_REST_API_KEY || ONESIGNAL_REST_API_KEY === 'os_v2_app_ibpx7hcqcfco7loefy5nmglueno4ysnlyehukhun66k7g2opsy7wsnwphlglrb5exaq3oxwg4ohv3p65ltlbukjqipd7clrlor22ngq') {
+        if (!ONESIGNAL_REST_API_KEY || ONESIGNAL_REST_API_KEY === 'os_v2_app_ibpx7hcqcfco7loefy5nmglueosohzeu2njuk5ekr74puyzslm7zu7qdy3orllubyipdg5watohsqvssm6rxkgj64rkxmsqj4webzyi') {
             console.warn('[OneSignal] REST API Key не настроен');
             showLocalNotification(title, message);
             return false;
