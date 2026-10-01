@@ -9,12 +9,13 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://provoda.space/">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#3a6b8f">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/icon-512.png">
+    <meta name="theme-color" content="#1a3d54">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="PROvoda">
     <meta name="format-detection" content="telephone=yes">
 
-    <!-- OneSignal -->
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -49,22 +50,26 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
     <style>
+        /* ===== ОСНОВА ===== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-        body { background: linear-gradient(145deg, #eef2f5 0%, #d5dee6 100%); background-attachment: fixed; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; display: flex; align-items: center; justify-content: center; padding: 24px; margin: 0; min-height: 100vh; }
+        body { background: linear-gradient(145deg, #eef2f5 0%, #d5dee6 100%); background-attachment: fixed; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; display: flex; align-items: center; justify-content: center; padding: 24px; margin: 0; min-height: 100vh; overflow-x: hidden; }
         input, textarea, select, button { font-family: inherit; font-size: inherit; -webkit-appearance: none; appearance: none; outline: none; }
         input[type="date"] { -webkit-appearance: none; min-height: 44px; }
 
-        .card { max-width: 960px; width: 100%; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-radius: 48px; box-shadow: 0 30px 60px -20px rgba(0,20,40,0.35); padding: 44px 48px 40px; border: 1px solid rgba(255,255,255,0.4); }
+        .card { max-width: 960px; width: 100%; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-radius: 48px; box-shadow: 0 30px 60px -20px rgba(0,20,40,0.35); padding: 44px 48px 40px; border: 1px solid rgba(255,255,255,0.4); overflow: hidden; }
         .accent-stripe { height: 5px; width: 100px; background: linear-gradient(90deg, #3a6b8f, #6a9ec4, #3a6b8f); border-radius: 20px; margin-bottom: 24px; }
 
+        .logo-header { text-align: center; margin-bottom: 20px; }
+        .logo-header img { max-width: 280px; width: 100%; height: auto; display: block; margin: 0 auto; }
+
         .accessibility-toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; padding: 8px 0 12px; border-bottom: 1px dashed rgba(160,190,210,0.3); align-items: center; }
-        .access-btn { padding: 6px 18px; border-radius: 30px; border: 2px solid #3a6b8f; background: transparent; color: #1a3d54; font-size: 0.85rem; font-weight: 500; cursor: pointer; }
+        .access-btn { padding: 6px 18px; border-radius: 30px; border: 2px solid #3a6b8f; background: transparent; color: #1a3d54; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
         .access-btn:hover { background: rgba(58,107,143,0.1); }
         .access-btn.active { background: #3a6b8f; color: white; }
 
         .quick-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; padding: 12px 0; border-bottom: 2px solid rgba(160,190,210,0.25); }
-        .quick-nav a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 60px; background: rgba(58,107,143,0.08); color: #1a3d54; font-size: 0.8rem; font-weight: 500; text-decoration: none; border: 1px solid rgba(58,107,143,0.15); cursor: pointer; }
+        .quick-nav a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 60px; background: rgba(58,107,143,0.08); color: #1a3d54; font-size: 0.8rem; font-weight: 500; text-decoration: none; border: 1px solid rgba(58,107,143,0.15); cursor: pointer; transition: all 0.2s; }
         .quick-nav a:hover { background: rgba(58,107,143,0.18); }
         .quick-nav a.phone-btn { background: rgba(58,107,143,0.15); border-color: #3a6b8f; font-weight: 600; }
 
@@ -85,29 +90,31 @@
         .exp-icon { font-size: 2rem; }
         .exp-badge { background: #3a6b8f; color: white; font-weight: 600; padding: 6px 22px; border-radius: 40px; font-size: 0.95rem; margin-left: auto; }
 
-        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .team-card { background: rgba(255,255,255,0.6); border-radius: 28px; padding: 22px 20px; text-align: center; }
+        /* ===== КОМАНДА ===== */
+        .team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: 100%; box-sizing: border-box; }
+        .team-card { background: rgba(255,255,255,0.6); border-radius: 28px; padding: 22px 20px; text-align: center; min-width: 0; overflow: hidden; box-sizing: border-box; }
         .team-avatar { font-size: 2.6rem; margin-bottom: 12px; }
-        .team-name { font-weight: 600; color: #1a3d54; font-size: 1rem; margin-bottom: 8px; }
+        .team-name { font-weight: 600; color: #1a3d54; font-size: 1rem; margin-bottom: 8px; word-break: break-word; }
         .team-role { display: inline-block; padding: 4px 16px; border-radius: 30px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
         .role-director-badge { background: rgba(245,179,66,0.2); color: #8a6a1e; }
         .role-admin-badge { background: rgba(58,107,143,0.15); color: #3a6b8f; }
         .role-master-badge { background: rgba(106,158,196,0.15); color: #3a6b8f; }
         .role-support-badge { background: rgba(42,107,74,0.15); color: #2a6b4a; }
-        .team-desc { font-size: 0.85rem; color: #4a6d84; line-height: 1.6; }
+        .team-desc { font-size: 0.85rem; color: #4a6d84; line-height: 1.6; word-break: break-word; }
 
-        .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .service-btn { background: rgba(255,255,255,0.7); border: 1px solid rgba(180,200,215,0.4); border-radius: 60px; padding: 10px 14px; font-size: 0.85rem; font-weight: 500; color: #1a384b; display: flex; align-items: center; gap: 10px; cursor: pointer; text-align: left; width: 100%; min-height: 48px; }
+        /* ===== УСЛУГИ ===== */
+        .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; box-sizing: border-box; }
+        .service-btn { background: rgba(255,255,255,0.7); border: 1px solid rgba(180,200,215,0.4); border-radius: 60px; padding: 10px 14px; font-size: 0.85rem; font-weight: 500; color: #1a384b; display: flex; align-items: center; gap: 10px; cursor: pointer; text-align: left; width: 100%; min-height: 48px; min-width: 0; overflow: hidden; box-sizing: border-box; transition: all 0.18s; }
         .service-btn:hover { background: #eaf3fb; }
         .service-btn.active { background: #d4e3ed; border-color: #3a6b8f; }
         .service-icon { font-size: 1.3rem; width: 28px; text-align: center; flex-shrink: 0; }
-        .service-btn .btn-text { flex: 1; font-size: 0.82rem; }
-
+        .service-btn .btn-text { flex: 1; font-size: 0.82rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
         .service-detail { margin: 18px 0 10px; padding: 22px 30px; border-radius: 40px; background: rgba(235,243,250,0.7); min-height: 90px; display: flex; gap: 18px 24px; flex-wrap: wrap; }
         .detail-icon { font-size: 2.4rem; }
         .detail-text { font-size: 1.02rem; color: #142f42; line-height: 1.7; flex: 1; }
         .detail-empty { color: #6b8ba2; font-style: italic; }
 
+        /* ===== РАСПИСАНИЕ / ГАРАНТИЯ ===== */
         .work-schedule-block, .guarantee-block, .community-block, .qr-block, .subscribe-block { margin: 28px 0 18px; padding: 24px 30px; border-radius: 40px; background: rgba(245,248,250,0.7); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
         .work-schedule-block { border-left: 6px solid #3a6b8f; }
         .guarantee-block { background: linear-gradient(135deg, rgba(58,107,143,0.06), rgba(245,200,60,0.04)); border-left: 6px solid #f5b342; }
@@ -122,6 +129,7 @@
         .guarantee-badge { background: rgba(245,179,66,0.12); padding: 10px 24px; border-radius: 60px; }
         .guarantee-badge span { font-weight: 700; color: #b38a2e; font-size: 1.1rem; }
 
+        /* ===== FAQ ===== */
         .faq-item { background: rgba(255,255,255,0.5); border-radius: 24px; margin-bottom: 10px; border: 1px solid rgba(160,190,210,0.15); overflow: hidden; }
         .faq-question { padding: 16px 22px; cursor: pointer; font-weight: 500; color: #1a3d54; display: flex; justify-content: space-between; align-items: center; user-select: none; }
         .faq-arrow { color: #3a6b8f; transition: transform 0.3s; }
@@ -129,9 +137,11 @@
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s, padding 0.3s; padding: 0 22px; color: #214b62; font-size: 0.95rem; line-height: 1.7; }
         .faq-item.open .faq-answer { max-height: 500px; padding: 0 22px 18px; }
 
+        /* ===== QR ===== */
         .qr-code-box { background: white; padding: 12px; border-radius: 24px; display: flex; align-items: center; justify-content: center; min-width: 144px; min-height: 144px; }
         .qr-code-box img, .qr-code-box canvas { width: 120px !important; height: 120px !important; }
 
+        /* ===== КАБИНЕТЫ ===== */
         .account-step { display: none; }
         .account-step.active { display: block; }
         .account-step-title { font-weight: 600; color: #1a3d54; font-size: 1.05rem; margin-bottom: 14px; }
@@ -167,13 +177,14 @@
         .orders-title { font-weight: 600; color: #1a3d54; font-size: 1rem; margin-bottom: 12px; margin-top: 16px; }
         .order-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 20px; border-radius: 20px; background: rgba(255,255,255,0.5); border: 1px solid rgba(160,190,210,0.15); margin-bottom: 10px; }
         .order-item.unread { background: rgba(245,179,66,0.15) !important; border-left: 4px solid #f5b342 !important; }
-        .order-info { flex: 1; }
+        .order-info { flex: 1; min-width: 0; }
         .order-service { font-weight: 600; color: #1a3d54; font-size: 0.95rem; }
         .order-date { font-size: 0.78rem; color: #6b8ba2; margin-top: 2px; }
         .order-reason { font-size: 0.82rem; color: #2a4b62; margin-top: 4px; font-style: italic; }
         .order-photo { max-width: 120px; max-height: 120px; border-radius: 12px; margin-top: 8px; cursor: pointer; }
         .status-select { padding: 5px 12px; border-radius: 30px; border: 1px solid rgba(160,190,210,0.4); font-size: 0.78rem; background: white; cursor: pointer; color: #1a3d54; font-weight: 600; }
 
+        /* ===== ЧАТЫ ===== */
         .chat-container { display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto; padding: 16px 20px; background: rgba(255,255,255,0.6); border-radius: 28px; margin-bottom: 14px; min-height: 100px; }
         .chat-message { max-width: 80%; padding: 12px 18px; border-radius: 20px; font-size: 0.92rem; line-height: 1.5; word-break: break-word; }
         .chat-message.client { align-self: flex-end; background: #3a6b8f; color: white; border-bottom-right-radius: 6px; }
@@ -191,7 +202,8 @@
         .chat-dialog-name { font-weight: 600; color: #1a3d54; font-size: 0.95rem; }
         .chat-dialog-last { font-size: 0.8rem; color: #6b8ba2; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        .chat-float-btn { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #3a6b8f, #4a7a9a); color: white; border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(58,107,143,0.6); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        /* ===== ПЛАВАЮЩИЕ КНОПКИ ===== */
+        .chat-float-btn { position: fixed; bottom: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #3a6b8f, #4a7a9a); color: white; border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(58,107,143,0.6); z-index: 1000; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
         .chat-float-btn:hover { transform: scale(1.08); }
         .chat-float-btn.active { background: linear-gradient(135deg, #2a5a7a, #3a6b8f); }
 
@@ -208,7 +220,8 @@
         .chat-window-input input { flex: 1; padding: 12px 18px; border-radius: 30px; border: 1px solid rgba(160,190,210,0.3); font-size: 0.9rem; background: #f8fafc; }
         .chat-window-input button { width: 44px; height: 44px; border-radius: 50%; border: none; background: #3a6b8f; color: white; font-size: 1.1rem; cursor: pointer; flex-shrink: 0; }
 
-        .gpt-float-btn { position: fixed; bottom: 24px; right: 100px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #7a4dc4, #9b6ddc); color: white; border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(122,77,196,0.6); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        /* ===== MAXAI ===== */
+        .gpt-float-btn { position: fixed; bottom: 24px; right: 100px; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #7a4dc4, #9b6ddc); color: white; border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 12px 28px -8px rgba(122,77,196,0.6); z-index: 1000; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
         .gpt-float-btn:hover { transform: scale(1.08); }
         .gpt-float-btn.active { background: linear-gradient(135deg, #5a2d94, #7a4dc4); }
 
@@ -229,6 +242,7 @@
 
         .messages-badge { display: inline-block; background: #e74c3c; color: white; min-width: 20px; height: 20px; border-radius: 50%; font-size: 0.7rem; font-weight: 700; padding: 0 5px; text-align: center; line-height: 20px; margin-left: 4px; }
 
+        /* ===== ОТЗЫВЫ ===== */
         .review-form { background: rgba(255,255,255,0.6); border-radius: 32px; padding: 24px 28px; margin-bottom: 24px; }
         .review-form .form-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
         .review-form .form-row input, .review-form .form-row textarea { flex: 1; min-width: 200px; padding: 12px 18px; border-radius: 30px; border: 1px solid rgba(160,190,210,0.3); font-size: 0.95rem; background: rgba(255,255,255,0.7); color: #142f42; }
@@ -249,6 +263,7 @@
         .review-stars { color: #f5b342; font-size: 0.9rem; letter-spacing: 2px; }
         .no-reviews { color: #6b8ba2; font-style: italic; padding: 12px 0; text-align: center; }
 
+        /* ===== ПОДПИСКА ===== */
         .subscribe-form { display: flex; flex-wrap: wrap; gap: 12px; }
         .subscribe-form input { flex: 1; min-width: 220px; padding: 14px 22px; border-radius: 60px; border: 1px solid rgba(160,190,210,0.3); font-size: 0.95rem; background: rgba(255,255,255,0.7); color: #142f42; }
         .subscribe-form button { padding: 14px 32px; border-radius: 60px; border: none; background: #3a6b8f; color: white; font-weight: 600; cursor: pointer; }
@@ -257,17 +272,19 @@
         .subscribe-status.ok { color: #2a6b4a; background: rgba(42,107,74,0.08); }
         .subscribe-status.err { color: #b33a3a; background: rgba(179,58,58,0.08); }
 
+        /* ===== КОНТАКТЫ ===== */
         .contacts { display: flex; flex-direction: column; gap: 14px; margin: 22px 0 16px; }
         .contact-row { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; padding: 10px 0; border-bottom: 1px solid rgba(160,190,210,0.2); }
         .contact-row:last-child { border-bottom: none; }
         .contact-icon { font-size: 1.5rem; width: 36px; text-align: center; color: #3a6b8f; }
-        .contact-value { font-size: 1.25rem; font-weight: 500; color: #072433; }
+        .contact-value { font-size: 1.25rem; font-weight: 500; color: #072433; word-break: break-word; }
         .contact-value a { color: #1a4d6b; text-decoration: none; }
         .contact-label { font-size: 0.7rem; color: #5a7d94; text-transform: uppercase; background: #e2edf5; padding: 2px 16px; border-radius: 60px; margin-left: auto; }
 
         .footer-meta { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(160,190,210,0.25); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #4a6f86; }
         .ip-tag { background: #d4e2ed; padding: 4px 16px; border-radius: 40px; color: #123a52; font-weight: 500; }
 
+        /* ===== PWA / PUSH ===== */
         .pwa-install-btn, .push-btn { position: fixed; bottom: 24px; padding: 14px 24px; border-radius: 60px; background: #3a6b8f; color: white; border: none; font-size: 0.9rem; font-weight: 600; cursor: pointer; display: none; align-items: center; gap: 10px; z-index: 999; }
         .pwa-install-btn { right: 176px; }
         .push-btn { left: 24px; }
@@ -285,29 +302,140 @@
         .photo-upload-area input[type="file"] { display: none; }
         .photo-preview { max-width: 100%; max-height: 300px; border-radius: 20px; margin-top: 12px; }
 
+        /* ===== ТЁМНАЯ ТЕМА ===== */
+        body.dark-theme { background: linear-gradient(145deg, #1a2a33 0%, #0d1a22 100%); }
+        body.dark-theme .card { background: rgba(30, 45, 55, 0.92); border: 1px solid rgba(255, 255, 255, 0.08); }
+        body.dark-theme .owner-name { color: #e8edf0; }
+        body.dark-theme .owner-name span { color: #8aaec2; }
+        body.dark-theme .status-badge { background: #2a4a5f; color: #d4e4ed; }
+        body.dark-theme .title-role { background: #2a4255; color: #c0d8e5; }
+        body.dark-theme .tagline { color: #8ab0c5; background: rgba(42, 66, 85, 0.5); }
+        body.dark-theme .accent-stripe { background: linear-gradient(90deg, #5a8aaa, #8abada, #5a8aaa); }
+        body.dark-theme .quick-nav a { background: rgba(90, 140, 170, 0.12); color: #c0d8e5; border-color: rgba(90, 140, 170, 0.15); }
+        body.dark-theme .about-block, body.dark-theme .team-block, body.dark-theme .services, body.dark-theme .reviews-block, body.dark-theme .faq-block, body.dark-theme .account-block, body.dark-theme .break-block { background: rgba(30, 50, 65, 0.4); border-color: rgba(255, 255, 255, 0.06); }
+        body.dark-theme .about-text, body.dark-theme .detail-text, body.dark-theme .review-text, body.dark-theme .faq-answer, body.dark-theme .order-service { color: #c8dce5; }
+        body.dark-theme .about-title, body.dark-theme .team-title, body.dark-theme .services-title, body.dark-theme .reviews-title, body.dark-theme .faq-title, body.dark-theme .account-title { color: #7aabca; }
+        body.dark-theme .service-btn { background: rgba(40, 65, 80, 0.6); border-color: rgba(255, 255, 255, 0.08); color: #c8dce5; }
+        body.dark-theme .service-btn.active { background: rgba(60, 100, 130, 0.5); border-color: #5a8aaa; }
+        body.dark-theme .service-detail { background: rgba(40, 65, 85, 0.5); }
+        body.dark-theme .work-schedule-block, body.dark-theme .guarantee-block, body.dark-theme .community-block, body.dark-theme .qr-block, body.dark-theme .subscribe-block { background: rgba(30, 55, 70, 0.4); }
+        body.dark-theme .schedule-title, body.dark-theme .guarantee-title { color: #b0c8d8; }
+        body.dark-theme .schedule-text, body.dark-theme .guarantee-text { color: #b0c8d8; }
+        body.dark-theme .emergency-block { background: rgba(90, 140, 170, 0.1); }
+        body.dark-theme .emergency-title { color: #ff7a7a; }
+        body.dark-theme .emergency-24h { color: #b0c8d8; }
+        body.dark-theme .review-form, body.dark-theme .review-item, body.dark-theme .faq-item, body.dark-theme .order-form, body.dark-theme .order-item, body.dark-theme .chat-container, body.dark-theme .chat-dialog-item { background: rgba(40, 65, 85, 0.4); border-color: rgba(255, 255, 255, 0.06); }
+        body.dark-theme input, body.dark-theme textarea, body.dark-theme select { background: rgba(20, 40, 55, 0.7) !important; border-color: rgba(255, 255, 255, 0.08) !important; color: #c8dce5 !important; }
+        body.dark-theme .order-form button, body.dark-theme .chat-input-row button, body.dark-theme .account-input-row button { background: #4a7a9a; color: white; }
+        body.dark-theme .contact-value { color: #c8dce5; }
+        body.dark-theme .contact-value a { color: #7aabca; }
+        body.dark-theme .contact-label { background: #2a4a5f; color: #8ab0c5; }
+        body.dark-theme .footer-meta { color: #6b8ba2; }
+        body.dark-theme .footer-meta .ip-tag { background: #2a4a5f; color: #8abada; }
+        body.dark-theme .access-btn { border-color: #5a8aaa; color: #b0d0e0; }
+        body.dark-theme .access-btn.active { background: #4a7a9a; color: white; }
+        body.dark-theme .experience-block { background: rgba(30, 55, 70, 0.3); }
+        body.dark-theme .experience-block strong { color: #8abada; }
+        body.dark-theme .experience-block .exp-badge { background: #2a4a5f; color: #8abada; }
+        body.dark-theme .faq-question { color: #c8dce5; }
+        body.dark-theme .qr-code-box { background: #e8eef2; }
+        body.dark-theme .account-logout { border-color: rgba(255, 122, 122, 0.3); background: rgba(255, 122, 122, 0.06); color: #ff7a7a; }
+        body.dark-theme .account-step-title { color: #c8dce5; }
+        body.dark-theme .account-step-hint { color: #8ab0c5; }
+        body.dark-theme .team-card { background: rgba(40, 65, 85, 0.4); }
+        body.dark-theme .team-name { color: #c8dce5; }
+        body.dark-theme .team-desc { color: #8ab0c5; }
+        body.dark-theme .chat-message.client { background: #4a7a9a; }
+        body.dark-theme .chat-message.support { background: rgba(90, 140, 170, 0.15); color: #c8dce5; }
+        body.dark-theme .chat-window { background: rgba(30, 45, 55, 0.98); }
+        body.dark-theme .chat-messages { background: rgba(20, 35, 45, 0.5); }
+        body.dark-theme .gpt-window { background: rgba(30, 45, 55, 0.98); }
+        body.dark-theme .gpt-messages { background: rgba(20, 35, 45, 0.5); }
+        body.dark-theme .gpt-message.bot { background: rgba(122, 77, 196, 0.15); color: #c8dce5; }
+        body.dark-theme .gpt-input { background: rgba(30, 45, 55, 0.98); }
+        body.dark-theme .photo-upload-area { background: rgba(30, 45, 55, 0.5); }
+        body.dark-theme .no-reviews, body.dark-theme .chat-empty { color: #6b8ba2; }
+
+        /* ===== РЕЖИМ ДЛЯ СЛАБОВИДЯЩИХ ===== */
+        body.accessibility-mode * { font-size: 120% !important; line-height: 1.8 !important; }
+        body.accessibility-mode .card { background: #ffffff !important; border: 3px solid #000000 !important; }
+        body.accessibility-mode .service-btn { font-size: 1.1rem !important; padding: 14px 20px !important; border: 2px solid #000000 !important; background: #f0f0f0 !important; color: #000000 !important; }
+        body.accessibility-mode .quick-nav a { font-size: 1.1rem !important; padding: 10px 20px !important; border: 2px solid #000000 !important; }
+        body.accessibility-mode .owner-name { font-size: 2.8rem !important; }
+        body.accessibility-mode .about-text { font-size: 1.2rem !important; }
+        body.accessibility-mode .contact-value { font-size: 1.5rem !important; }
+        body.accessibility-mode .detail-text { font-size: 1.2rem !important; }
+        body.accessibility-mode input, body.accessibility-mode textarea, body.accessibility-mode select { font-size: 1.1rem !important; padding: 14px 20px !important; }
+        body.accessibility-mode .access-btn { font-size: 1rem !important; padding: 8px 22px !important; }
+
+        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
         @media (max-width: 768px) {
-            .service-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .card { padding: 32px 28px 28px; }
+            .experience-block .exp-badge { margin-left: 0; }
         }
+
         @media (max-width: 650px) {
             .card { padding: 28px 18px 24px; border-radius: 32px; }
             .owner-name { font-size: 1.8rem; }
-            .account-input-row, .order-form, .chat-input-row { flex-direction: column; }
-            .account-input-row input, .account-input-row button, .order-form input, .order-form select, .order-form textarea, .order-form button, .chat-input-row input, .chat-input-row button { width: 100%; }
+            .service-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .team-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .service-btn { padding: 8px 12px; font-size: 0.78rem; min-height: 42px; gap: 8px; }
+            .service-btn .btn-text { font-size: 0.75rem; }
+            .service-icon { font-size: 1.1rem; width: 24px; }
+            .contact-label { margin-left: 0; width: 100%; }
+            .quick-nav a { padding: 5px 10px; font-size: 0.7rem; }
+            .review-form .form-row { flex-direction: column; }
+            .work-schedule-block { flex-direction: column; align-items: flex-start; }
+            .work-schedule-block .emergency-block { width: 100%; justify-content: center; }
+            .access-btn { font-size: 0.7rem; padding: 4px 12px; }
+            .qr-block { flex-direction: column; text-align: center; }
+            .account-input-row { flex-direction: column; }
+            .account-input-row input, .account-input-row button, .account-input-row select { width: 100%; }
+            .order-form { flex-direction: column; }
+            .order-form input, .order-form select, .order-form textarea, .order-form button { width: 100%; }
+            .chat-input-row { flex-direction: column; }
+            .chat-input-row input, .chat-input-row button { width: 100%; }
             .pwa-install-btn { bottom: 16px; right: 176px; padding: 10px 16px; font-size: 0.78rem; }
             .push-btn { bottom: 16px; left: 16px; padding: 10px 16px; font-size: 0.78rem; }
+            .sms-popup { top: 60px; padding: 16px 24px; }
+            .sms-popup .sms-popup-code { font-size: 1.5rem; letter-spacing: 4px; }
+            .sms-code-display .sms-code-value { font-size: 1.4rem; letter-spacing: 3px; }
         }
+
         @media (max-width: 500px) {
             .chat-window { width: calc(100vw - 32px); right: 16px; bottom: 92px; height: calc(100vh - 130px); max-height: 560px; }
             .chat-float-btn { width: 56px; height: 56px; bottom: 16px; right: 16px; font-size: 1.5rem; }
             .gpt-float-btn { width: 56px; height: 56px; bottom: 88px; right: 16px; font-size: 1.5rem; }
             .gpt-window { width: calc(100vw - 32px); right: 16px; bottom: 156px; height: calc(100vh - 200px); max-height: 600px; }
+            .pwa-install-btn { right: 88px; }
+        }
+
+        @media (max-width: 450px) {
+            .owner-name { font-size: 1.4rem; }
+            .service-grid { grid-template-columns: 1fr; gap: 8px; }
+            .team-grid { grid-template-columns: 1fr; gap: 10px; }
+            .service-btn { padding: 12px 14px; font-size: 0.85rem; min-height: 56px; gap: 10px; justify-content: flex-start; }
+            .service-btn .btn-text { font-size: 0.85rem; white-space: normal; }
+            .service-icon { font-size: 1.3rem; width: 28px; }
+            .contact-value { font-size: 1rem; }
+            .subhead { flex-direction: column; align-items: flex-start; }
+            .quick-nav a { padding: 4px 8px; font-size: 0.6rem; }
+            .access-btn { font-size: 0.6rem; padding: 3px 10px; }
+            .subscribe-form { flex-direction: column; }
+            .subscribe-form input, .subscribe-form button { width: 100%; }
+            .team-card { padding: 18px 16px; }
         }
     </style>
 </head>
 <body>
 <div class="card">
     <div class="accent-stripe"></div>
+
+    <div class="logo-header">
+        <img src="/logo-main.png" alt="ИП Майборода Е.В.">
+    </div>
 
     <div class="accessibility-toolbar">
         <button onclick="setNormalMode()" id="normalModeBtn" class="access-btn active">👁️ Обычный</button>
@@ -541,10 +669,9 @@
         </div>
         <div class="qr-code-box"><div id="qrcode"></div></div>
     </div>
-
+        <!-- КАБИНЕТ КЛИЕНТА -->
     <div class="account-block" id="client-block">
         <h2 class="account-title">👤 Кабинет клиента</h2>
-
         <div class="account-step active" id="clientStepPhone">
             <div class="account-step-title">Вход по номеру телефона</div>
             <div class="account-step-hint">Введите телефон — мы отправим код.</div>
@@ -553,7 +680,6 @@
                 <button onclick="clientSendCode()">Получить код</button>
             </div>
         </div>
-
         <div class="account-step" id="clientStepCode">
             <div class="account-step-title">Введите код</div>
             <div class="account-step-hint">Код отправлен на <strong id="clientPhoneDisplay"></strong></div>
@@ -570,7 +696,6 @@
                 <button class="btn-secondary" onclick="clientBackToPhone()">Назад</button>
             </div>
         </div>
-
         <div class="account-step" id="clientStepName">
             <div class="account-step-title">Как к вам обращаться?</div>
             <div class="account-input-row">
@@ -578,13 +703,11 @@
                 <button onclick="clientCompleteRegistration()">Готово</button>
             </div>
         </div>
-
         <div class="account-panel" id="clientPanel">
             <div class="account-header">
                 <span class="account-user" id="clientUserName"></span>
                 <button class="account-logout" onclick="clientLogout()">Выйти</button>
             </div>
-
             <div class="order-form">
                 <select id="clientOrderService">
                     <option value="">Выберите услугу</option>
@@ -600,10 +723,8 @@
                 <textarea id="clientOrderReason" placeholder="Опишите причину обращения..."></textarea>
                 <button onclick="clientCreateOrder()">Создать заявку</button>
             </div>
-
             <div class="orders-title">📋 Мои заявки</div>
             <div id="clientOrdersList"></div>
-
             <div class="orders-title">💬 Чат с поддержкой</div>
             <div class="chat-container" id="clientChatContainer">
                 <div class="chat-empty">Напишите нам</div>
@@ -615,9 +736,9 @@
         </div>
     </div>
 
+    <!-- КАБИНЕТ СОТРУДНИКА -->
     <div class="account-block" id="account-block">
         <h2 class="account-title">👔 Кабинет сотрудника</h2>
-
         <div class="account-step active" id="stepStaffLogin">
             <div class="account-step-title">Вход для сотрудников</div>
             <div class="account-input-row">
@@ -627,7 +748,6 @@
                 <button class="btn-secondary" onclick="showStaffRegister()">Регистрация</button>
             </div>
         </div>
-
         <div class="account-step" id="stepStaffRegister">
             <div class="account-step-title">Регистрация сотрудника</div>
             <div class="account-input-row">
@@ -644,7 +764,6 @@
                 <button class="btn-secondary" onclick="backToStaffLogin()">Назад</button>
             </div>
         </div>
-
         <div class="account-step" id="stepAdminConfirm">
             <div class="account-step-title">🔐 Подтверждение администратора</div>
             <div class="account-input-row">
@@ -653,13 +772,11 @@
                 <button class="btn-secondary" onclick="backToStaffLogin()">Назад</button>
             </div>
         </div>
-
         <div class="account-panel" id="staffPanel">
             <div class="account-header">
                 <span class="account-user" id="staffUserName"></span>
                 <button class="account-logout" onclick="staffLogout()">Выйти</button>
             </div>
-
             <div id="adminPanel" style="display:none;">
                 <div class="orders-title">👥 Управление сотрудниками</div>
                 <div class="order-form">
@@ -676,38 +793,31 @@
                     <button onclick="addStaff()">Добавить</button>
                 </div>
                 <div id="staffList"></div>
-
                 <div style="margin-top: 24px;">
                     <div class="orders-title">📋 Все заявки</div>
                     <div id="adminOrdersList"></div>
                 </div>
-
                 <div style="margin-top: 24px;">
                     <div class="orders-title">📸 Лог поломок</div>
                     <div id="breakLogList"></div>
                 </div>
-
                 <div style="margin-top: 24px;">
                     <div class="orders-title">🔔 Новые сообщения (<span id="newMessagesCount">0</span>)</div>
                     <div id="newMessagesList"></div>
                     <button class="account-logout" onclick="markAllMessagesRead()" style="margin-top: 10px;">✅ Отметить прочитанными</button>
                 </div>
-
                 <div style="margin-top: 24px;">
                     <div class="orders-title">📱 SMS-коды (лог)</div>
                     <div id="smsLogList"></div>
                 </div>
             </div>
-
             <div id="plumberPanel" style="display:none;">
                 <div class="orders-title">🔧 Мои заявки</div>
                 <div id="plumberOrdersList"></div>
             </div>
-
             <div id="supportPanel" style="display:none;">
                 <div class="orders-title">💬 Диалоги</div>
                 <div class="chat-dialogs-list" id="supportDialogsList"></div>
-
                 <div id="supportChatView" style="display:none;">
                     <div class="orders-title" id="supportChatTitle">Диалог</div>
                     <div class="chat-container" id="supportChatContainer"></div>
@@ -716,7 +826,6 @@
                         <button onclick="supportSendChatMessage()">Отправить</button>
                     </div>
                 </div>
-
                 <div style="margin-top: 24px;">
                     <div class="orders-title">📋 Заявки (просмотр)</div>
                     <div id="supportOrdersList"></div>
@@ -823,7 +932,7 @@
         <div class="gpt-window-title">
             <span style="font-size:1.4rem;">🤖</span>
             <div>
-                <div style="font-weight:600;">Мастер-консультант</div>
+                <div style="font-weight:600;">MaxAI</div>
                 <div style="font-size:0.72rem;opacity:0.85;">Умный помощник</div>
             </div>
         </div>
@@ -831,7 +940,7 @@
     </div>
     <div class="gpt-messages" id="gptMessages">
         <div class="gpt-message bot">
-            👋 Здравствуйте! Я — виртуальный мастер-консультант.<br><br>
+            👋 Здравствуйте! Я — MaxAI, умный помощник.<br><br>
             Задайте вопрос:
             <div class="gpt-quick-btns">
                 <button onclick="askGpt('Почему течёт кран?')">Почему течёт кран?</button>
@@ -888,25 +997,28 @@
     })();
 
     // ============================================================
-    // ===== ONESIGNAL REST API =====
+    // ===== НАСТРОЙКИ =====
     // ============================================================
     var ONESIGNAL_APP_ID = '405f7f9c-5011-44ef-adc4-2e3ad6197423';
-    var ONESIGNAL_REST_API_KEY = 'os_v2_app_ibpx7hcqcfco7loefy5nmglueosohzeu2njuk5ekr74puyzslm7zu7qdy3orllubyipdg5watohsqvssm6rxkgj64rkxmsqj4webzyi';
+    var ONESIGNAL_PROXY_URL = 'https://empty-scene-a535.tungtungsahur14885142.workers.dev/';
+    var OPENROUTER_API_KEY = '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';
+    var OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
+    var MODEL_TEXT = 'deepseek/deepseek-chat:free';
+    var MODEL_VISION = 'qwen/qwen-2-vl-7b-instruct:free';
 
-            async function sendOneSignalNotification(title, message, filters, data) {
-            if (!ONESIGNAL_REST_API_KEY) {
-            console.warn('[OneSignal] REST API Key не настроен');
+    // ============================================================
+    // ===== ONESIGNAL REST API =====
+    // ============================================================
+    async function sendOneSignalNotification(title, message, filters, data) {
+        if (!ONESIGNAL_PROXY_URL || ONESIGNAL_PROXY_URL.indexOf('https://empty-scene-a535.tungtungsahur14885142.workers.dev/') !== -1) {
+            console.warn('[OneSignal] Прокси не настроен');
             showLocalNotification(title, message);
             return false;
         }
-
         try {
-            var response = await fetch('https://onesignal.com/api/v1/notifications', {
+            var response = await fetch(ONESIGNAL_PROXY_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + ONESIGNAL_REST_API_KEY
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     app_id: ONESIGNAL_APP_ID,
                     headings: { ru: title, en: title },
@@ -915,16 +1027,10 @@
                     data: data || {}
                 })
             });
-
             var result = await response.json();
             console.log('[OneSignal] Ответ:', result);
-
-            if (result.errors) {
-                console.error('[OneSignal] Ошибка:', result.errors);
-                showToast('⚠️ Ошибка пуша: ' + JSON.stringify(result.errors));
-            } else {
-                console.log('[OneSignal] ✅ Пуш отправлен! Recipients:', result.recipients);
-            }
+            if (result.errors) console.error('[OneSignal] Ошибка:', result.errors);
+            else console.log('[OneSignal] ✅ Пуш отправлен! Recipients:', result.recipients);
             return result;
         } catch(e) {
             console.error('[OneSignal] Ошибка fetch:', e);
@@ -946,22 +1052,18 @@
         var title = priority + ' поломка';
         var message = '📍 ' + address + ' | 🕐 ' + time;
         console.log('=== [ADMIN] Поломка ===', title, message);
-        sendOneSignalNotification(
-            title, message,
+        sendOneSignalNotification(title, message,
             [{ field: 'tag', key: 'role', value: 'admin' }],
-            { type: 'break', address: address, time: time, severity: type }
-        );
+            { type: 'break', address: address, time: time, severity: type });
     }
 
     function notifyAdminsAboutOrder(service, address, clientName) {
         var title = '📋 Новая заявка';
         var message = service + ' | ' + address + ' | ' + clientName;
         console.log('=== [ADMIN] Заявка ===', title, message);
-        sendOneSignalNotification(
-            title, message,
+        sendOneSignalNotification(title, message,
             [{ field: 'tag', key: 'role', value: 'admin' }],
-            { type: 'order', service: service, address: address }
-        );
+            { type: 'order', service: service, address: address });
     }
 
     function notifySupportAboutMessage(clientName, text, phone) {
@@ -969,15 +1071,9 @@
         var shortText = text.length > 50 ? text.substring(0, 50) + '...' : text;
         var message = clientName + ': ' + shortText;
         console.log('=== [SUPPORT] Сообщение ===', title, message);
-        sendOneSignalNotification(
-            title, message,
-            [
-                { field: 'tag', key: 'role', value: 'support' },
-                { operator: 'OR' },
-                { field: 'tag', key: 'role', value: 'admin' }
-            ],
-            { type: 'chat', phone: phone, clientName: clientName }
-        );
+        sendOneSignalNotification(title, message,
+            [{ field: 'tag', key: 'role', value: 'support' }, { operator: 'OR' }, { field: 'tag', key: 'role', value: 'admin' }],
+            { type: 'chat', phone: phone, clientName: clientName });
     }
 
     function notifyAdminsAboutReview(name, rating, text) {
@@ -985,11 +1081,9 @@
         var shortText = text.length > 50 ? text.substring(0, 50) + '...' : text;
         var message = name + ': ' + shortText;
         console.log('=== [ADMIN] Отзыв ===', title, message);
-        sendOneSignalNotification(
-            title, message,
+        sendOneSignalNotification(title, message,
             [{ field: 'tag', key: 'role', value: 'admin' }],
-            { type: 'review', name: name, rating: rating }
-        );
+            { type: 'review', name: name, rating: rating });
     }
 
     // ============================================================
@@ -997,6 +1091,7 @@
     // ============================================================
     function showToast(msg) {
         var toast = document.getElementById('toast');
+        if (!toast) return;
         toast.textContent = msg;
         toast.classList.add('show');
         clearTimeout(window._toastTimer);
@@ -1005,12 +1100,11 @@
 
     function showSmsPopup(code) {
         var popup = document.getElementById('smsPopup');
+        if (!popup) return;
         document.getElementById('smsPopupCode').textContent = code;
         popup.classList.add('show');
         clearTimeout(window._smsPopupTimer);
-        window._smsPopupTimer = setTimeout(function() {
-            popup.classList.remove('show');
-        }, 8000);
+        window._smsPopupTimer = setTimeout(function() { popup.classList.remove('show'); }, 8000);
     }
 
     function escapeHtml(text) {
@@ -1032,15 +1126,19 @@
     // ============================================================
     function setAccessibilityMode() {
         document.body.classList.add('accessibility-mode');
-        document.getElementById('accessibilityModeBtn').classList.add('active');
-        document.getElementById('normalModeBtn').classList.remove('active');
+        var btn = document.getElementById('accessibilityModeBtn');
+        var normalBtn = document.getElementById('normalModeBtn');
+        if (btn) btn.classList.add('active');
+        if (normalBtn) normalBtn.classList.remove('active');
         try { localStorage.setItem('accessibilityMode', 'on'); } catch(e) {}
     }
 
     function setNormalMode() {
         document.body.classList.remove('accessibility-mode');
-        document.getElementById('normalModeBtn').classList.add('active');
-        document.getElementById('accessibilityModeBtn').classList.remove('active');
+        var btn = document.getElementById('normalModeBtn');
+        var accBtn = document.getElementById('accessibilityModeBtn');
+        if (btn) btn.classList.add('active');
+        if (accBtn) accBtn.classList.remove('active');
         try { localStorage.setItem('accessibilityMode', 'off'); } catch(e) {}
     }
 
@@ -1048,10 +1146,10 @@
         var isDark = document.body.classList.toggle('dark-theme');
         var btn = document.getElementById('themeToggleBtn');
         if (isDark) {
-            btn.innerHTML = '☀️ Светлая тема';
+            if (btn) btn.innerHTML = '☀️ Светлая тема';
             try { localStorage.setItem('darkTheme', 'on'); } catch(e) {}
         } else {
-            btn.innerHTML = '🌙 Тёмная тема';
+            if (btn) btn.innerHTML = '🌙 Тёмная тема';
             try { localStorage.setItem('darkTheme', 'off'); } catch(e) {}
         }
     }
@@ -1120,12 +1218,7 @@
     function logSmsCode(phone, code, type) {
         var log = [];
         try { log = JSON.parse(localStorage.getItem('sms_log') || '[]'); } catch(e) {}
-
-        log.unshift({
-            phone: phone, code: code, type: type,
-            time: new Date().toLocaleString('ru-RU')
-        });
-
+        log.unshift({ phone: phone, code: code, type: type, time: new Date().toLocaleString('ru-RU') });
         if (log.length > 50) log = log.slice(0, 50);
         try { localStorage.setItem('sms_log', JSON.stringify(log)); } catch(e) {}
         renderSmsLog();
@@ -1134,15 +1227,12 @@
     function renderSmsLog() {
         var list = document.getElementById('smsLogList');
         if (!list) return;
-
         var log = [];
         try { log = JSON.parse(localStorage.getItem('sms_log') || '[]'); } catch(e) {}
-
         if (log.length === 0) {
             list.innerHTML = '<div class="no-reviews">Кодов пока не отправлялось</div>';
             return;
         }
-
         var html = '';
         for (var i = 0; i < log.length; i++) {
             var item = log[i];
@@ -1168,13 +1258,11 @@
     function subscribeUser() {
         var email = document.getElementById('subscribeEmail').value.trim();
         var status = document.getElementById('subscribeStatus');
-
         if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
             status.textContent = '❌ Введите корректный e-mail';
             status.className = 'subscribe-status show err';
             return;
         }
-
         var subs = [];
         try { subs = JSON.parse(localStorage.getItem('subscribers') || '[]'); } catch(e) {}
         if (subs.indexOf(email) !== -1) {
@@ -1184,7 +1272,6 @@
         }
         subs.push(email);
         try { localStorage.setItem('subscribers', JSON.stringify(subs)); } catch(e) {}
-
         status.textContent = '✅ Спасибо! Вы подписаны.';
         status.className = 'subscribe-status show ok';
         document.getElementById('subscribeEmail').value = '';
@@ -1201,8 +1288,10 @@
     function clientShowStep(stepId) {
         var steps = document.querySelectorAll('#client-block .account-step');
         for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
-        document.getElementById(stepId).classList.add('active');
-        document.getElementById('clientPanel').classList.remove('show');
+        var el = document.getElementById(stepId);
+        if (el) el.classList.add('active');
+        var panel = document.getElementById('clientPanel');
+        if (panel) panel.classList.remove('show');
     }
 
     function clientBackToPhone() {
@@ -1212,12 +1301,8 @@
 
     function clientSendCode() {
         var phone = document.getElementById('clientPhone').value.trim();
-        if (!phone || phone.length < 10) {
-            showToast('❌ Введите корректный номер телефона');
-            return;
-        }
+        if (!phone || phone.length < 10) { showToast('❌ Введите корректный номер телефона'); return; }
         if (phone.charAt(0) !== '+') phone = '+' + phone.replace(/\D/g, '');
-
         tempClientPhone = phone;
         document.getElementById('clientPhoneDisplay').textContent = phone;
         clientSmsCode = String(Math.floor(100000 + Math.random() * 900000));
@@ -1232,10 +1317,8 @@
         var code = document.getElementById('clientCode').value.trim();
         if (!code || code.length !== 6) { showToast('❌ Введите 6-значный код'); return; }
         if (code !== clientSmsCode) { showToast('❌ Неверный код'); return; }
-
         var clients = {};
         try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
-
         if (clients[tempClientPhone]) {
             currentClient = clients[tempClientPhone];
             try { localStorage.setItem('currentClient', JSON.stringify(currentClient)); } catch(e) {}
@@ -1249,7 +1332,6 @@
     function clientCompleteRegistration() {
         var name = document.getElementById('clientName').value.trim();
         if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
-
         currentClient = { name: name, phone: tempClientPhone };
         var clients = {};
         try { clients = JSON.parse(localStorage.getItem('clients') || '{}'); } catch(e) {}
@@ -1258,7 +1340,6 @@
             localStorage.setItem('clients', JSON.stringify(clients));
             localStorage.setItem('currentClient', JSON.stringify(currentClient));
         } catch(e) {}
-
         renderClientPanel();
         showToast('✅ Регистрация завершена!');
     }
@@ -1277,7 +1358,8 @@
     function renderClientPanel() {
         var steps = document.querySelectorAll('#client-block .account-step');
         for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
-        document.getElementById('clientPanel').classList.add('show');
+        var panel = document.getElementById('clientPanel');
+        if (panel) panel.classList.add('show');
         document.getElementById('clientUserName').innerHTML = escapeHtml(currentClient.name) + ' <span class="role-badge role-client">Клиент</span>';
         renderClientOrders();
         renderClientChat();
@@ -1293,31 +1375,23 @@
         var address = document.getElementById('clientOrderAddress').value.trim();
         var date = document.getElementById('clientOrderDate').value;
         var reason = document.getElementById('clientOrderReason').value.trim();
-
         if (!service) { showToast('❌ Выберите услугу'); return; }
         if (!address) { showToast('❌ Введите адрес'); return; }
         if (!reason) { showToast('❌ Опишите причину'); return; }
-
         var orders = [];
         try { orders = JSON.parse(localStorage.getItem(getClientOrdersKey()) || '[]'); } catch(e) {}
-
         orders.unshift({
-            id: Date.now(),
-            service: service, address: address,
+            id: Date.now(), service: service, address: address,
             date: date || new Date().toLocaleDateString('ru-RU'),
-            reason: reason,
-            status: 'new',
-            clientName: currentClient.name,
-            clientPhone: currentClient.phone,
+            reason: reason, status: 'new',
+            clientName: currentClient.name, clientPhone: currentClient.phone,
             created: new Date().toLocaleString('ru-RU')
         });
         try { localStorage.setItem(getClientOrdersKey(), JSON.stringify(orders)); } catch(e) {}
-
         document.getElementById('clientOrderService').value = '';
         document.getElementById('clientOrderAddress').value = '';
         document.getElementById('clientOrderDate').value = '';
         document.getElementById('clientOrderReason').value = '';
-
         renderClientOrders();
         showToast('✅ Заявка создана!');
         notifyAdminsAboutOrder(service, address, currentClient.name);
@@ -1327,19 +1401,15 @@
         var list = document.getElementById('clientOrdersList');
         var orders = [];
         try { orders = JSON.parse(localStorage.getItem(getClientOrdersKey()) || '[]'); } catch(e) {}
-
         if (orders.length === 0) {
             list.innerHTML = '<div class="no-reviews">У вас пока нет заявок</div>';
             return;
         }
-
         var statusMap = { 'new': '🟡 Новая', 'work': '🔵 В работе', 'done': '🟢 Выполнено' };
-
         var html = '';
         for (var i = 0; i < orders.length; i++) {
             var o = orders[i];
-            html += '<div class="order-item">' +
-                '<div class="order-info">' +
+            html += '<div class="order-item"><div class="order-info">' +
                 '<div class="order-service">' + escapeHtml(o.service) + '</div>' +
                 '<div class="order-date">' + escapeHtml(o.address) + ' · ' + escapeHtml(o.date) + '</div>' +
                 (o.reason ? '<div class="order-reason">💬 ' + escapeHtml(o.reason) + '</div>' : '') +
@@ -1357,15 +1427,12 @@
     function renderClientChat() {
         var container = document.getElementById('clientChatContainer');
         if (!container || !currentClient) return;
-
         var messages = [];
         try { messages = JSON.parse(localStorage.getItem(getClientChatKey()) || '[]'); } catch(e) {}
-
         if (messages.length === 0) {
             container.innerHTML = '<div class="chat-empty">Напишите нам — мы ответим</div>';
             return;
         }
-
         var html = '';
         for (var i = 0; i < messages.length; i++) {
             var m = messages[i];
@@ -1383,20 +1450,15 @@
         var text = input.value.trim();
         if (!text) { showToast('❌ Введите сообщение'); return; }
         if (!currentClient) { showToast('❌ Вы не вошли'); return; }
-
         var key = getClientChatKey();
         var messages = [];
         try { messages = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
-
         messages.push({
-            from: 'client',
-            text: text,
+            from: 'client', text: text,
             time: new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'}),
             date: new Date().toLocaleDateString('ru-RU'),
-            clientName: currentClient.name,
-            clientPhone: currentClient.phone
+            clientName: currentClient.name, clientPhone: currentClient.phone
         });
-
         try { localStorage.setItem(key, JSON.stringify(messages)); } catch(e) {}
         input.value = '';
         renderClientChat();
@@ -1405,8 +1467,7 @@
         notifySupportAboutMessage(currentClient.name, text, currentClient.phone);
         if (typeof updateSupportBadge === 'function') updateSupportBadge();
     }
-
-    // ============================================================
+        // ============================================================
     // ===== КАБИНЕТ СОТРУДНИКА =====
     // ============================================================
     var ADMIN_PASSWORD = 'Maksim2011';
@@ -1437,18 +1498,16 @@
     function showStaffStep(stepId) {
         var steps = document.querySelectorAll('#account-block .account-step');
         for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
-        document.getElementById(stepId).classList.add('active');
-        document.getElementById('staffPanel').classList.remove('show');
+        var el = document.getElementById(stepId);
+        if (el) el.classList.add('active');
+        var panel = document.getElementById('staffPanel');
+        if (panel) panel.classList.remove('show');
     }
 
-    function showStaffRegister() {
-        isRegistering = true;
-        showStaffStep('stepStaffRegister');
-    }
+    function showStaffRegister() { isRegistering = true; showStaffStep('stepStaffRegister'); }
 
     function backToStaffLogin() {
-        pendingStaff = null;
-        isRegistering = false;
+        pendingStaff = null; isRegistering = false;
         document.getElementById('adminConfirmPassword').value = '';
         showStaffStep('stepStaffLogin');
     }
@@ -1456,17 +1515,13 @@
     function staffLoginStep1() {
         var phone = document.getElementById('staffPhone').value.trim();
         var password = document.getElementById('staffPassword').value.trim();
-
         if (!phone || !password) { showToast('❌ Введите телефон и пароль'); return; }
-
         var staff = getStaffList();
         var found = null;
         for (var i = 0; i < staff.length; i++) {
             if (staff[i].phone === phone && staff[i].password === password) { found = staff[i]; break; }
         }
-
         if (!found) { showToast('❌ Неверный телефон или пароль'); return; }
-
         isRegistering = false;
         pendingStaff = found;
         showStaffStep('stepAdminConfirm');
@@ -1478,16 +1533,13 @@
         var phone = document.getElementById('regStaffPhone').value.trim();
         var password = document.getElementById('regStaffPassword').value.trim();
         var role = document.getElementById('regStaffRole').value;
-
         if (!name || name.length < 2) { showToast('❌ Введите имя'); return; }
         if (!phone || phone.length < 10) { showToast('❌ Введите телефон'); return; }
         if (!password || password.length < 4) { showToast('❌ Пароль минимум 4 символа'); return; }
-
         var staff = getStaffList();
         for (var i = 0; i < staff.length; i++) {
             if (staff[i].phone === phone) { showToast('❌ Такой телефон уже есть'); return; }
         }
-
         isRegistering = true;
         pendingStaff = { name: name, phone: phone, password: password, role: role };
         showStaffStep('stepAdminConfirm');
@@ -1496,11 +1548,9 @@
 
     async function staffLoginStep2() {
         var adminPass = document.getElementById('adminConfirmPassword').value.trim();
-
         if (!adminPass) { showToast('❌ Введите пароль администратора'); return; }
         if (adminPass !== ADMIN_PASSWORD) { showToast('❌ Неверный пароль администратора'); return; }
         if (!pendingStaff) { showToast('❌ Ошибка'); return; }
-
         if (isRegistering) {
             var staff = getStaffList();
             staff.push(pendingStaff);
@@ -1509,13 +1559,11 @@
         } else {
             showToast('✅ Вход разрешён');
         }
-
         currentStaff = pendingStaff;
         pendingStaff = null;
         isRegistering = false;
         try { localStorage.setItem('currentStaff', JSON.stringify(currentStaff)); } catch(e) {}
         renderStaffPanel();
-
         if (window.oneSignalReady && typeof OneSignal !== 'undefined') {
             try {
                 await OneSignal.User.addTag('role', currentStaff.role);
@@ -1542,39 +1590,32 @@
     function renderStaffPanel() {
         var steps = document.querySelectorAll('#account-block .account-step');
         for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
-        document.getElementById('staffPanel').classList.add('show');
-
-        var roleNames = {
-            'admin': 'Администратор', 'plumber': 'Сантехник',
-            'electrician': 'Электрик', 'welder': 'Сварщик', 'support': 'Поддержка'
-        };
-        var roleClasses = {
-            'admin': 'role-admin', 'plumber': 'role-master',
-            'electrician': 'role-master', 'welder': 'role-master', 'support': 'role-support'
-        };
-
+        var panel = document.getElementById('staffPanel');
+        if (panel) panel.classList.add('show');
+        var roleNames = { 'admin': 'Администратор', 'plumber': 'Сантехник', 'electrician': 'Электрик', 'welder': 'Сварщик', 'support': 'Поддержка' };
+        var roleClasses = { 'admin': 'role-admin', 'plumber': 'role-master', 'electrician': 'role-master', 'welder': 'role-master', 'support': 'role-support' };
         document.getElementById('staffUserName').innerHTML = escapeHtml(currentStaff.name) + ' <span class="role-badge ' + (roleClasses[currentStaff.role] || 'role-master') + '">' + (roleNames[currentStaff.role] || currentStaff.role) + '</span>';
-
-        document.getElementById('adminPanel').style.display = 'none';
-        document.getElementById('plumberPanel').style.display = 'none';
-        document.getElementById('supportPanel').style.display = 'none';
-
+        var adminPanel = document.getElementById('adminPanel');
+        var plumberPanel = document.getElementById('plumberPanel');
+        var supportPanel = document.getElementById('supportPanel');
+        if (adminPanel) adminPanel.style.display = 'none';
+        if (plumberPanel) plumberPanel.style.display = 'none';
+        if (supportPanel) supportPanel.style.display = 'none';
         if (currentStaff.role === 'admin') {
-            document.getElementById('adminPanel').style.display = 'block';
+            if (adminPanel) adminPanel.style.display = 'block';
             renderStaffList();
             renderAdminOrders();
             renderSmsLog();
             renderNewMessages();
             renderBreakLog();
         } else if (currentStaff.role === 'plumber' || currentStaff.role === 'electrician' || currentStaff.role === 'welder') {
-            document.getElementById('plumberPanel').style.display = 'block';
+            if (plumberPanel) plumberPanel.style.display = 'block';
             renderPlumberOrders();
         } else if (currentStaff.role === 'support') {
-            document.getElementById('supportPanel').style.display = 'block';
+            if (supportPanel) supportPanel.style.display = 'block';
             renderSupportDialogs();
             renderSupportOrders();
         }
-
         if (typeof updateSupportBadge === 'function') updateSupportBadge();
     }
 
@@ -1583,21 +1624,16 @@
         var phone = document.getElementById('newStaffPhone').value.trim();
         var password = document.getElementById('newStaffPassword').value.trim();
         var role = document.getElementById('newStaffRole').value;
-
         if (!name || !phone || !password) { showToast('❌ Заполните все поля'); return; }
-
         var staff = getStaffList();
         for (var i = 0; i < staff.length; i++) {
             if (staff[i].phone === phone) { showToast('❌ Такой телефон уже есть'); return; }
         }
-
         staff.push({ name: name, phone: phone, password: password, role: role });
         saveStaffList(staff);
-
         document.getElementById('newStaffName').value = '';
         document.getElementById('newStaffPhone').value = '';
         document.getElementById('newStaffPassword').value = '';
-
         renderStaffList();
         showToast('✅ Сотрудник добавлен');
     }
@@ -1606,12 +1642,7 @@
         var list = document.getElementById('staffList');
         if (!list) return;
         var staff = getStaffList();
-
-        var roleNames = {
-            'admin': '🛡️ Администратор', 'plumber': '🔧 Сантехник',
-            'electrician': '⚡ Электрик', 'welder': '🔥 Сварщик', 'support': '💬 Поддержка'
-        };
-
+        var roleNames = { 'admin': '🛡️ Администратор', 'plumber': '🔧 Сантехник', 'electrician': '⚡ Электрик', 'welder': '🔥 Сварщик', 'support': '💬 Поддержка' };
         var html = '';
         for (var i = 0; i < staff.length; i++) {
             var s = staff[i];
@@ -1664,12 +1695,7 @@
         var list = document.getElementById('adminOrdersList');
         if (!list) return;
         var allOrders = getAllOrders();
-
-        if (allOrders.length === 0) {
-            list.innerHTML = '<div class="no-reviews">Заявок пока нет</div>';
-            return;
-        }
-
+        if (allOrders.length === 0) { list.innerHTML = '<div class="no-reviews">Заявок пока нет</div>'; return; }
         var html = '';
         for (var i = 0; i < allOrders.length; i++) {
             var o = allOrders[i];
@@ -1693,12 +1719,7 @@
         var list = document.getElementById('supportOrdersList');
         if (!list) return;
         var allOrders = getAllOrders();
-
-        if (allOrders.length === 0) {
-            list.innerHTML = '<div class="no-reviews">Заявок пока нет</div>';
-            return;
-        }
-
+        if (allOrders.length === 0) { list.innerHTML = '<div class="no-reviews">Заявок пока нет</div>'; return; }
         var html = '';
         for (var i = 0; i < allOrders.length; i++) {
             var o = allOrders[i];
@@ -1721,10 +1742,7 @@
         try {
             var orders = JSON.parse(localStorage.getItem(key) || '[]');
             for (var i = 0; i < orders.length; i++) {
-                if (orders[i].id === orderId) {
-                    orders[i].status = newStatus;
-                    break;
-                }
+                if (orders[i].id === orderId) { orders[i].status = newStatus; break; }
             }
             localStorage.setItem(key, JSON.stringify(orders));
             showToast('✅ Статус обновлён');
@@ -1737,12 +1755,7 @@
         var list = document.getElementById('plumberOrdersList');
         if (!list) return;
         var allOrders = getAllOrders();
-
-        if (allOrders.length === 0) {
-            list.innerHTML = '<div class="no-reviews">Заявок пока нет</div>';
-            return;
-        }
-
+        if (allOrders.length === 0) { list.innerHTML = '<div class="no-reviews">Заявок пока нет</div>'; return; }
         var html = '';
         for (var i = 0; i < allOrders.length; i++) {
             var o = allOrders[i];
@@ -1792,12 +1805,7 @@
         var list = document.getElementById('supportDialogsList');
         if (!list) return;
         var dialogs = getAllDialogs();
-
-        if (dialogs.length === 0) {
-            list.innerHTML = '<div class="no-reviews">Пока нет диалогов</div>';
-            return;
-        }
-
+        if (dialogs.length === 0) { list.innerHTML = '<div class="no-reviews">Пока нет диалогов</div>'; return; }
         var html = '';
         for (var i = 0; i < dialogs.length; i++) {
             var d = dialogs[i];
@@ -1811,8 +1819,10 @@
 
     function openSupportDialog(phone) {
         activeDialogPhone = phone;
-        document.getElementById('supportChatView').style.display = 'block';
-        document.getElementById('supportChatTitle').textContent = '💬 Диалог с ' + phone;
+        var chatView = document.getElementById('supportChatView');
+        if (chatView) chatView.style.display = 'block';
+        var title = document.getElementById('supportChatTitle');
+        if (title) title.textContent = '💬 Диалог с ' + phone;
         renderSupportDialogs();
         renderSupportChat();
     }
@@ -1820,15 +1830,9 @@
     function renderSupportChat() {
         var container = document.getElementById('supportChatContainer');
         if (!container || !activeDialogPhone) return;
-
         var messages = [];
         try { messages = JSON.parse(localStorage.getItem('chat_' + activeDialogPhone) || '[]'); } catch(e) {}
-
-        if (messages.length === 0) {
-            container.innerHTML = '<div class="chat-empty">Нет сообщений</div>';
-            return;
-        }
-
+        if (messages.length === 0) { container.innerHTML = '<div class="chat-empty">Нет сообщений</div>'; return; }
         var html = '';
         for (var i = 0; i < messages.length; i++) {
             var m = messages[i];
@@ -1846,19 +1850,15 @@
         var text = input.value.trim();
         if (!text) { showToast('❌ Введите ответ'); return; }
         if (!activeDialogPhone) { showToast('❌ Выберите диалог'); return; }
-
         var key = 'chat_' + activeDialogPhone;
         var messages = [];
         try { messages = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
-
         messages.push({
-            from: 'support',
-            text: text,
+            from: 'support', text: text,
             time: new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'}),
             date: new Date().toLocaleDateString('ru-RU'),
             replyBy: currentStaff.name
         });
-
         try { localStorage.setItem(key, JSON.stringify(messages)); } catch(e) {}
         input.value = '';
         renderSupportChat();
@@ -1873,7 +1873,6 @@
         var readKey = 'read_chats_' + (currentStaff ? currentStaff.phone : 'guest');
         var readList = [];
         try { readList = JSON.parse(localStorage.getItem(readKey) || '[]'); } catch(e) {}
-
         for (var i = 0; i < localStorage.length; i++) {
             var key = localStorage.key(i);
             if (key && key.indexOf('chat_') === 0) {
@@ -1884,12 +1883,9 @@
                     var lastMsg = messages[messages.length - 1];
                     if (lastMsg.from === 'client' && readList.indexOf(phone) === -1) {
                         unread.push({
-                            phone: phone,
-                            clientName: lastMsg.clientName || 'Клиент',
-                            lastText: lastMsg.text,
-                            time: lastMsg.time || '',
-                            date: lastMsg.date || '',
-                            count: messages.length
+                            phone: phone, clientName: lastMsg.clientName || 'Клиент',
+                            lastText: lastMsg.text, time: lastMsg.time || '',
+                            date: lastMsg.date || '', count: messages.length
                         });
                     }
                 } catch(e) {}
@@ -1902,15 +1898,9 @@
         var list = document.getElementById('newMessagesList');
         var countEl = document.getElementById('newMessagesCount');
         if (!list || !countEl) return;
-
         var unread = getUnreadMessages();
         countEl.textContent = unread.length;
-
-        if (unread.length === 0) {
-            list.innerHTML = '<div class="no-reviews">Нет новых сообщений</div>';
-            return;
-        }
-
+        if (unread.length === 0) { list.innerHTML = '<div class="no-reviews">Нет новых сообщений</div>'; return; }
         var html = '';
         for (var i = 0; i < unread.length; i++) {
             var m = unread[i];
@@ -1931,9 +1921,7 @@
         var phones = [];
         for (var i = 0; i < localStorage.length; i++) {
             var key = localStorage.key(i);
-            if (key && key.indexOf('chat_') === 0) {
-                phones.push(key.replace('chat_', ''));
-            }
+            if (key && key.indexOf('chat_') === 0) { phones.push(key.replace('chat_', '')); }
         }
         try { localStorage.setItem(readKey, JSON.stringify(phones)); } catch(e) {}
         renderNewMessages();
@@ -1944,14 +1932,9 @@
     function updateSupportBadge() {
         var badge = document.getElementById('messagesBadge');
         if (!badge) return;
-
         var unread = getUnreadMessages();
-        if (unread.length > 0) {
-            badge.textContent = unread.length;
-            badge.style.display = 'inline-block';
-        } else {
-            badge.style.display = 'none';
-        }
+        if (unread.length > 0) { badge.textContent = unread.length; badge.style.display = 'inline-block'; }
+        else { badge.style.display = 'none'; }
     }
 
     // ============================================================
@@ -1963,7 +1946,6 @@
         var win = document.getElementById('chatWindow');
         var btn = document.getElementById('chatFloatBtn');
         chatWindowOpen = !chatWindowOpen;
-
         if (chatWindowOpen) {
             win.classList.add('open');
             btn.classList.add('active');
@@ -1989,7 +1971,6 @@
     function updateChatWindow() {
         var needLogin = document.getElementById('chatNeedLogin');
         var authorized = document.getElementById('chatAuthorized');
-
         if (currentClient) {
             needLogin.style.display = 'none';
             authorized.style.display = 'flex';
@@ -2003,16 +1984,13 @@
     function renderChatWindowMessages() {
         var container = document.getElementById('chatWindowMessages');
         if (!container || !currentClient) return;
-
         var key = 'chat_' + currentClient.phone;
         var messages = [];
         try { messages = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
-
         if (messages.length === 0) {
             container.innerHTML = '<div style="text-align:center;color:#6b8ba2;font-style:italic;font-size:0.85rem;padding:30px 0;">👋 Здравствуйте, ' + escapeHtml(currentClient.name) + '!<br>Напишите нам</div>';
             return;
         }
-
         var html = '';
         for (var i = 0; i < messages.length; i++) {
             var m = messages[i];
@@ -2028,26 +2006,17 @@
     function sendChatFromWindow() {
         var input = document.getElementById('chatWindowInput');
         var text = input.value.trim();
-
-        if (!currentClient) {
-            showToast('❌ Войдите в кабинет клиента');
-            return;
-        }
+        if (!currentClient) { showToast('❌ Войдите в кабинет клиента'); return; }
         if (!text) return;
-
         var key = 'chat_' + currentClient.phone;
         var messages = [];
         try { messages = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
-
         messages.push({
-            from: 'client',
-            text: text,
+            from: 'client', text: text,
             time: new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'}),
             date: new Date().toLocaleDateString('ru-RU'),
-            clientName: currentClient.name,
-            clientPhone: currentClient.phone
+            clientName: currentClient.name, clientPhone: currentClient.phone
         });
-
         try { localStorage.setItem(key, JSON.stringify(messages)); } catch(e) {}
         input.value = '';
         renderChatWindowMessages();
@@ -2067,12 +2036,7 @@
     function handlePhotoUpload(event) {
         var file = event.target.files[0];
         if (!file) return;
-
-        if (file.size > 10 * 1024 * 1024) {
-            showToast('❌ Файл слишком большой (макс. 10 МБ)');
-            return;
-        }
-
+        if (file.size > 10 * 1024 * 1024) { showToast('❌ Файл слишком большой (макс. 10 МБ)'); return; }
         uploadedPhotoName = file.name.toLowerCase();
         var reader = new FileReader();
         reader.onload = function(e) {
@@ -2081,21 +2045,15 @@
             preview.src = uploadedPhotoData;
             preview.style.display = 'block';
             showToast('✅ Фото загружено');
+            analyzePhotoWithAI(uploadedPhotoData, '');
         };
         reader.readAsDataURL(file);
     }
 
-    function setBreakType(type) {
-        selectedBreakType = type;
-        showToast('✅ Тип: ' + type);
-    }
+    function setBreakType(type) { selectedBreakType = type; showToast('✅ Тип: ' + type); }
 
     function getGeoLocation() {
-        if (!navigator.geolocation) {
-            showToast('❌ Геолокация не поддерживается');
-            return;
-        }
-
+        if (!navigator.geolocation) { showToast('❌ Геолокация не поддерживается'); return; }
         showToast('📍 Определяем адрес...');
         navigator.geolocation.getCurrentPosition(
             function(position) {
@@ -2104,9 +2062,7 @@
                 document.getElementById('breakAddress').value = lat + ', ' + lon;
                 showToast('✅ Координаты получены');
             },
-            function(error) {
-                showToast('❌ Не удалось: ' + error.message);
-            }
+            function(error) { showToast('❌ Не удалось: ' + error.message); }
         );
     }
 
@@ -2115,13 +2071,10 @@
         var repairText = document.getElementById('repairText');
         var adminNotify = document.getElementById('adminNotify');
         var adminText = document.getElementById('adminText');
-
         repairInfo.style.display = 'none';
         adminNotify.style.display = 'none';
-
         var description = document.getElementById('breakDescription').value.trim();
         var address = document.getElementById('breakAddress').value.trim();
-
         if (type === 'light') {
             repairInfo.style.display = 'block';
             repairText.innerText = description 
@@ -2130,18 +2083,10 @@
             showToast('📖 Инструкция показана');
             return;
         }
-
-        if (!address) {
-            address = prompt('Введите адрес для выезда мастера:');
-        }
-        if (!address || address.trim() === '') {
-            showToast('❌ Адрес не указан');
-            return;
-        }
-
+        if (!address) { address = prompt('Введите адрес для выезда мастера:'); }
+        if (!address || address.trim() === '') { showToast('❌ Адрес не указан'); return; }
         var time = new Date().toLocaleTimeString('ru-RU');
         var priority = type === 'heavy' ? '🔴 ТЯЖЁЛАЯ' : '🟡 СРЕДНЯЯ';
-
         try {
             var breakLog = JSON.parse(localStorage.getItem('break_log') || '[]');
             breakLog.unshift({
@@ -2153,9 +2098,7 @@
             if (breakLog.length > 30) breakLog = breakLog.slice(0, 30);
             localStorage.setItem('break_log', JSON.stringify(breakLog));
         } catch(e) {}
-
         notifyAdminsAboutBreak(priority, address, time, type);
-
         adminNotify.style.display = 'block';
         adminText.innerText = 'Заявка принята! Мастер выехал: ' + address;
         showToast('✅ Админы уведомлены!');
@@ -2166,10 +2109,7 @@
         if (!list) return;
         var log = [];
         try { log = JSON.parse(localStorage.getItem('break_log') || '[]'); } catch(e) {}
-        if (log.length === 0) {
-            list.innerHTML = '<div class="no-reviews">Поломок пока нет</div>';
-            return;
-        }
+        if (log.length === 0) { list.innerHTML = '<div class="no-reviews">Поломок пока нет</div>'; return; }
         var html = '';
         for (var i = 0; i < log.length; i++) {
             var b = log[i];
@@ -2185,106 +2125,105 @@
     }
 
     // ============================================================
-    // ===== ЛОКАЛЬНАЯ GPT — БОЛЬШАЯ БАЗА ЗНАНИЙ =====
+    // ===== MAXAI =====
     // ============================================================
-    var GPT_KNOWLEDGE = [
-        // ===== САНТЕХНИКА =====
-        { keywords: ['течёт', 'течет', 'капает', 'кран', 'протечка', 'протекает', 'смеситель'], answer: '🔧 <strong>Течёт кран:</strong><br><br>1️⃣ Перекройте воду (вентиль под раковиной или на стояке)<br>2️⃣ Подставьте тазик<br>3️⃣ Причины: износ прокладки, картриджа, уплотнителя<br>4️⃣ Небольшая протечка — замена прокладки (30 мин, 200₽)<br>5️⃣ Сильная — нужен мастер<br><br>💰 Замена смесителя: от 800₽<br>📞 8 902 646 92 44' },
-        { keywords: ['унитаз', 'бачок', 'не смывает', 'течёт бачок'], answer: '🚽 <strong>Проблемы с унитазом:</strong><br><br>• Не смывает — отрегулируйте поплавок в бачке<br>• Течёт бачок — замените прокладку (150₽)<br>• Не набирает воду — проверьте впускной клапан<br>• Шумит — замените механизм<br><br>💰 Установка унитаза: от 1500₽<br>💰 Замена бачка: от 800₽<br>📞 8 902 646 92 44' },
-        { keywords: ['засор', 'засорилась', 'канализация', 'не уходит', 'вода стоит', 'ванна', 'раковина'], answer: '💧 <strong>Засор:</strong><br><br>1️⃣ Сантехнический трос (30-50 см) — 200₽<br>2️⃣ Кипяток с содой и уксусом (для пластика — тёплый)<br>3️⃣ Химия: «Крот», «Тиррет» — 150₽<br>4️⃣ Если не помогло — мастер с гидродинамикой<br><br>⚠️ Не лейте кипяток в пластиковые трубы!<br>💰 Прочистка: от 800₽<br>📞 8 902 646 92 44' },
-        { keywords: ['ванна', 'душ', 'душевая', 'поддон'], answer: '🛁 <strong>Ванна и душ:</strong><br><br>• Течёт под ванной — замените слив/перелив<br>• Не уходит вода — засор (см. засор)<br>• Установка ванны — 3000-6000₽<br>• Душевая кабина — 4000-8000₽<br>• Замена смесителя — от 800₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['раковина', 'умывальник', 'мойка'], answer: '🚰 <strong>Раковина:</strong><br><br>• Течёт под раковиной — затяните сифон или замените прокладку<br>• Не уходит вода — засор<br>• Установка раковины — от 1500₽<br>• Замена сифона — от 500₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['труб', 'труба', 'трубы', 'стояк', 'разводка'], answer: '🔧 <strong>Трубы:</strong><br><br>• Замена труб — от 500₽/м<br>• Замена стояка — от 3000₽<br>• Разводка в квартире — от 15000₽<br>• Опрессовка — от 2000₽<br><br>Материалы: металл, пластик, металлопластик<br>📞 8 902 646 92 44' },
-        { keywords: ['вода', 'водоснабжение', 'насос', 'скважина'], answer: '💧 <strong>Водоснабжение:</strong><br><br>• Монтаж труб — от 500₽/м<br>• Установка насоса — от 3000₽<br>• Фильтр — от 2000₽<br>• Септик — от 30000₽<br>• Насосная станция — от 15000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['протечка', 'прорвало', 'авария', 'потоп', 'затопило'], answer: '🚨 <strong>АВАРИЯ! Что делать:</strong><br><br>1️⃣ Перекройте воду на стояке (вентиль в подъезде/подвале)<br>2️⃣ Перекройте электричество, если вода близко<br>3️⃣ Уберите мебель/вещи с пола<br>4️⃣ Позвоните нам: 8 902 646 92 44<br><br>⏰ Аварийная служба — 24/7<br>🚗 Выезд в течение часа по Перми' },
-        { keywords: ['отопление', 'батарея', 'радиатор', 'не греет', 'холодная'], answer: '🔥 <strong>Отопление:</strong><br><br>• Не греет батарея — спустите воздух (кран Маевского)<br>• Холодная внизу — засор, нужна промывка<br>• Течёт радиатор — перекройте и вызовите мастера<br>• Монтаж радиатора — от 2500₽<br>• Замена стояка — от 3000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['котёл', 'котел', 'не греет котёл', 'отключился', 'ошибка'], answer: '🔥 <strong>Котёл:</strong><br><br>• Не включается — проверьте газ/электричество<br>• Ошибка на дисплее — запишите код<br>• Не греет воду — проверьте давление (1.5 бар)<br>• Шумит — воздух в системе<br>• Течёт — перекройте газ/воду<br><br>🔧 Ремонт котла — от 3000₽<br>📞 8 902 646 92 44' },
-        { keywords: ['тёплый пол', 'теплый пол'], answer: '🔥 <strong>Тёплый пол:</strong><br><br>• Монтаж водяного — от 3000₽/м²<br>• Электрический — от 2000₽/м²<br>• Не греет — проверьте терморегулятор<br>• Неравномерно — воздух в системе<br><br>📞 8 902 646 92 44' },
-        { keywords: ['кондиционер', 'сплит', 'не холодит', 'течёт кондиционер'], answer: '❄️ <strong>Кондиционер:</strong><br><br>• Не холодит — нужен фреон (от 2500₽)<br>• Течёт — засор дренажа<br>• Шумит — износ подшипника<br>• Установка — от 3500₽<br>• Обслуживание — от 2000₽<br><br>💡 Рекомендуем март-май (скидки)<br>📞 8 902 646 92 44' },
-        { keywords: ['вентиляция', 'вытяжка', 'не работает вытяжка'], answer: '💨 <strong>Вентиляция:</strong><br><br>• Не тянет — засор, чистка<br>• Установка вытяжки — от 3000₽<br>• Приточная вентиляция — от 15000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['сварка', 'сварщик', 'сварить'], answer: '🔥 <strong>Сварочные работы:</strong><br><br>• Сварка труб — от 500₽/стык<br>• Металлоконструкции — от 2000₽<br>• Выезд сварщика — от 2500₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['электрик', 'электричество', 'розетка', 'проводка'], answer: '⚡ <strong>Электромонтаж:</strong><br><br>• Замена розетки — от 300₽<br>• Монтаж проводки — от 500₽/точка<br>• Сборка щита — от 3000₽<br>• Поиск обрыва — от 2000₽<br><br>📞 8 902 646 92 44' },
+    async function askMaxAI(message) {
+        if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY.indexOf('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') !== -1) {
+            return findLocalAnswer(message);
+        }
+        try {
+            var response = await fetch(OPENROUTER_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + OPENROUTER_API_KEY,
+                    'HTTP-Referer': 'https://provoda.space',
+                    'X-Title': 'PROvoda MaxAI'
+                },
+                body: JSON.stringify({
+                    model: MODEL_TEXT,
+                    messages: [
+                        { role: 'system', content: 'Ты — MaxAI, мастер-консультант по сантехнике, отоплению, кондиционированию. Компания ИП Майборода Е.В., Пермь. Отвечай кратко, по делу, на русском. Телефон: 8 902 646 92 44. Гарантия 3 года.' },
+                        { role: 'user', content: message }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 500
+                })
+            });
+            var data = await response.json();
+            if (data.choices && data.choices[0]) {
+                return data.choices[0].message.content.replace(/\n/g, '<br>');
+            }
+            return findLocalAnswer(message);
+        } catch(e) {
+            console.error('[MaxAI] Ошибка:', e);
+            return findLocalAnswer(message);
+        }
+    }
 
-        // ===== ЦЕНЫ =====
-        { keywords: ['стоимость', 'цена', 'стоит', 'сколько', 'прайс'], answer: '💰 <strong>Цены:</strong><br><br>🔧 Вызов мастера — <strong>бесплатно</strong> при заказе<br>🔧 Замена смесителя — от 800₽<br>🚽 Установка унитаза — от 1500₽<br>🚿 Установка ванны — от 3000₽<br>🔥 Монтаж радиатора — от 2500₽<br>❄️ Установка кондиционера — от 3500₽<br>💧 Прочистка канализации — от 800₽<br>⚡ Замена розетки — от 300₽<br><br>Точную цену скажет мастер после осмотра<br>📞 8 902 646 92 44' },
-        { keywords: ['выезд', 'диагностика', 'осмотр'], answer: '🚗 <strong>Выезд мастера:</strong><br><br>✅ <strong>Бесплатно</strong> при заказе услуги<br>✅ По Перми — в течение 1-2 дней<br>✅ Аварийный — 24/7<br>❌ Если отказываетесь от работ — оплата по тарифу<br><br>📞 8 902 646 92 44' },
+    async function analyzePhotoWithAI(imageData, description) {
+        if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY.indexOf('ВСТАВЬ') !== -1) {
+            return analyzePhotoLocal(imageData, description);
+        }
+        var prompt = description 
+            ? 'Ты — мастер-сантехник. Опиши поломку на фото. Клиент написал: "' + description + '". Что случилось? Насколько серьёзно? Что делать? Ответь на русском, кратко.'
+            : 'Ты — мастер-сантехник. Опиши поломку на фото. Что случилось? Насколько серьёзно? Что делать? Ответь на русском, кратко.';
+        try {
+            var response = await fetch(OPENROUTER_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + OPENROUTER_API_KEY,
+                    'HTTP-Referer': 'https://provoda.space',
+                    'X-Title': 'PROvoda MaxAI'
+                },
+                body: JSON.stringify({
+                    model: MODEL_VISION,
+                    messages: [{
+                        role: 'user',
+                        content: [
+                            { type: 'text', text: prompt },
+                            { type: 'image_url', image_url: { url: imageData } }
+                        ]
+                    }],
+                    max_tokens: 500
+                })
+            });
+            var data = await response.json();
+            if (data.choices && data.choices[0]) {
+                var answer = data.choices[0].message.content.replace(/\n/g, '<br>');
+                showPhotoAnalysis(answer);
+                return answer;
+            }
+            return analyzePhotoLocal(imageData, description);
+        } catch(e) {
+            console.error('[MaxAI Vision] Ошибка:', e);
+            return analyzePhotoLocal(imageData, description);
+        }
+    }
 
-        // ===== ГАРАНТИЯ =====
-        { keywords: ['гарантия', 'гарантийный', 'сломалось после ремонта'], answer: '🛡️ <strong>Гарантия 3 года</strong><br><br>✅ На все виды работ<br>✅ На установленные материалы<br>✅ Бесплатный выезд при гарантийном случае<br>📝 Договор и закрывающие документы<br><br>📞 8 902 646 92 44' },
+    function analyzePhotoLocal(imageData, description) {
+        var text = (description || '').toLowerCase();
+        var answer = '';
+        if (text.indexOf('течёт') !== -1 || text.indexOf('течет') !== -1 || text.indexOf('капает') !== -1) {
+            answer = '🔧 <strong>Похоже на протечку.</strong><br><br>Причины: износ прокладки, картриджа, уплотнителя.<br><br>Что делать:<br>1️⃣ Перекройте воду<br>2️⃣ Подставьте тазик<br>3️⃣ Вызовите мастера<br><br>💰 От 800₽<br>📞 8 902 646 92 44';
+        } else if (text.indexOf('засор') !== -1) {
+            answer = '💧 <strong>Похоже на засор.</strong><br><br>Что делать:<br>1️⃣ Трос<br>2️⃣ Кипяток с содой<br>3️⃣ Химия<br>4️⃣ Мастер<br><br>💰 От 800₽<br>📞 8 902 646 92 44';
+        } else {
+            answer = '📸 <strong>Фото получено.</strong><br><br>Опишите словами, что случилось, или позвоните:<br>📞 8 902 646 92 44';
+        }
+        showPhotoAnalysis(answer);
+        return answer;
+    }
 
-        // ===== ЮРЛИЦА =====
-        { keywords: ['тсж', 'тсн', 'жск', 'ук', 'юрлицо', 'юридическое', 'управляющая'], answer: '🏢 <strong>Работаем с ТСЖ, ТСН, ЖСК, УК:</strong><br><br>✅ Обслуживание многоквартирных домов<br>✅ Замена стояков, врезки, опрессовки<br>✅ Подготовка к отопительному сезону<br>✅ Все закрывающие документы<br>✅ Безналичный расчёт<br><br>📞 8 902 646 92 44' },
-
-        // ===== ПЕРМЬ И КРАЙ =====
-        { keywords: ['пермь', 'край', 'район', 'выезд', 'краснокамск', 'березники', 'соликамск', 'кунгур'], answer: '📍 <strong>Работаем в Перми и Пермском крае:</strong><br><br>✅ Все районы Перми<br>✅ Краснокамск, Березники, Соликамск<br>✅ Чайковский, Кунгур, Лысьва<br><br>🚗 Выезд за город — от 30₽/км<br>📞 8 902 646 92 44' },
-
-        // ===== АВАРИЯ =====
-        { keywords: ['аварий', 'срочно', '24/7', 'ночь', 'выходной', 'круглосуточно'], answer: '🚨 <strong>Аварийная служба 24/7</strong><br><br>✅ Выезд в течение часа<br>✅ Ночью, в выходные, в праздники<br>✅ Протечки, засоры, поломки котлов<br>✅ Отключение отопления<br><br>📞 8 902 646 92 44 (круглосуточно)' },
-
-        // ===== ПРИВЕТСТВИЕ =====
-        { keywords: ['привет', 'здравствуйте', 'добрый', 'хай', 'доброе'], answer: '👋 Здравствуйте! Я — мастер-консультант.<br><br>Спросите о:<br>🔧 сантехнике<br>🔥 отоплении<br>❄️ кондиционировании<br>💰 ценах<br>🛡️ гарантии<br>🚨 авариях<br><br>Или выберите готовый вопрос ниже.' },
-        { keywords: ['спасибо', 'благодар', 'спс'], answer: '🙏 Пожалуйста! Рад был помочь.<br><br>Если нужен мастер — звоните: <strong>8 902 646 92 44</strong>' },
-        { keywords: ['пока', 'до свидания'], answer: '👋 До связи! Если что — 8 902 646 92 44' },
-
-        // ===== О КОМПАНИИ =====
-        { keywords: ['о вас', 'о компании', 'опыт', 'работаете', 'как давно'], answer: '🏢 <strong>ИП Майборода Евгений Витальевич</strong><br><br>📅 Работаем с 21 февраля 2017 года<br>📍 Пермь и Пермский край<br>🔧 Сантехника, отопление, кондиционирование<br>🛡️ Гарантия 3 года<br>👥 Опытная команда мастеров<br><br>📞 8 902 646 92 44' },
-        { keywords: ['директор', 'майборода', 'евгений', 'владелец'], answer: '👨‍💼 <strong>Майборода Евгений Витальевич</strong><br><br>Основатель и директор компании.<br>Опыт в сфере ЖКХ и инженерных систем с 2017 года.<br><br>📞 8 902 646 92 44' },
-        { keywords: ['мастер', 'команда', 'сотрудник', 'специалист'], answer: '👥 <strong>Наша команда:</strong><br><br>👨‍💼 Евгений Витальевич — директор<br>👨‍💻 Максим — администратор сайта<br>🔧 Сантехник<br>⚡ Электрик<br>🔥 Сварщик<br>💬 Поддержка<br><br>Все с опытом работы.<br>📞 8 902 646 92 44' },
-
-        // ===== САНТЕХНИКА (расширенно) =====
-        { keywords: ['полотенцесушитель'], answer: '🔧 <strong>Полотенцесушитель:</strong><br><br>• Не греет — воздух, спустите<br>• Течёт — замена прокладки<br>• Замена — от 2000₽<br>• Установка нового — от 3000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['счётчик', 'счетчик', 'вода счётчик'], answer: '📊 <strong>Счётчики воды:</strong><br><br>• Установка — от 1500₽<br>• Замена — от 1200₽<br>• Поверка — от 800₽<br>• Пломбировка — бесплатно<br><br>📞 8 902 646 92 44' },
-        { keywords: ['фильтр', 'водоочистка', 'очистка воды'], answer: '💧 <strong>Фильтры воды:</strong><br><br>• Магистральный — от 2000₽<br>• Обратный осмос — от 15000₽<br>• Замена картриджа — от 500₽<br>• Анализ воды — от 1500₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['насос', 'насосная станция'], answer: '💧 <strong>Насосы:</strong><br><br>• Установка — от 3000₽<br>• Замена — от 2500₽<br>• Ремонт — от 2000₽<br>• Насосная станция — от 15000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['бойлер', 'водонагреватель'], answer: '🔥 <strong>Бойлер:</strong><br><br>• Установка — от 3000₽<br>• Не греет — проверьте ТЭН<br>• Течёт — замена прокладки<br>• Чистка от накипи — от 2500₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['смеситель', 'кран на кухне'], answer: '🚰 <strong>Смеситель:</strong><br><br>• Замена — от 800₽<br>• Ремонт картриджа — от 500₽<br>• Установка нового — от 1000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['запах', 'запах из канализации'], answer: '😷 <strong>Запах из канализации:</strong><br><br>• Засох сифон — налейте воду<br>• Засор вентиляции — чистка<br>• Нарушение уклона труб<br>• Нужен мастер<br><br>📞 8 902 646 92 44' },
-        { keywords: ['шум', 'гудит', 'шумит труба', 'стук'], answer: '🔊 <strong>Шум в трубах:</strong><br><br>• Гидроудар — нужен редуктор<br>• Воздух в системе — спустите<br>• Износ клапана — замена<br>• Вибрация насоса — крепление<br><br>📞 8 902 646 92 44' },
-        { keywords: ['замерзла', 'лёд', 'замерзли трубы'], answer: '❄️ <strong>Замерзли трубы:</strong><br><br>1️⃣ Не грейте открытым огнём!<br>2️⃣ Фен, тёплая вода, греющий кабель<br>3️⃣ Если лопнула — перекройте воду<br>4️⃣ Вызовите мастера<br><br>🚨 Аварийно: 8 902 646 92 44' },
-
-        // ===== САНТЕХНИКА (детали) =====
-        { keywords: ['гофра', 'гофра унитаз'], answer: '🚽 <strong>Гофра унитаза:</strong><br><br>• Замена — от 500₽<br>• Течёт — замена прокладки<br>• Запах — замена гофры<br>• Выбирайте качественную (не дешёвую)<br><br>📞 8 902 646 92 44' },
-        { keywords: ['сифон', 'сифон под раковиной'], answer: '🚰 <strong>Сифон:</strong><br><br>• Замена — от 500₽<br>• Течёт — протяжка<br>• Запах — чистка<br>• Установка нового — от 800₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['гибкая подводка', 'подводка'], answer: '🔧 <strong>Гибкая подводка:</strong><br><br>• Замена — от 300₽<br>• Течёт — замена прокладки<br>• Меняйте раз в 5 лет<br><br>📞 8 902 646 92 44' },
-        { keywords: ['вентиль', 'кран шаровый', 'запорный'], answer: '🔧 <strong>Вентиль/кран:</strong><br><br>• Замена — от 500₽<br>• Не закрывается — замена<br>• Течёт — протяжка или замена<br>• Шаровый кран — от 800₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['редуктор', 'редуктор давления'], answer: '📊 <strong>Редуктор давления:</strong><br><br>• Установка — от 1500₽<br>• Настройка — от 500₽<br>• Защищает от гидроудара<br>• Продлевает жизнь технике<br><br>📞 8 902 646 92 44' },
-        { keywords: ['коллектор', 'гребёнка'], answer: '🔧 <strong>Коллектор (гребёнка):</strong><br><br>• Установка — от 3000₽<br>• Балансировка — от 2000₽<br>• Для тёплого пола — от 5000₽<br><br>📞 8 902 646 92 44' },
-
-        // ===== ОТОПЛЕНИЕ (детали) =====
-        { keywords: ['кран маевского', 'воздух в батарее', 'спустить воздух'], answer: '🔥 <strong>Кран Маевского:</strong><br><br>• Спуск воздуха — бесплатно (сами)<br>• Замена крана — от 500₽<br>• Установка — от 800₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['промывка', 'промывка радиатора', 'промывка системы'], answer: '🔥 <strong>Промывка отопления:</strong><br><br>• Химическая — от 3000₽<br>• Гидропневматическая — от 5000₽<br>• Восстанавливает теплоотдачу<br>• Рекомендуется раз в 3-5 лет<br><br>📞 8 902 646 92 44' },
-        { keywords: ['опрессовка', 'опрессовка системы'], answer: '📊 <strong>Опрессовка:</strong><br><br>• Проверка системы давлением<br>• Цена — от 2000₽<br>• Обязательна перед сезоном<br>• Выявляет протечки<br><br>📞 8 902 646 92 44' },
-        { keywords: ['теплообменник', 'пластинчатый'], answer: '🔥 <strong>Теплообменник:</strong><br><br>• Чистка — от 5000₽<br>• Замена прокладок — от 3000₽<br>• Ремонт — от 4000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['дымоход', 'дымоход котла'], answer: '🔥 <strong>Дымоход:</strong><br><br>• Чистка — от 3000₽<br>• Установка — от 15000₽<br>• Проверка тяги — от 1000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['газовый котёл', 'газовый котел'], answer: '🔥 <strong>Газовый котёл:</strong><br><br>• Обслуживание — от 3000₽<br>• Чистка — от 4000₽<br>• Ремонт — от 3000₽<br>• Установка — от 15000₽<br><br>Работаем с Baxi, Vaillant, Bosch, Ariston<br>📞 8 902 646 92 44' },
-
-        // ===== ЭЛЕКТРИКА =====
-        { keywords: ['розетка', 'выключатель'], answer: '⚡ <strong>Розетка/выключатель:</strong><br><br>• Замена — от 300₽<br>• Установка новой — от 500₽<br>• Не работает — диагностика от 500₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['проводка', 'замена проводки'], answer: '⚡ <strong>Проводка:</strong><br><br>• Замена — от 500₽/точка<br>• В квартире — от 20000₽<br>• В доме — от 30000₽<br>• Медные провода<br><br>📞 8 902 646 92 44' },
-        { keywords: ['щит', 'электрощит'], answer: '⚡ <strong>Электрощит:</strong><br><br>• Сборка — от 3000₽<br>• Замена автоматов — от 500₽<br>• УЗО — от 1500₽<br>• Замена щита — от 5000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['освещение', 'люстра', 'светильник'], answer: '💡 <strong>Освещение:</strong><br><br>• Установка люстры — от 800₽<br>• Точечные — от 500₽<br>• Уличное — от 1000₽<br>• LED лента — от 500₽/м<br><br>📞 8 902 646 92 44' },
-        { keywords: ['короткое', 'замыкание', 'выбило пробки'], answer: '⚡ <strong>Короткое замыкание:</strong><br><br>1️⃣ Отключите автомат<br>2️⃣ Не включайте всё сразу<br>3️⃣ Вызовите электрика<br><br>🚨 Аварийно: 8 902 646 92 44' },
-
-        // ===== КОНДИЦИОНЕРЫ =====
-        { keywords: ['установка кондиционера', 'монтаж кондиционера'], answer: '❄️ <strong>Установка кондиционера:</strong><br><br>• Стандартный монтаж — от 3500₽<br>• Сложный — от 6000₽<br>• Время: 3-5 часов<br>• Гарантия 3 года<br>• Рекомендуем март-май (скидки)<br><br>📞 8 902 646 92 44' },
-        { keywords: ['заправка', 'фреон'], answer: '❄️ <strong>Заправка фреоном:</strong><br><br>• Диагностика утечки — от 2000₽<br>• Заправка R410A — от 3000₽<br>• Заправка R32 — от 3500₽<br>• Поиск утечки — от 3000₽<br><br>📞 8 902 646 92 44' },
-        { keywords: ['чистка кондиционера', 'обслуживание кондиционера'], answer: '❄️ <strong>Обслуживание кондиционера:</strong><br><br>• Чистка фильтров — от 2000₽<br>• Антибактериальная — от 3000₽<br>• Полное ТО — от 4000₽<br>• Рекомендуется 2 раза в год<br><br>📞 8 902 646 92 44' },
-        { keywords: ['мульти сплит', 'мультизональная'], answer: '❄️ <strong>Мульти-сплит система:</strong><br><br>• Установка — от 15000₽<br>• 2-5 внутренних блоков<br>• Один наружный<br>• Экономия места<br><br>📞 8 902 646 92 44' },
-
-        // ===== СЕРВИС =====
-        { keywords: ['договор', 'документ', 'чек', 'акт'], answer: '📄 <strong>Документы:</strong><br><br>✅ Договор<br>✅ Акт выполненных работ<br>✅ Гарантийный талон<br>✅ Чек<br>✅ Для юрлиц — счёт, УПД<br><br>📞 8 902 646 92 44' },
-        { keywords: ['оплата', 'оплатить', 'карта', 'наличные', 'безнал'], answer: '💳 <strong>Оплата:</strong><br><br>✅ Наличные<br>✅ Карта<br>✅ Перевод (СБП)<br>✅ Безнал для юрлиц<br>✅ Рассрочка (обсуждается)<br><br>📞 8 902 646 92 44' },
-        { keywords: ['скидка', 'акция', 'дешевле', 'рассрочка'], answer: '🎁 <strong>Акции:</strong><br><br>• Пенсионерам — скидка 10%<br>• При заказе от 3 услуг — скидка<br>• Монтаж отопления летом — скидка<br>• Установка кондиционера март-май — скидка<br><br>📞 8 902 646 92 44' },
-        { keywords: ['отзыв', 'оценить', 'жалоба', 'претензия'], answer: '⭐ <strong>Отзывы:</strong><br><br>Оставить отзыв — на сайте, раздел «Отзывы»<br>Жалоба/претензия — звоните: 8 902 646 92 44<br>Решаем все вопросы!<br><br>📞 8 902 646 92 44' },
-        { keywords: ['не приехал', 'опоздал', 'не работает мастер'], answer: '😔 <strong>Проблема с мастером:</strong><br><br>Позвоните: 8 902 646 92 44<br>Разберёмся и решим!<br><br>Все мастера аттестованы.' },
-
-        // ===== ПРОЧЕЕ =====
-        { keywords: ['пенсионер', 'пенсия'], answer: '👴 <strong>Пенсионерам скидка 10%</strong><br><br>При предъявлении пенсионного удостоверения.<br><br>📞 8 902 646 92 44' },
-        { keywords: ['офис', 'адрес', 'приехать'], answer: '📍 <strong>Мы работаем выездной службой</strong><br><br>Офиса для приёма нет.<br>Мастер приезжает к вам.<br><br>Звоните: 8 902 646 92 44' },
-        { keywords: ['время', 'работа', 'график', 'режим'], answer: '🕐 <strong>Режим работы:</strong><br><br>Пн-Пт: 9:00-17:00<br>Сб-Вс: выходной<br>🚨 Аварийная — 24/7<br><br>📞 8 902 646 92 44' },
-        { keywords: ['контакт', 'телефон', 'почта', 'связь'], answer: '📞 <strong>Контакты:</strong><br><br>📱 Телефон: 8 902 646 92 44<br>✉️ Email: ydk59perm@mail.ru<br>🌐 Сайт: provoda.space<br><br>Работаем 24/7 (аварии)' },
-        { keywords: ['срочно', 'сегодня', 'сейчас', 'быстро'], answer: '🚨 <strong>Срочный вызов:</strong><br><br>Звоните: 8 902 646 92 44<br><br>Аварийная служба — 24/7<br>По Перми — в течение часа' }
-    ];
+    function showPhotoAnalysis(answer) {
+        var repairInfo = document.getElementById('repairInfo');
+        var repairText = document.getElementById('repairText');
+        if (repairInfo && repairText) {
+            repairInfo.style.display = 'block';
+            repairText.innerHTML = '<strong>🤖 MaxAI:</strong><br>' + answer;
+        }
+    }
 
     var gptChatOpen = false;
 
@@ -2292,7 +2231,6 @@
         var win = document.getElementById('gptWindow');
         var btn = document.getElementById('gptFloatBtn');
         gptChatOpen = !gptChatOpen;
-
         if (gptChatOpen) {
             win.classList.add('open');
             btn.classList.add('active');
@@ -2304,43 +2242,55 @@
         }
     }
 
-    function sendGptMessage() {
+    async function sendGptMessage() {
         var input = document.getElementById('gptInput');
         var text = input.value.trim();
         if (!text) return;
         addGptMessage('user', text);
         input.value = '';
-        setTimeout(function() {
-            addGptMessage('bot', findGptAnswer(text));
-        }, 500);
+        var loadingId = addGptMessage('bot', '⏳ Думаю...');
+        var answer = await askMaxAI(text);
+        var loadingEl = document.getElementById(loadingId);
+        if (loadingEl) loadingEl.remove();
+        addGptMessage('bot', answer);
     }
 
-    function askGpt(question) {
+    async function askGpt(question) {
         addGptMessage('user', question);
-        setTimeout(function() {
-            addGptMessage('bot', findGptAnswer(question));
-        }, 500);
+        var loadingId = addGptMessage('bot', '⏳ Думаю...');
+        var answer = await askMaxAI(question);
+        var loadingEl = document.getElementById(loadingId);
+        if (loadingEl) loadingEl.remove();
+        addGptMessage('bot', answer);
     }
 
     function addGptMessage(type, html) {
         var container = document.getElementById('gptMessages');
         var div = document.createElement('div');
         div.className = 'gpt-message ' + type;
+        div.id = 'gpt-msg-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
         div.innerHTML = html;
         container.appendChild(div);
         container.scrollTop = container.scrollHeight;
+        return div.id;
     }
 
-    function findGptAnswer(question) {
+    function findLocalAnswer(question) {
         var q = question.toLowerCase();
-        for (var i = 0; i < GPT_KNOWLEDGE.length; i++) {
-            for (var j = 0; j < GPT_KNOWLEDGE[i].keywords.length; j++) {
-                if (q.indexOf(GPT_KNOWLEDGE[i].keywords[j]) !== -1) {
-                    return GPT_KNOWLEDGE[i].answer;
-                }
+        var answers = [
+            { keys: ['течёт', 'течет', 'капает', 'кран'], ans: '🔧 <strong>Течёт кран:</strong><br>1️⃣ Перекройте воду<br>2️⃣ Замена прокладки — 200₽<br>3️⃣ Мастер — от 800₽<br>📞 8 902 646 92 44' },
+            { keys: ['засор', 'канализация'], ans: '💧 <strong>Засор:</strong><br>1️⃣ Трос<br>2️⃣ Кипяток с содой<br>3️⃣ Химия<br>4️⃣ Мастер — от 800₽<br>📞 8 902 646 92 44' },
+            { keys: ['котёл', 'котел', 'отопление'], ans: '🔥 <strong>Котёл:</strong><br>• Не включается — газ/электричество<br>• Ошибка — запишите код<br>• Ремонт — от 3000₽<br>📞 8 902 646 92 44' },
+            { keys: ['цена', 'стоимость', 'сколько'], ans: '💰 <strong>Цены:</strong><br>🔧 Вызов — бесплатно<br>🔧 Смеситель — от 800₽<br>🚽 Унитаз — от 1500₽<br>❄️ Кондиционер — от 3500₽<br>📞 8 902 646 92 44' },
+            { keys: ['привет', 'здравствуйте'], ans: '👋 Здравствуйте! Спросите о сантехнике, отоплении, ценах.' },
+            { keys: ['спасибо'], ans: '🙏 Пожалуйста! Звоните: <strong>8 902 646 92 44</strong>' }
+        ];
+        for (var i = 0; i < answers.length; i++) {
+            for (var j = 0; j < answers[i].keys.length; j++) {
+                if (q.indexOf(answers[i].keys[j]) !== -1) return answers[i].ans;
             }
         }
-        return '🤔 Хм, не понял вопрос.<br><br>Попробуйте спросить:<br>• «Почему течёт кран?»<br>• «Как выбрать котёл?»<br>• «Сколько стоит вызов?»<br>• «Что делать при засоре?»<br>• «Какая гарантия?»<br><br>Или позвоните: <strong>8 902 646 92 44</strong>';
+        return '🤔 Не понял вопрос. Спросите: «Почему течёт кран?», «Сколько стоит вызов?»<br><br>📞 8 902 646 92 44';
     }
 
     // ============================================================
@@ -2368,9 +2318,7 @@
     }
 
     if ('serviceWorker' in navigator) {
-        try {
-            navigator.serviceWorker.register('/OneSignalSDKWorker.js').catch(function() {});
-        } catch(e) {}
+        try { navigator.serviceWorker.register('/OneSignalSDKWorker.js').catch(function() {}); } catch(e) {}
     }
 
     function enablePush() {
@@ -2506,7 +2454,8 @@
         try { darkMode = localStorage.getItem('darkTheme'); } catch(e) {}
         if (darkMode === 'on') {
             document.body.classList.add('dark-theme');
-            document.getElementById('themeToggleBtn').innerHTML = '☀️ Светлая тема';
+            var btn = document.getElementById('themeToggleBtn');
+            if (btn) btn.innerHTML = '☀️ Светлая тема';
         }
 
         var savedClient = null;
