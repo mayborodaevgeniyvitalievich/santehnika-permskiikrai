@@ -1050,18 +1050,18 @@
     // ============================================================
     // ===== TELEGRAM (ВСТАВЬ СВОИ) =====
     // ============================================================
-    var TELEGRAM_BOT_TOKEN = 'ВСТАВЬ_ТОКЕН_БОТА';
-    var TELEGRAM_CHAT_ID = 'ВСТАВЬ_CHAT_ID_ГРУППЫ';
+    var TELEGRAM_BOT_TOKEN = '8920080646:AAG5YepH0vJxFthmJIPsXmOhD6LqSdRnvhk';
+    var TELEGRAM_CHAT_ID = '-5557250337';
 
     // ============================================================
     // ===== TELEGRAM: ОТПРАВКА =====
     // ============================================================
     async function sendTelegramNotification(title, message, extra) {
-        if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN.indexOf('ВСТАВЬ') !== -1) {
+        if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN.indexOf('8920080646:AAG5YepH0vJxFthmJIPsXmOhD6LqSdRnvhk') !== -1) {
             console.warn('[Telegram] Токен не настроен');
             return false;
         }
-        if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID.indexOf('ВСТАВЬ') !== -1) {
+        if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID.indexOf('-5557250337') !== -1) {
             console.warn('[Telegram] Chat ID не настроен');
             return false;
         }
